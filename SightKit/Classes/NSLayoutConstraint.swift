@@ -67,6 +67,15 @@ public enum LayoutConstraintAttribute : Int {
 #if os(iOS)
 
 public extension UIView {
+    /// try to get the last constriant added
+    var lastCS : NSLayoutConstraint? {
+        get {
+            return self.constraints.last
+        }
+    }
+}
+
+public extension UIView {
     @discardableResult fileprivate func baseCsTo(attr:LayoutConstraintAttribute,v:UIView? = nil,attrV:LayoutConstraintAttribute? = nil,relatedBy:NSLayoutConstraint.Relation = .equal,multi:CGFloat = 1.0,constant:CGFloat = 0) -> Self{
         guard let toView = v ?? self.superview else {
             print("no another view or superView,cannot make cs")

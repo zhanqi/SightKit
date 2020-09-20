@@ -34,6 +34,12 @@
 		2EA6B2E10F38275D4CEB37B7ADDAE0E0 /* QuickConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 17736B10D5474525ED04B80F4DB7A120 /* QuickConfiguration.m */; };
 		3722B93E1E8BF31C11CDF45AA815A767 /* QuickTestSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5732E0ED6DBBBB00596C66A8CC05A3 /* QuickTestSuite.swift */; };
 		388FF3B22516FCA2004ED238 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388FF3B12516FCA2004ED238 /* NSLayoutConstraint.swift */; };
+		3893D4A72517BB71009347A5 /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893D4A62517BB71009347A5 /* NSAttributedString.swift */; };
+		3893D4A92517BD2B009347A5 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893D4A82517BD2B009347A5 /* String.swift */; };
+		3893D4AB2517C13E009347A5 /* SKVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893D4AA2517C13E009347A5 /* SKVisualEffectView.swift */; };
+		3893D4AD2517C26D009347A5 /* SKDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893D4AC2517C26D009347A5 /* SKDefines.swift */; };
+		3893D4AF2517C824009347A5 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893D4AE2517C824009347A5 /* UIFont.swift */; };
+		3893D4B12517C9AF009347A5 /* Toast+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893D4B02517C9AF009347A5 /* Toast+Loading.swift */; };
 		38B72051F26368B657ACE1CDEA474D88 /* mach_excServer.c in Sources */ = {isa = PBXBuildFile; fileRef = F9D446173A7437FDEC076073CC1CD2EE /* mach_excServer.c */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		3B324746542B5868C6AA793F2EF93FEB /* Await.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34A50F0EDC120E18802EED93E0117B7 /* Await.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		3CFD5091F02F30ADE4EEC622C7F487C8 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C062573D6290607874FEA0A2892CC98 /* Async.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -147,7 +153,6 @@
 		E594306BF52C899BCE23A4BA56CD0DD0 /* CwlPreconditionTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ED23789B3D43F8AF1085A5D6EC1A157 /* CwlPreconditionTesting.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E668E7708165C05B8872D95382D89561 /* SightKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 55F6F3CCDF5ED3EBBA59DCBF20C0BB25 /* SightKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E6C11C009FC4EEB972E5175E3D2EDCA5 /* ThrowError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52959F253E1847B5D5C6DA5EBC0C3753 /* ThrowError.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		E6DEDB9DE2367E6383B104B77C11ACFE /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C12669D723EE672D126D796872294A /* ReplaceMe.swift */; };
 		E845F67D934DD3DC047440D72AB738E9 /* Pods-SightKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 403E5F71D7A463631AF506EEC9CA30AD /* Pods-SightKit_Tests-dummy.m */; };
 		E84A4ED0B63C48CC6E4571784BF070F9 /* HaveCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE123E63E1CB3A487632527D97F308A9 /* HaveCount.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		E8AC509D18EBF21B1FEA909652A01108 /* FBSnapshotTestCasePlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = 85D9E4301BE164BF0AC98B3A52A7EA52 /* FBSnapshotTestCasePlatform.m */; };
@@ -260,6 +265,12 @@
 		35A32AC5FC9462774488E6F2773D7570 /* AssertionRecorder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AssertionRecorder.swift; path = Sources/Nimble/Adapters/AssertionRecorder.swift; sourceTree = "<group>"; };
 		35B40039F6722F45C625502705A61845 /* Quick.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Quick.h; path = Sources/QuickObjectiveC/Quick.h; sourceTree = "<group>"; };
 		388FF3B12516FCA2004ED238 /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NSLayoutConstraint.swift; path = SightKit/Classes/NSLayoutConstraint.swift; sourceTree = "<group>"; };
+		3893D4A62517BB71009347A5 /* NSAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NSAttributedString.swift; path = SightKit/Classes/NSAttributedString.swift; sourceTree = "<group>"; };
+		3893D4A82517BD2B009347A5 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = String.swift; path = SightKit/Classes/String.swift; sourceTree = "<group>"; };
+		3893D4AA2517C13E009347A5 /* SKVisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SKVisualEffectView.swift; path = SightKit/Classes/SKVisualEffectView.swift; sourceTree = "<group>"; };
+		3893D4AC2517C26D009347A5 /* SKDefines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SKDefines.swift; path = SightKit/Classes/SKDefines.swift; sourceTree = "<group>"; };
+		3893D4AE2517C824009347A5 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIFont.swift; path = SightKit/Classes/UIFont.swift; sourceTree = "<group>"; };
+		3893D4B02517C9AF009347A5 /* Toast+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Toast+Loading.swift"; sourceTree = "<group>"; };
 		3AAC6F8711354AC480454CCD30BBAC9E /* Nimble-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nimble-prefix.pch"; sourceTree = "<group>"; };
 		3D39452007B5980589C21F2279D2F7FF /* SightKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = SightKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		3E6CD2244F31A394D88CECE7986D9746 /* Functional.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Functional.swift; path = Sources/Nimble/Utils/Functional.swift; sourceTree = "<group>"; };
@@ -338,7 +349,6 @@
 		948D7E91D45E71CD2E3B9D4BEF64827F /* Contain.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Contain.swift; path = Sources/Nimble/Matchers/Contain.swift; sourceTree = "<group>"; };
 		96C9293D14A58DDD97AA4880039FCC9A /* NimbleXCTestHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NimbleXCTestHandler.swift; path = Sources/Nimble/Adapters/NimbleXCTestHandler.swift; sourceTree = "<group>"; };
 		988B601A0241A93A19BAB23F669E159C /* NMBStringify.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NMBStringify.h; path = Sources/NimbleObjectiveC/NMBStringify.h; sourceTree = "<group>"; };
-		98C12669D723EE672D126D796872294A /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = SightKit/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
 		9924EF4EE42C70AA90AE8607FA055F6E /* NBSMockedApplication.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NBSMockedApplication.h; path = DynamicType/NBSMockedApplication.h; sourceTree = "<group>"; };
 		9C2285555C127698E7886F270EA14750 /* NimbleEnvironment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NimbleEnvironment.swift; path = Sources/Nimble/Adapters/NimbleEnvironment.swift; sourceTree = "<group>"; };
 		9D12CF58364D3596A26AB0A50A0CDA46 /* Nimble.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Nimble.xcconfig; sourceTree = "<group>"; };
@@ -500,10 +510,15 @@
 		1AAD54179B01930202F8BDBA447B2A42 /* SightKit */ = {
 			isa = PBXGroup;
 			children = (
-				98C12669D723EE672D126D796872294A /* ReplaceMe.swift */,
+				3893D4A62517BB71009347A5 /* NSAttributedString.swift */,
 				388FF3B12516FCA2004ED238 /* NSLayoutConstraint.swift */,
-				EAFD3CF46BA039F81DC34CED6002A965 /* Pod */,
+				3893D4AC2517C26D009347A5 /* SKDefines.swift */,
+				3893D4AA2517C13E009347A5 /* SKVisualEffectView.swift */,
+				3893D4A82517BD2B009347A5 /* String.swift */,
+				3893D4AE2517C824009347A5 /* UIFont.swift */,
+				3893D4B02517C9AF009347A5 /* Toast+Loading.swift */,
 				A050FAE1A4CC9AC717FFD76EF3B7EBF2 /* Support Files */,
+				EAFD3CF46BA039F81DC34CED6002A965 /* Pod */,
 			);
 			name = SightKit;
 			path = ../..;
@@ -1182,9 +1197,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6DEDB9DE2367E6383B104B77C11ACFE /* ReplaceMe.swift in Sources */,
 				388FF3B22516FCA2004ED238 /* NSLayoutConstraint.swift in Sources */,
+				3893D4A92517BD2B009347A5 /* String.swift in Sources */,
+				3893D4B12517C9AF009347A5 /* Toast+Loading.swift in Sources */,
+				3893D4AB2517C13E009347A5 /* SKVisualEffectView.swift in Sources */,
+				3893D4AF2517C824009347A5 /* UIFont.swift in Sources */,
 				436FEF0801D752A9237C2076EBD6F1C7 /* SightKit-dummy.m in Sources */,
+				3893D4AD2517C26D009347A5 /* SKDefines.swift in Sources */,
+				3893D4A72517BB71009347A5 /* NSAttributedString.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

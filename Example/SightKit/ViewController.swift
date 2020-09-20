@@ -15,7 +15,17 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.view.csHorizonSeperate(num: 3, index: 1)
+        let v = UIImageView()
+        v.image = "https://awesome-tips.gitbook.io/ios/yin-shi-pin/content-2https://awesome-tips.gitbook.io/ios/yin-shi-pin/content-2https://awesome-tips.gitbook.io/ios/yin-shi-pin/content-2https://awesome-tips.gitbook.io/ios/yin-shi-pin/content-2".toQRcodeImg()
+        self.view.addSubview(v)
+        v.csCenter()
+        
+        let visual = SKVisualEffectView()
+        self.view.addSubview(visual)
+        visual.csCenter().csWidthHeight(300)
+        visual.blurRadius = 5.3
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
