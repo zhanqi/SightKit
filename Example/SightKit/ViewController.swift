@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import SightKit
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        self.view.csHorizonSeperate(num: 3, index: 1)
     }
 
     override func didReceiveMemoryWarning() {
