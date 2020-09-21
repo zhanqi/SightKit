@@ -7,8 +7,8 @@
 
 import Foundation
 
-public let tagForToastView = 85001
-public let tagForLoadingView = 85002
+public let tagForToastView = 2020001
+public let tagForLoadingView = 2020002
 
 public func showToast(toast:String?,fromView: UIView?=nil,duration:TimeInterval=1.5){
     guard let fromView = fromView ?? UIApplication.shared.keyWindow else {
@@ -35,10 +35,10 @@ public func showToast(toast:String?,fromView: UIView?=nil,duration:TimeInterval=
     shadowBg.backgroundColor = .black
     shadowBg.alpha = 0.7
     shadowBg.corner(radius: 5)
-    shadowBg.csTo(attr: .center)
+    shadowBg.csCenter()
     NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|->=20-[v1]->=20-|", options: [], metrics: nil, views: ["v1":shadowBg]))
     
-    let toastLabel = UILabel().wTextColor(.white).wFont(pfr18).wText(toast)
+    let toastLabel = UILabel().wTextColor(.white).wFont(pfr(18)).wText(toast)
     shadowBg.addSubview(toastLabel)
     toastLabel.numberOfLines = 0
     toastLabel.lineBreakMode = .byCharWrapping
@@ -84,7 +84,7 @@ public func showLoading(loadingText:String?="加载中...",fromView: UIView?=nil
     shadowBg.backgroundColor = .black
     shadowBg.alpha = 0.7
     shadowBg.corner(radius: 11)
-    shadowBg.csTo(attr: .center)
+    shadowBg.csCenter()
     NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|->=20-[v1]->=20-|", options: [], metrics: nil, views: ["v1":shadowBg]))
     
     let indicator = UIActivityIndicatorView()
@@ -92,13 +92,13 @@ public func showLoading(loadingText:String?="加载中...",fromView: UIView?=nil
     shadowBg.addSubview(indicator)
     indicator.startAnimating()
     indicator.color = .white
-    indicator.csTo(attr: .top,constant: 20).csTo(attr: .centerX).csWidthHeight(37)
+    indicator.csTop(20).csCenterX().csWidthHeight(37)
     
-    let loadingLabel = UILabel().wTextColor(.white).wFont(pfr18).wText(loadingText)
+    let loadingLabel = UILabel().wTextColor(.white).wFont(pfr(18)).wText(loadingText)
     shadowBg.addSubview(loadingLabel)
     loadingLabel.numberOfLines = 0
     loadingLabel.lineBreakMode = .byCharWrapping
-    loadingLabel.csTo(attr: .centerX).cstoBottomOf(view: indicator,constant: 10).csTo(attr: .bottom,constant: -20).csLeftRight(constant: 20)
+    loadingLabel.csCenterX().cstoBottomOf(view: indicator,constant: 10).csBottom(-20).csLeftRight(constant: 20)
 }
 
 public func hideLoading(from: UIView? = nil){

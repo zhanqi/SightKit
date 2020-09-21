@@ -33,14 +33,32 @@
 		2DCFF0CE0BD295F1D46D3247F36B192C /* UIImage+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = C8840D6C1270531B4A2D68B805556F67 /* UIImage+Compare.m */; };
 		2EA6B2E10F38275D4CEB37B7ADDAE0E0 /* QuickConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 17736B10D5474525ED04B80F4DB7A120 /* QuickConfiguration.m */; };
 		3722B93E1E8BF31C11CDF45AA815A767 /* QuickTestSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5732E0ED6DBBBB00596C66A8CC05A3 /* QuickTestSuite.swift */; };
-		388FF3B22516FCA2004ED238 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388FF3B12516FCA2004ED238 /* NSLayoutConstraint.swift */; };
-		3893D4A72517BB71009347A5 /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893D4A62517BB71009347A5 /* NSAttributedString.swift */; };
-		3893D4A92517BD2B009347A5 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893D4A82517BD2B009347A5 /* String.swift */; };
+		388FF3B22516FCA2004ED238 /* Ex+NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388FF3B12516FCA2004ED238 /* Ex+NSLayoutConstraint.swift */; };
+		3893D4A72517BB71009347A5 /* Ex+NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893D4A62517BB71009347A5 /* Ex+NSAttributedString.swift */; };
+		3893D4A92517BD2B009347A5 /* Ex+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893D4A82517BD2B009347A5 /* Ex+String.swift */; };
 		3893D4AB2517C13E009347A5 /* SKVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893D4AA2517C13E009347A5 /* SKVisualEffectView.swift */; };
 		3893D4AD2517C26D009347A5 /* SKDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893D4AC2517C26D009347A5 /* SKDefines.swift */; };
-		3893D4AF2517C824009347A5 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893D4AE2517C824009347A5 /* UIFont.swift */; };
-		3893D4B12517C9AF009347A5 /* Toast+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893D4B02517C9AF009347A5 /* Toast+Loading.swift */; };
+		3893D4AF2517C824009347A5 /* Ex+UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893D4AE2517C824009347A5 /* Ex+UIFont.swift */; };
+		389BB9672518F6D40013CF0C /* Ex+UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389BB9662518F6D40013CF0C /* Ex+UIApplication.swift */; };
+		389BB9692518F75A0013CF0C /* Ex+UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389BB9682518F75A0013CF0C /* Ex+UIButton.swift */; };
+		389BB96B2518FABB0013CF0C /* Ex+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389BB96A2518FABB0013CF0C /* Ex+UIColor.swift */; };
+		389BB96F2518FB060013CF0C /* Ex+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389BB96E2518FB060013CF0C /* Ex+UIImage.swift */; };
+		389BB9712518FBAD0013CF0C /* Ex+UIImage+gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389BB9702518FBAD0013CF0C /* Ex+UIImage+gif.swift */; };
+		389BB9732518FC3A0013CF0C /* Ex+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389BB9722518FC3A0013CF0C /* Ex+UIImageView.swift */; };
+		389BB9752518FC960013CF0C /* Ex+UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389BB9742518FC960013CF0C /* Ex+UINavigationBar.swift */; };
+		389BB9772518FCD40013CF0C /* Ex+UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389BB9762518FCD40013CF0C /* Ex+UIScrollView.swift */; };
+		389BB9792518FD230013CF0C /* Ex+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389BB9782518FD230013CF0C /* Ex+UITextField.swift */; };
+		389BB97B251900D30013CF0C /* Ex+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389BB97A251900D30013CF0C /* Ex+UIViewController.swift */; };
 		38B72051F26368B657ACE1CDEA474D88 /* mach_excServer.c in Sources */ = {isa = PBXBuildFile; fileRef = F9D446173A7437FDEC076073CC1CD2EE /* mach_excServer.c */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
+		38C0DDA62518D38C00647936 /* Ex+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C0DDA52518D38C00647936 /* Ex+UIView.swift */; };
+		38C0DDA82518DBE400647936 /* Ex+UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C0DDA72518DBE400647936 /* Ex+UILabel.swift */; };
+		38C0DDB32518E2F300647936 /* Ex+NSArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C0DDB12518E2F300647936 /* Ex+NSArray.swift */; };
+		38C0DDB42518E2F300647936 /* Toast+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C0DDB22518E2F300647936 /* Toast+Loading.swift */; };
+		38C0DDB62518E64600647936 /* Ex+Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C0DDB52518E64600647936 /* Ex+Class.swift */; };
+		38C0DDBA2518EB2100647936 /* Ex+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C0DDB92518EB2100647936 /* Ex+Date.swift */; };
+		38C0DDBC2518EBF900647936 /* Ex+Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C0DDBB2518EBF900647936 /* Ex+Dictionary.swift */; };
+		38C0DDBE2518ECA800647936 /* Ex+Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C0DDBD2518ECA800647936 /* Ex+Number.swift */; };
+		38C0DDC02518ED6C00647936 /* Ex+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C0DDBF2518ED6C00647936 /* Ex+Data.swift */; };
 		3B324746542B5868C6AA793F2EF93FEB /* Await.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34A50F0EDC120E18802EED93E0117B7 /* Await.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		3CFD5091F02F30ADE4EEC622C7F487C8 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C062573D6290607874FEA0A2892CC98 /* Async.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		3D317145F0CA3D74E737AB0B919AB6E9 /* QuickSpec.h in Headers */ = {isa = PBXBuildFile; fileRef = 91195C3FE8813E08CCB9E5E84E52C13D /* QuickSpec.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -264,13 +282,31 @@
 		3574081B546438D1DE8A00BB478F76AD /* BeCloseTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeCloseTo.swift; path = Sources/Nimble/Matchers/BeCloseTo.swift; sourceTree = "<group>"; };
 		35A32AC5FC9462774488E6F2773D7570 /* AssertionRecorder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AssertionRecorder.swift; path = Sources/Nimble/Adapters/AssertionRecorder.swift; sourceTree = "<group>"; };
 		35B40039F6722F45C625502705A61845 /* Quick.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Quick.h; path = Sources/QuickObjectiveC/Quick.h; sourceTree = "<group>"; };
-		388FF3B12516FCA2004ED238 /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NSLayoutConstraint.swift; path = SightKit/Classes/NSLayoutConstraint.swift; sourceTree = "<group>"; };
-		3893D4A62517BB71009347A5 /* NSAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NSAttributedString.swift; path = SightKit/Classes/NSAttributedString.swift; sourceTree = "<group>"; };
-		3893D4A82517BD2B009347A5 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = String.swift; path = SightKit/Classes/String.swift; sourceTree = "<group>"; };
+		388FF3B12516FCA2004ED238 /* Ex+NSLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex+NSLayoutConstraint.swift"; path = "SightKit/Classes/Ex+NSLayoutConstraint.swift"; sourceTree = "<group>"; };
+		3893D4A62517BB71009347A5 /* Ex+NSAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex+NSAttributedString.swift"; path = "SightKit/Classes/Ex+NSAttributedString.swift"; sourceTree = "<group>"; };
+		3893D4A82517BD2B009347A5 /* Ex+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex+String.swift"; path = "SightKit/Classes/Ex+String.swift"; sourceTree = "<group>"; };
 		3893D4AA2517C13E009347A5 /* SKVisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SKVisualEffectView.swift; path = SightKit/Classes/SKVisualEffectView.swift; sourceTree = "<group>"; };
 		3893D4AC2517C26D009347A5 /* SKDefines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SKDefines.swift; path = SightKit/Classes/SKDefines.swift; sourceTree = "<group>"; };
-		3893D4AE2517C824009347A5 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIFont.swift; path = SightKit/Classes/UIFont.swift; sourceTree = "<group>"; };
-		3893D4B02517C9AF009347A5 /* Toast+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Toast+Loading.swift"; sourceTree = "<group>"; };
+		3893D4AE2517C824009347A5 /* Ex+UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex+UIFont.swift"; path = "SightKit/Classes/Ex+UIFont.swift"; sourceTree = "<group>"; };
+		389BB9662518F6D40013CF0C /* Ex+UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex+UIApplication.swift"; path = "SightKit/Classes/Ex+UIApplication.swift"; sourceTree = "<group>"; };
+		389BB9682518F75A0013CF0C /* Ex+UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex+UIButton.swift"; path = "SightKit/Classes/Ex+UIButton.swift"; sourceTree = "<group>"; };
+		389BB96A2518FABB0013CF0C /* Ex+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex+UIColor.swift"; path = "SightKit/Classes/Ex+UIColor.swift"; sourceTree = "<group>"; };
+		389BB96E2518FB060013CF0C /* Ex+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex+UIImage.swift"; path = "SightKit/Classes/Ex+UIImage.swift"; sourceTree = "<group>"; };
+		389BB9702518FBAD0013CF0C /* Ex+UIImage+gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex+UIImage+gif.swift"; path = "SightKit/Classes/Ex+UIImage+gif.swift"; sourceTree = "<group>"; };
+		389BB9722518FC3A0013CF0C /* Ex+UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex+UIImageView.swift"; path = "SightKit/Classes/Ex+UIImageView.swift"; sourceTree = "<group>"; };
+		389BB9742518FC960013CF0C /* Ex+UINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex+UINavigationBar.swift"; path = "SightKit/Classes/Ex+UINavigationBar.swift"; sourceTree = "<group>"; };
+		389BB9762518FCD40013CF0C /* Ex+UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex+UIScrollView.swift"; path = "SightKit/Classes/Ex+UIScrollView.swift"; sourceTree = "<group>"; };
+		389BB9782518FD230013CF0C /* Ex+UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex+UITextField.swift"; path = "SightKit/Classes/Ex+UITextField.swift"; sourceTree = "<group>"; };
+		389BB97A251900D30013CF0C /* Ex+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex+UIViewController.swift"; path = "SightKit/Classes/Ex+UIViewController.swift"; sourceTree = "<group>"; };
+		38C0DDA52518D38C00647936 /* Ex+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex+UIView.swift"; path = "SightKit/Classes/Ex+UIView.swift"; sourceTree = "<group>"; };
+		38C0DDA72518DBE400647936 /* Ex+UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex+UILabel.swift"; path = "SightKit/Classes/Ex+UILabel.swift"; sourceTree = "<group>"; };
+		38C0DDB12518E2F300647936 /* Ex+NSArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Ex+NSArray.swift"; path = "SightKit/Classes/Ex+NSArray.swift"; sourceTree = "<group>"; };
+		38C0DDB22518E2F300647936 /* Toast+Loading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Toast+Loading.swift"; path = "SightKit/Classes/Toast+Loading.swift"; sourceTree = "<group>"; };
+		38C0DDB52518E64600647936 /* Ex+Class.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex+Class.swift"; path = "SightKit/Classes/Ex+Class.swift"; sourceTree = "<group>"; };
+		38C0DDB92518EB2100647936 /* Ex+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex+Date.swift"; path = "SightKit/Classes/Ex+Date.swift"; sourceTree = "<group>"; };
+		38C0DDBB2518EBF900647936 /* Ex+Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex+Dictionary.swift"; path = "SightKit/Classes/Ex+Dictionary.swift"; sourceTree = "<group>"; };
+		38C0DDBD2518ECA800647936 /* Ex+Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex+Number.swift"; path = "SightKit/Classes/Ex+Number.swift"; sourceTree = "<group>"; };
+		38C0DDBF2518ED6C00647936 /* Ex+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex+Data.swift"; path = "SightKit/Classes/Ex+Data.swift"; sourceTree = "<group>"; };
 		3AAC6F8711354AC480454CCD30BBAC9E /* Nimble-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nimble-prefix.pch"; sourceTree = "<group>"; };
 		3D39452007B5980589C21F2279D2F7FF /* SightKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = SightKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		3E6CD2244F31A394D88CECE7986D9746 /* Functional.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Functional.swift; path = Sources/Nimble/Utils/Functional.swift; sourceTree = "<group>"; };
@@ -510,15 +546,33 @@
 		1AAD54179B01930202F8BDBA447B2A42 /* SightKit */ = {
 			isa = PBXGroup;
 			children = (
-				3893D4A62517BB71009347A5 /* NSAttributedString.swift */,
-				388FF3B12516FCA2004ED238 /* NSLayoutConstraint.swift */,
+				38C0DDB12518E2F300647936 /* Ex+NSArray.swift */,
+				3893D4A62517BB71009347A5 /* Ex+NSAttributedString.swift */,
+				388FF3B12516FCA2004ED238 /* Ex+NSLayoutConstraint.swift */,
+				3893D4A82517BD2B009347A5 /* Ex+String.swift */,
+				3893D4AE2517C824009347A5 /* Ex+UIFont.swift */,
+				38C0DDA72518DBE400647936 /* Ex+UILabel.swift */,
+				38C0DDA52518D38C00647936 /* Ex+UIView.swift */,
+				38C0DDB52518E64600647936 /* Ex+Class.swift */,
+				38C0DDB92518EB2100647936 /* Ex+Date.swift */,
+				38C0DDBB2518EBF900647936 /* Ex+Dictionary.swift */,
+				38C0DDBD2518ECA800647936 /* Ex+Number.swift */,
+				38C0DDBF2518ED6C00647936 /* Ex+Data.swift */,
+				389BB9662518F6D40013CF0C /* Ex+UIApplication.swift */,
+				389BB9682518F75A0013CF0C /* Ex+UIButton.swift */,
+				389BB96A2518FABB0013CF0C /* Ex+UIColor.swift */,
+				389BB96E2518FB060013CF0C /* Ex+UIImage.swift */,
+				389BB9702518FBAD0013CF0C /* Ex+UIImage+gif.swift */,
+				389BB9722518FC3A0013CF0C /* Ex+UIImageView.swift */,
+				389BB9742518FC960013CF0C /* Ex+UINavigationBar.swift */,
+				389BB9762518FCD40013CF0C /* Ex+UIScrollView.swift */,
+				389BB9782518FD230013CF0C /* Ex+UITextField.swift */,
+				389BB97A251900D30013CF0C /* Ex+UIViewController.swift */,
 				3893D4AC2517C26D009347A5 /* SKDefines.swift */,
 				3893D4AA2517C13E009347A5 /* SKVisualEffectView.swift */,
-				3893D4A82517BD2B009347A5 /* String.swift */,
-				3893D4AE2517C824009347A5 /* UIFont.swift */,
-				3893D4B02517C9AF009347A5 /* Toast+Loading.swift */,
-				A050FAE1A4CC9AC717FFD76EF3B7EBF2 /* Support Files */,
+				38C0DDB22518E2F300647936 /* Toast+Loading.swift */,
 				EAFD3CF46BA039F81DC34CED6002A965 /* Pod */,
+				A050FAE1A4CC9AC717FFD76EF3B7EBF2 /* Support Files */,
 			);
 			name = SightKit;
 			path = ../..;
@@ -1197,14 +1251,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				388FF3B22516FCA2004ED238 /* NSLayoutConstraint.swift in Sources */,
-				3893D4A92517BD2B009347A5 /* String.swift in Sources */,
-				3893D4B12517C9AF009347A5 /* Toast+Loading.swift in Sources */,
+				38C0DDB32518E2F300647936 /* Ex+NSArray.swift in Sources */,
+				389BB9712518FBAD0013CF0C /* Ex+UIImage+gif.swift in Sources */,
+				38C0DDA82518DBE400647936 /* Ex+UILabel.swift in Sources */,
+				388FF3B22516FCA2004ED238 /* Ex+NSLayoutConstraint.swift in Sources */,
+				38C0DDB62518E64600647936 /* Ex+Class.swift in Sources */,
+				389BB96F2518FB060013CF0C /* Ex+UIImage.swift in Sources */,
+				3893D4A92517BD2B009347A5 /* Ex+String.swift in Sources */,
 				3893D4AB2517C13E009347A5 /* SKVisualEffectView.swift in Sources */,
-				3893D4AF2517C824009347A5 /* UIFont.swift in Sources */,
+				389BB9772518FCD40013CF0C /* Ex+UIScrollView.swift in Sources */,
+				3893D4AF2517C824009347A5 /* Ex+UIFont.swift in Sources */,
 				436FEF0801D752A9237C2076EBD6F1C7 /* SightKit-dummy.m in Sources */,
+				389BB9672518F6D40013CF0C /* Ex+UIApplication.swift in Sources */,
+				38C0DDBE2518ECA800647936 /* Ex+Number.swift in Sources */,
+				38C0DDBC2518EBF900647936 /* Ex+Dictionary.swift in Sources */,
+				389BB9792518FD230013CF0C /* Ex+UITextField.swift in Sources */,
+				38C0DDC02518ED6C00647936 /* Ex+Data.swift in Sources */,
 				3893D4AD2517C26D009347A5 /* SKDefines.swift in Sources */,
-				3893D4A72517BB71009347A5 /* NSAttributedString.swift in Sources */,
+				389BB9752518FC960013CF0C /* Ex+UINavigationBar.swift in Sources */,
+				38C0DDA62518D38C00647936 /* Ex+UIView.swift in Sources */,
+				38C0DDBA2518EB2100647936 /* Ex+Date.swift in Sources */,
+				3893D4A72517BB71009347A5 /* Ex+NSAttributedString.swift in Sources */,
+				389BB97B251900D30013CF0C /* Ex+UIViewController.swift in Sources */,
+				389BB9692518F75A0013CF0C /* Ex+UIButton.swift in Sources */,
+				389BB9732518FC3A0013CF0C /* Ex+UIImageView.swift in Sources */,
+				38C0DDB42518E2F300647936 /* Toast+Loading.swift in Sources */,
+				389BB96B2518FABB0013CF0C /* Ex+UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

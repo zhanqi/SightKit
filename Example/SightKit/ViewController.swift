@@ -15,16 +15,19 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let v = UIImageView()
-        v.image = "https://awesome-tips.gitbook.io/ios/yin-shi-pin/content-2https://awesome-tips.gitbook.io/ios/yin-shi-pin/content-2https://awesome-tips.gitbook.io/ios/yin-shi-pin/content-2https://awesome-tips.gitbook.io/ios/yin-shi-pin/content-2".toQRcodeImg()
-        self.view.addSubview(v)
-        v.csCenter()
         
-        let visual = SKVisualEffectView()
-        self.view.addSubview(visual)
-        visual.csCenter().csWidthHeight(300)
-        visual.blurRadius = 5.3
-        
+        let btn = UIButton().addTo(self.view).wBgColor(.black).csCenter().csWidthHeight(50)
+        btn.addTargetClosure { (btn) in
+            let vc = UIViewController()
+            vc.view.backgroundColor = .green
+            let b = UIButton().wBgColor(.red)
+            vc.view.addSubview(b)
+            b.csCenter().csWidthHeight(90)
+            b.addTargetClosure { (b) in
+                vc.dismissToRight()
+            }
+            self.presentFromRight(vc)
+        }
         
     }
 
