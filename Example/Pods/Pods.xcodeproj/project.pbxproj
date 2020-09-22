@@ -33,6 +33,11 @@
 		2DCFF0CE0BD295F1D46D3247F36B192C /* UIImage+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = C8840D6C1270531B4A2D68B805556F67 /* UIImage+Compare.m */; };
 		2EA6B2E10F38275D4CEB37B7ADDAE0E0 /* QuickConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 17736B10D5474525ED04B80F4DB7A120 /* QuickConfiguration.m */; };
 		3722B93E1E8BF31C11CDF45AA815A767 /* QuickTestSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5732E0ED6DBBBB00596C66A8CC05A3 /* QuickTestSuite.swift */; };
+		3874944D251A3BC300FC8BC9 /* SKFillableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3874944C251A3BC300FC8BC9 /* SKFillableView.swift */; };
+		3874944F251A439500FC8BC9 /* Ex+UITabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3874944E251A439500FC8BC9 /* Ex+UITabbar.swift */; };
+		38749451251A441000FC8BC9 /* SKScrollBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38749450251A441000FC8BC9 /* SKScrollBannerView.swift */; };
+		38749453251A4C4300FC8BC9 /* SKSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38749452251A4C4300FC8BC9 /* SKSegmentView.swift */; };
+		38749455251A51DB00FC8BC9 /* SKTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38749454251A51DB00FC8BC9 /* SKTitleView.swift */; };
 		388FF3B22516FCA2004ED238 /* Ex+NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388FF3B12516FCA2004ED238 /* Ex+NSLayoutConstraint.swift */; };
 		3893D4A72517BB71009347A5 /* Ex+NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893D4A62517BB71009347A5 /* Ex+NSAttributedString.swift */; };
 		3893D4A92517BD2B009347A5 /* Ex+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893D4A82517BD2B009347A5 /* Ex+String.swift */; };
@@ -282,6 +287,11 @@
 		3574081B546438D1DE8A00BB478F76AD /* BeCloseTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeCloseTo.swift; path = Sources/Nimble/Matchers/BeCloseTo.swift; sourceTree = "<group>"; };
 		35A32AC5FC9462774488E6F2773D7570 /* AssertionRecorder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AssertionRecorder.swift; path = Sources/Nimble/Adapters/AssertionRecorder.swift; sourceTree = "<group>"; };
 		35B40039F6722F45C625502705A61845 /* Quick.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Quick.h; path = Sources/QuickObjectiveC/Quick.h; sourceTree = "<group>"; };
+		3874944C251A3BC300FC8BC9 /* SKFillableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SKFillableView.swift; path = SightKit/Classes/SKFillableView.swift; sourceTree = "<group>"; };
+		3874944E251A439500FC8BC9 /* Ex+UITabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex+UITabbar.swift"; path = "SightKit/Classes/Ex+UITabbar.swift"; sourceTree = "<group>"; };
+		38749450251A441000FC8BC9 /* SKScrollBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SKScrollBannerView.swift; path = SightKit/Classes/SKScrollBannerView.swift; sourceTree = "<group>"; };
+		38749452251A4C4300FC8BC9 /* SKSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SKSegmentView.swift; path = SightKit/Classes/SKSegmentView.swift; sourceTree = "<group>"; };
+		38749454251A51DB00FC8BC9 /* SKTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SKTitleView.swift; path = SightKit/Classes/SKTitleView.swift; sourceTree = "<group>"; };
 		388FF3B12516FCA2004ED238 /* Ex+NSLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex+NSLayoutConstraint.swift"; path = "SightKit/Classes/Ex+NSLayoutConstraint.swift"; sourceTree = "<group>"; };
 		3893D4A62517BB71009347A5 /* Ex+NSAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex+NSAttributedString.swift"; path = "SightKit/Classes/Ex+NSAttributedString.swift"; sourceTree = "<group>"; };
 		3893D4A82517BD2B009347A5 /* Ex+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Ex+String.swift"; path = "SightKit/Classes/Ex+String.swift"; sourceTree = "<group>"; };
@@ -546,30 +556,35 @@
 		1AAD54179B01930202F8BDBA447B2A42 /* SightKit */ = {
 			isa = PBXGroup;
 			children = (
+				38C0DDB52518E64600647936 /* Ex+Class.swift */,
+				38C0DDBF2518ED6C00647936 /* Ex+Data.swift */,
+				38C0DDB92518EB2100647936 /* Ex+Date.swift */,
+				38C0DDBB2518EBF900647936 /* Ex+Dictionary.swift */,
 				38C0DDB12518E2F300647936 /* Ex+NSArray.swift */,
 				3893D4A62517BB71009347A5 /* Ex+NSAttributedString.swift */,
 				388FF3B12516FCA2004ED238 /* Ex+NSLayoutConstraint.swift */,
-				3893D4A82517BD2B009347A5 /* Ex+String.swift */,
-				3893D4AE2517C824009347A5 /* Ex+UIFont.swift */,
-				38C0DDA72518DBE400647936 /* Ex+UILabel.swift */,
-				38C0DDA52518D38C00647936 /* Ex+UIView.swift */,
-				38C0DDB52518E64600647936 /* Ex+Class.swift */,
-				38C0DDB92518EB2100647936 /* Ex+Date.swift */,
-				38C0DDBB2518EBF900647936 /* Ex+Dictionary.swift */,
 				38C0DDBD2518ECA800647936 /* Ex+Number.swift */,
-				38C0DDBF2518ED6C00647936 /* Ex+Data.swift */,
+				3893D4A82517BD2B009347A5 /* Ex+String.swift */,
 				389BB9662518F6D40013CF0C /* Ex+UIApplication.swift */,
 				389BB9682518F75A0013CF0C /* Ex+UIButton.swift */,
 				389BB96A2518FABB0013CF0C /* Ex+UIColor.swift */,
+				3893D4AE2517C824009347A5 /* Ex+UIFont.swift */,
 				389BB96E2518FB060013CF0C /* Ex+UIImage.swift */,
 				389BB9702518FBAD0013CF0C /* Ex+UIImage+gif.swift */,
 				389BB9722518FC3A0013CF0C /* Ex+UIImageView.swift */,
+				38C0DDA72518DBE400647936 /* Ex+UILabel.swift */,
 				389BB9742518FC960013CF0C /* Ex+UINavigationBar.swift */,
 				389BB9762518FCD40013CF0C /* Ex+UIScrollView.swift */,
 				389BB9782518FD230013CF0C /* Ex+UITextField.swift */,
+				38C0DDA52518D38C00647936 /* Ex+UIView.swift */,
 				389BB97A251900D30013CF0C /* Ex+UIViewController.swift */,
+				3874944E251A439500FC8BC9 /* Ex+UITabbar.swift */,
 				3893D4AC2517C26D009347A5 /* SKDefines.swift */,
 				3893D4AA2517C13E009347A5 /* SKVisualEffectView.swift */,
+				38749450251A441000FC8BC9 /* SKScrollBannerView.swift */,
+				38749452251A4C4300FC8BC9 /* SKSegmentView.swift */,
+				38749454251A51DB00FC8BC9 /* SKTitleView.swift */,
+				3874944C251A3BC300FC8BC9 /* SKFillableView.swift */,
 				38C0DDB22518E2F300647936 /* Toast+Loading.swift */,
 				EAFD3CF46BA039F81DC34CED6002A965 /* Pod */,
 				A050FAE1A4CC9AC717FFD76EF3B7EBF2 /* Support Files */,
@@ -1260,6 +1275,9 @@
 				3893D4A92517BD2B009347A5 /* Ex+String.swift in Sources */,
 				3893D4AB2517C13E009347A5 /* SKVisualEffectView.swift in Sources */,
 				389BB9772518FCD40013CF0C /* Ex+UIScrollView.swift in Sources */,
+				38749455251A51DB00FC8BC9 /* SKTitleView.swift in Sources */,
+				3874944D251A3BC300FC8BC9 /* SKFillableView.swift in Sources */,
+				38749453251A4C4300FC8BC9 /* SKSegmentView.swift in Sources */,
 				3893D4AF2517C824009347A5 /* Ex+UIFont.swift in Sources */,
 				436FEF0801D752A9237C2076EBD6F1C7 /* SightKit-dummy.m in Sources */,
 				389BB9672518F6D40013CF0C /* Ex+UIApplication.swift in Sources */,
@@ -1276,6 +1294,8 @@
 				389BB9692518F75A0013CF0C /* Ex+UIButton.swift in Sources */,
 				389BB9732518FC3A0013CF0C /* Ex+UIImageView.swift in Sources */,
 				38C0DDB42518E2F300647936 /* Toast+Loading.swift in Sources */,
+				38749451251A441000FC8BC9 /* SKScrollBannerView.swift in Sources */,
+				3874944F251A439500FC8BC9 /* Ex+UITabbar.swift in Sources */,
 				389BB96B2518FABB0013CF0C /* Ex+UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

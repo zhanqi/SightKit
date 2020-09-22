@@ -16,18 +16,21 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         
-        let btn = UIButton().addTo(self.view).wBgColor(.black).csCenter().csWidthHeight(50)
-        btn.addTargetClosure { (btn) in
-            let vc = UIViewController()
-            vc.view.backgroundColor = .green
-            let b = UIButton().wBgColor(.red)
-            vc.view.addSubview(b)
-            b.csCenter().csWidthHeight(90)
-            b.addTargetClosure { (b) in
-                vc.dismissToRight()
-            }
-            self.presentFromRight(vc)
-        }
+        
+          let tview = SKTitleView.init(titles: ["按钮1","按钮2","按钮3"], configBtnClosure: { (view, btn,index,text) in
+              btn.csFullfill()
+              btn.wTitle(text).wFont(pfr(20)).wTitleColor(.blue)
+              btn.setTitleColor(.red, for: .selected)
+          }, configIndiClosure: { (indicator) -> (CGFloat, CGFloat?) in
+              indicator.backgroundColor = .red
+              indicator.csHeight(3)
+              indicator.corner(radius: 1.5)
+              return (-10,30)
+              return (-10,nil)
+          }) { (index) in
+              print(index)
+          }
+          tview.addTo(self.view).csFullfillHorizontal().csHeight(60).csTop(100)
         
     }
 
