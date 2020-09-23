@@ -9,7 +9,7 @@ import Foundation
 
 
 public extension UIScrollView {
-
+    
     /// SwifterSwift: Takes a snapshot of an entire ScrollView
     ///
     ///    AnySubclassOfUIScroolView().snapshot
@@ -29,6 +29,14 @@ public extension UIScrollView {
         frame = previousFrame
         return UIGraphicsGetImageFromCurrentImageContext()
     }
-
+    
+    var visibleRect: CGRect {
+        let contentWidth = contentSize.width - contentOffset.x
+        let contentHeight = contentSize.height - contentOffset.y
+        return CGRect(origin: contentOffset,
+                      size: CGSize(width: min(min(bounds.size.width, contentSize.width), contentWidth),
+                                   height: min(min(bounds.size.height, contentSize.height), contentHeight)))
+    }
+    
 }
 

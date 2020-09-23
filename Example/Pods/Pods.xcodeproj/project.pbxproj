@@ -34,6 +34,7 @@
 		2DCFF0CE0BD295F1D46D3247F36B192C /* UIImage+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = C8840D6C1270531B4A2D68B805556F67 /* UIImage+Compare.m */; };
 		2EA6B2E10F38275D4CEB37B7ADDAE0E0 /* QuickConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 17736B10D5474525ED04B80F4DB7A120 /* QuickConfiguration.m */; };
 		3722B93E1E8BF31C11CDF45AA815A767 /* QuickTestSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5732E0ED6DBBBB00596C66A8CC05A3 /* QuickTestSuite.swift */; };
+		38005520251B8DAD0047E270 /* Ex+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3800551F251B8DAD0047E270 /* Ex+URL.swift */; };
 		3874944D251A3BC300FC8BC9 /* SKFillableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3874944C251A3BC300FC8BC9 /* SKFillableView.swift */; };
 		3874944F251A439500FC8BC9 /* Ex+UITabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3874944E251A439500FC8BC9 /* Ex+UITabbar.swift */; };
 		38749451251A441000FC8BC9 /* SKScrollBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38749450251A441000FC8BC9 /* SKScrollBannerView.swift */; };
@@ -65,6 +66,7 @@
 		38C0DDBC2518EBF900647936 /* Ex+Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C0DDBB2518EBF900647936 /* Ex+Dictionary.swift */; };
 		38C0DDBE2518ECA800647936 /* Ex+Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C0DDBD2518ECA800647936 /* Ex+Number.swift */; };
 		38C0DDC02518ED6C00647936 /* Ex+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C0DDBF2518ED6C00647936 /* Ex+Data.swift */; };
+		38FB085D251BA4D80007E5D5 /* Ex+UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FB085C251BA4D80007E5D5 /* Ex+UIWindow.swift */; };
 		3B324746542B5868C6AA793F2EF93FEB /* Await.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34A50F0EDC120E18802EED93E0117B7 /* Await.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		3CFD5091F02F30ADE4EEC622C7F487C8 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C062573D6290607874FEA0A2892CC98 /* Async.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		3D317145F0CA3D74E737AB0B919AB6E9 /* QuickSpec.h in Headers */ = {isa = PBXBuildFile; fileRef = 91195C3FE8813E08CCB9E5E84E52C13D /* QuickSpec.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -289,6 +291,7 @@
 		3574081B546438D1DE8A00BB478F76AD /* BeCloseTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeCloseTo.swift; path = Sources/Nimble/Matchers/BeCloseTo.swift; sourceTree = "<group>"; };
 		35A32AC5FC9462774488E6F2773D7570 /* AssertionRecorder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AssertionRecorder.swift; path = Sources/Nimble/Adapters/AssertionRecorder.swift; sourceTree = "<group>"; };
 		35B40039F6722F45C625502705A61845 /* Quick.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Quick.h; path = Sources/QuickObjectiveC/Quick.h; sourceTree = "<group>"; };
+		3800551F251B8DAD0047E270 /* Ex+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+URL.swift"; sourceTree = "<group>"; };
 		3874944C251A3BC300FC8BC9 /* SKFillableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKFillableView.swift; sourceTree = "<group>"; };
 		3874944E251A439500FC8BC9 /* Ex+UITabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+UITabbar.swift"; sourceTree = "<group>"; };
 		38749450251A441000FC8BC9 /* SKScrollBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKScrollBannerView.swift; sourceTree = "<group>"; };
@@ -319,6 +322,7 @@
 		38C0DDBB2518EBF900647936 /* Ex+Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+Dictionary.swift"; sourceTree = "<group>"; };
 		38C0DDBD2518ECA800647936 /* Ex+Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+Number.swift"; sourceTree = "<group>"; };
 		38C0DDBF2518ED6C00647936 /* Ex+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+Data.swift"; sourceTree = "<group>"; };
+		38FB085C251BA4D80007E5D5 /* Ex+UIWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+UIWindow.swift"; sourceTree = "<group>"; };
 		3AAC6F8711354AC480454CCD30BBAC9E /* Nimble-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Nimble-prefix.pch"; sourceTree = "<group>"; };
 		3D39452007B5980589C21F2279D2F7FF /* SightKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = SightKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		3E6CD2244F31A394D88CECE7986D9746 /* Functional.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Functional.swift; path = Sources/Nimble/Utils/Functional.swift; sourceTree = "<group>"; };
@@ -563,10 +567,12 @@
 		0470FEAD251B6D05007EB73E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				0440864E251B70BB0054A6CB /* Ex+CGPoint.swift */,
 				38C0DDB52518E64600647936 /* Ex+Class.swift */,
 				38C0DDBF2518ED6C00647936 /* Ex+Data.swift */,
 				38C0DDB92518EB2100647936 /* Ex+Date.swift */,
 				38C0DDBB2518EBF900647936 /* Ex+Dictionary.swift */,
+				3800551F251B8DAD0047E270 /* Ex+URL.swift */,
 				38C0DDB12518E2F300647936 /* Ex+NSArray.swift */,
 				3893D4A62517BB71009347A5 /* Ex+NSAttributedString.swift */,
 				388FF3B12516FCA2004ED238 /* Ex+NSLayoutConstraint.swift */,
@@ -582,11 +588,11 @@
 				38C0DDA72518DBE400647936 /* Ex+UILabel.swift */,
 				389BB9742518FC960013CF0C /* Ex+UINavigationBar.swift */,
 				389BB9762518FCD40013CF0C /* Ex+UIScrollView.swift */,
+				3874944E251A439500FC8BC9 /* Ex+UITabbar.swift */,
 				389BB9782518FD230013CF0C /* Ex+UITextField.swift */,
 				38C0DDA52518D38C00647936 /* Ex+UIView.swift */,
+				38FB085C251BA4D80007E5D5 /* Ex+UIWindow.swift */,
 				389BB97A251900D30013CF0C /* Ex+UIViewController.swift */,
-				3874944E251A439500FC8BC9 /* Ex+UITabbar.swift */,
-				0440864E251B70BB0054A6CB /* Ex+CGPoint.swift */,
 			);
 			name = Extensions;
 			path = SightKit/Classes/Extensions;
@@ -1309,11 +1315,13 @@
 				38C0DDC02518ED6C00647936 /* Ex+Data.swift in Sources */,
 				3893D4AD2517C26D009347A5 /* SKDefines.swift in Sources */,
 				389BB9752518FC960013CF0C /* Ex+UINavigationBar.swift in Sources */,
+				38005520251B8DAD0047E270 /* Ex+URL.swift in Sources */,
 				38C0DDA62518D38C00647936 /* Ex+UIView.swift in Sources */,
 				38C0DDBA2518EB2100647936 /* Ex+Date.swift in Sources */,
 				3893D4A72517BB71009347A5 /* Ex+NSAttributedString.swift in Sources */,
 				389BB97B251900D30013CF0C /* Ex+UIViewController.swift in Sources */,
 				389BB9692518F75A0013CF0C /* Ex+UIButton.swift in Sources */,
+				38FB085D251BA4D80007E5D5 /* Ex+UIWindow.swift in Sources */,
 				389BB9732518FC3A0013CF0C /* Ex+UIImageView.swift in Sources */,
 				38C0DDB42518E2F300647936 /* Toast+Loading.swift in Sources */,
 				38749451251A441000FC8BC9 /* SKScrollBannerView.swift in Sources */,

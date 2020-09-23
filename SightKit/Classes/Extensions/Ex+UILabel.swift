@@ -42,7 +42,7 @@ public extension UILabel{
         return self
     }
     
-    /// create UI with features
+    /// create UILabel with features (UIColor,UIFont,String,UIView,NSTextAlignment,Int)
     /// - UIColor  .textColor
     /// - UIFont  .font
     /// - String  .text

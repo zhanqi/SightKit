@@ -44,7 +44,7 @@ public extension UIButton {
         return self
     }
     
-    /// create UI with features
+    /// create UIButton with features(UIColor,UIFont,String,UIView,UIImage)
     /// - UIColor  titleColor for nomal
     /// - UIFont  titlelabel.font
     /// - String  title for normal

@@ -102,7 +102,8 @@ open class SKTitleView: UIView {
         }
         btn.isSelected = true
         
-        UIView.animate(withDuration: 0.15) {
+        self.layoutIfNeeded()
+        UIView.animate(withDuration: 0.25) {
             self.csIndicatorCenterX.constant = CGFloat(btn.tag) * btn.superview!.frame.size.width
             self.layoutIfNeeded()
         }

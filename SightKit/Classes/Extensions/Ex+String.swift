@@ -377,4 +377,98 @@ public extension String {
     }
 }
 
+
+public extension String {
+    /// Check if string contains one or more emojis.
+    ///
+    ///        "Hello 😀".containEmoji -> true
+    ///
+    var containEmoji: Bool {
+        // http://stackoverflow.com/questions/30757193/find-out-if-character-in-string-is-emoji
+        for scalar in unicodeScalars {
+            switch scalar.value {
+            case 0x1F600...0x1F64F, // Emoticons
+                 0x1F300...0x1F5FF, // Misc Symbols and Pictographs
+                 0x1F680...0x1F6FF, // Transport and Map
+                 0x1F1E6...0x1F1FF, // Regional country flags
+                 0x2600...0x26FF, // Misc symbols
+                 0x2700...0x27BF, // Dingbats
+                 0xE0020...0xE007F, // Tags
+                 0xFE00...0xFE0F, // Variation Selectors
+                 0x1F900...0x1F9FF, // Supplemental Symbols and Pictographs
+                 127_000...127_600, // Various asian characters
+                 65024...65039, // Variation selector
+                 9100...9300, // Misc items
+                 8400...8447: // Combining Diacritical Marks for Symbols
+                return true
+            default:
+                continue
+            }
+        }
+        return false
+    }
+
+    /// Check if string contains one or more letters.
+    ///
+    ///        "123abc".hasLetters -> true
+    ///        "123".hasLetters -> false
+    ///
+    var hasLetters: Bool {
+        return rangeOfCharacter(from: .letters, options: .numeric, range: nil) != nil
+    }
+    
+    /// Check if string contains one or more numbers.
+    ///
+    ///        "abcd".hasNumbers -> false
+    ///        "123abc".hasNumbers -> true
+    ///
+    var hasNumbers: Bool {
+        return rangeOfCharacter(from: .decimalDigits, options: .literal, range: nil) != nil
+    }
+
+    /// Check if string contains only letters.
+    ///
+    ///        "abc".isAlphabetic -> true
+    ///        "123abc".isAlphabetic -> false
+    ///
+    var isAlphabetic: Bool {
+        let hasLetters = rangeOfCharacter(from: .letters, options: .numeric, range: nil) != nil
+        let hasNumbers = rangeOfCharacter(from: .decimalDigits, options: .literal, range: nil) != nil
+        return hasLetters && !hasNumbers
+    }
+
+    /// Check if string contains at least one letter and one number.
+    ///
+    ///        // useful for passwords
+    ///        "123abc".isAlphaNumeric -> true
+    ///        "abc".isAlphaNumeric -> false
+    ///
+    var isAlphaNumeric: Bool {
+        let hasLetters = rangeOfCharacter(from: .letters, options: .numeric, range: nil) != nil
+        let hasNumbers = rangeOfCharacter(from: .decimalDigits, options: .literal, range: nil) != nil
+        let comps = components(separatedBy: .alphanumerics)
+        return comps.joined(separator: "").count == 0 && hasLetters && hasNumbers
+    }
+
+    ///  Check if string is valid email format.
+    ///
+    /// - Note: Note that this property does not validate the email address against an email server. It merely attempts to determine whether its format is suitable for an email address.
+    ///
+    ///        "john@doe.com".isValidEmail -> true
+    ///
+    var isValidEmail: Bool {
+        // http://emailregex.com/
+        let regex =
+            "^(?:[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[\\p{L}0-9](?:[a-z0-9-]*[\\p{L}0-9])?\\.)+[\\p{L}0-9](?:[\\p{L}0-9-]*[\\p{L}0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[\\p{L}0-9-]*[\\p{L}0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
+        return range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil
+    }
+
+    /// Check if string is a valid URL.
+    ///
+    ///        "https://google.com".isValidUrl -> true
+    ///
+    var isValidUrl: Bool {
+        return URL(string: self) != nil
+    }
+}
 #endif

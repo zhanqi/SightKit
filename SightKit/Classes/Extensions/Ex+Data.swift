@@ -22,3 +22,9 @@ public extension Data {
         return nil
     }
 }
+
+public extension Data {
+    func string(encoding: String.Encoding = .utf8) -> String? {
+        return String(data: self, encoding: encoding)
+    }
+}

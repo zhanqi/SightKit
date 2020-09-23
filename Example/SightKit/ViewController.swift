@@ -17,20 +17,12 @@ class ViewController: UIViewController {
         
         
         
-          let tview = SKTitleView.init(titles: ["按钮1","按钮2","按钮3"], configBtnClosure: { (view, btn,index,text) in
-              btn.csFullfill()
-              btn.wTitle(text).wFont(pfr(20)).wTitleColor(.blue)
-              btn.setTitleColor(.red, for: .selected)
-          }, configIndiClosure: { (indicator) -> (CGFloat, CGFloat?) in
-              indicator.backgroundColor = .red
-              indicator.csHeight(3)
-              indicator.corner(radius: 1.5)
-              return (-10,30)
-              return (-10,nil)
-          }) { (index) in
-              print(index)
-          }
-          tview.addTo(self.view).csFullfillHorizontal().csHeight(60).csTop(100)
+        let btn = UIButton().wFeatures(self.view,UIColor.black,"按钮").csCenter().csWidthHeight(50)
+        btn.addTargetClosure { (btn) in
+            let vc = UIViewController()
+            vc.view.backgroundColor = UIColor.gray
+            UIApplication.shared.keyWindow!.switchRootViewController(to: vc)
+        }
         
     }
 
