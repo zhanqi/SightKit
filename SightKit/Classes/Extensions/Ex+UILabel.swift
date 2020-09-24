@@ -42,7 +42,7 @@ public extension UILabel{
         return self
     }
     
-    /// create UILabel with features (UIColor,UIFont,String,UIView,NSTextAlignment,Int)
+    /// add features (textColor,font,text,superView,textAlignment,textAlignment)
     /// - UIColor  .textColor
     /// - UIFont  .font
     /// - String  .text
@@ -72,6 +72,39 @@ public extension UILabel{
             }
         }
         return self
+    }
+    
+    /// create UILabel with features (textColor,font,text,superView,textAlignment,textAlignment)
+    /// - UIColor  .textColor
+    /// - UIFont  .font
+    /// - String  .text
+    /// - UIView  .addToSuperView
+    /// - NSTextAlignment  .textAlignment
+    /// - Int  .textAlignment
+    /// - Parameter features: UIColor ,UIFont,String,UIView ,NSTextAlignment,Int
+    static func wFeatures(_ features:Any?...) -> UILabel{
+        let label = UILabel()
+        for fea in features {
+            if fea is UIColor {
+                label.wTextColor(fea as? UIColor)
+            }
+            if fea is UIFont {
+                label.wFont(fea as? UIFont)
+            }
+            if fea is String {
+                label.wText(fea as? String)
+            }
+            if fea is UIView {
+                label.addTo(fea as! UIView)
+            }
+            if fea is NSTextAlignment {
+                label.wTextAlignment(fea as! NSTextAlignment)
+            }
+            if fea is Int {
+                label.wNumberOfLines(fea as! Int)
+            }
+        }
+        return label
     }
     
     // MARK: - 其他属性

@@ -38,8 +38,8 @@
 		3874944D251A3BC300FC8BC9 /* SKFillableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3874944C251A3BC300FC8BC9 /* SKFillableView.swift */; };
 		3874944F251A439500FC8BC9 /* Ex+UITabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3874944E251A439500FC8BC9 /* Ex+UITabbar.swift */; };
 		38749451251A441000FC8BC9 /* SKScrollBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38749450251A441000FC8BC9 /* SKScrollBannerView.swift */; };
-		38749453251A4C4300FC8BC9 /* SKSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38749452251A4C4300FC8BC9 /* SKSegmentView.swift */; };
-		38749455251A51DB00FC8BC9 /* SKTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38749454251A51DB00FC8BC9 /* SKTitleView.swift */; };
+		38749453251A4C4300FC8BC9 /* SKTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38749452251A4C4300FC8BC9 /* SKTitleView.swift */; };
+		38749455251A51DB00FC8BC9 /* SKSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38749454251A51DB00FC8BC9 /* SKSegmentView.swift */; };
 		388FF3B22516FCA2004ED238 /* Ex+NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388FF3B12516FCA2004ED238 /* Ex+NSLayoutConstraint.swift */; };
 		3893D4A72517BB71009347A5 /* Ex+NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893D4A62517BB71009347A5 /* Ex+NSAttributedString.swift */; };
 		3893D4A92517BD2B009347A5 /* Ex+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893D4A82517BD2B009347A5 /* Ex+String.swift */; };
@@ -295,8 +295,8 @@
 		3874944C251A3BC300FC8BC9 /* SKFillableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKFillableView.swift; sourceTree = "<group>"; };
 		3874944E251A439500FC8BC9 /* Ex+UITabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+UITabbar.swift"; sourceTree = "<group>"; };
 		38749450251A441000FC8BC9 /* SKScrollBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKScrollBannerView.swift; sourceTree = "<group>"; };
-		38749452251A4C4300FC8BC9 /* SKSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSegmentView.swift; sourceTree = "<group>"; };
-		38749454251A51DB00FC8BC9 /* SKTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTitleView.swift; sourceTree = "<group>"; };
+		38749452251A4C4300FC8BC9 /* SKTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTitleView.swift; sourceTree = "<group>"; };
+		38749454251A51DB00FC8BC9 /* SKSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSegmentView.swift; sourceTree = "<group>"; };
 		388FF3B12516FCA2004ED238 /* Ex+NSLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+NSLayoutConstraint.swift"; sourceTree = "<group>"; };
 		3893D4A62517BB71009347A5 /* Ex+NSAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+NSAttributedString.swift"; sourceTree = "<group>"; };
 		3893D4A82517BD2B009347A5 /* Ex+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+String.swift"; sourceTree = "<group>"; };
@@ -554,10 +554,10 @@
 		0470FEAC251B6B8E007EB73E /* SKViews */ = {
 			isa = PBXGroup;
 			children = (
-				38749454251A51DB00FC8BC9 /* SKTitleView.swift */,
+				38749454251A51DB00FC8BC9 /* SKSegmentView.swift */,
 				3893D4AA2517C13E009347A5 /* SKVisualEffectView.swift */,
 				38749450251A441000FC8BC9 /* SKScrollBannerView.swift */,
-				38749452251A4C4300FC8BC9 /* SKSegmentView.swift */,
+				38749452251A4C4300FC8BC9 /* SKTitleView.swift */,
 				3874944C251A3BC300FC8BC9 /* SKFillableView.swift */,
 			);
 			name = SKViews;
@@ -1303,9 +1303,9 @@
 				0440864F251B70BB0054A6CB /* Ex+CGPoint.swift in Sources */,
 				3893D4AB2517C13E009347A5 /* SKVisualEffectView.swift in Sources */,
 				389BB9772518FCD40013CF0C /* Ex+UIScrollView.swift in Sources */,
-				38749455251A51DB00FC8BC9 /* SKTitleView.swift in Sources */,
+				38749455251A51DB00FC8BC9 /* SKSegmentView.swift in Sources */,
 				3874944D251A3BC300FC8BC9 /* SKFillableView.swift in Sources */,
-				38749453251A4C4300FC8BC9 /* SKSegmentView.swift in Sources */,
+				38749453251A4C4300FC8BC9 /* SKTitleView.swift in Sources */,
 				3893D4AF2517C824009347A5 /* Ex+UIFont.swift in Sources */,
 				436FEF0801D752A9237C2076EBD6F1C7 /* SightKit-dummy.m in Sources */,
 				389BB9672518F6D40013CF0C /* Ex+UIApplication.swift in Sources */,

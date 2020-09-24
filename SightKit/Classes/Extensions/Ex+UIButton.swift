@@ -44,12 +44,19 @@ public extension UIButton {
         return self
     }
     
-    /// create UIButton with features(UIColor,UIFont,String,UIView,UIImage)
+    @discardableResult func wAttributedTitle(_ attributedTitle:NSAttributedString?) -> UIButton {
+        self.setAttributedTitle(attributedTitle, for: .normal)
+        return self
+    }
+
+    
+    /// add features(titleColor,font,title,superView,image,attributedTitle)
     /// - UIColor  titleColor for nomal
     /// - UIFont  titlelabel.font
     /// - String  title for normal
     /// - UIView  .addToSuperView
     /// - UIImage  image for normal
+    /// - NSAttributedString  NSAttributedString for normal
     /// - Parameter features: UIColor ,UIFont,String,UIView ,UIImage
     @discardableResult func wFeatures(_ features:Any?...) -> UIButton{
         for fea in features {
@@ -68,9 +75,43 @@ public extension UIButton {
             if fea is UIImage {
                 self.setImage(fea as? UIImage, for: .normal)
             }
+            if fea is NSAttributedString {
+                self.wAttributedTitle(fea as? NSAttributedString)
+            }
         }
         return self
     }
+    
+    /// create UIButton with features(titleColor,font,title,superView,image,attributedTitle)
+    /// - UIColor  titleColor for nomal
+    /// - UIFont  titlelabel.font
+    /// - String  title for normal
+    /// - UIView  .addToSuperView
+    /// - UIImage  image for normal
+    /// - NSAttributedString  NSAttributedString for normal
+    /// - Parameter features: UIColor ,UIFont,String,UIView ,UIImage
+    static func wFeatures(_ features:Any?...) -> UIButton{
+        let btn = UIButton()
+        for fea in features {
+            if fea is UIColor {
+                btn.wTitleColor(fea as? UIColor)
+            }
+            if fea is UIFont {
+                btn.wFont(fea as? UIFont)
+            }
+            if fea is String {
+                btn.wTitle(fea as? String)
+            }
+            if fea is UIView {
+                btn.addTo(fea as! UIView)
+            }
+            if fea is UIImage {
+                btn.setImage(fea as? UIImage, for: .normal)
+            }
+        }
+        return btn
+    }
+
 }
 
 // MARK: - button点击closure

@@ -7,107 +7,168 @@
 
 import Foundation
 
-
-/*
- let tview = SKTitleView.init(titles: ["按钮1","按钮2","按钮3"], configBtnClosure: { (view, btn,index,text) in
-     btn.csFullfill()
-     btn.wTitle(text).wFont(pfr(20)).wTitleColor(.blue)
-     btn.setTitleColor(.red, for: .selected)
- }, configIndiClosure: { (indicator) -> (CGFloat, CGFloat?) in
-     indicator.backgroundColor = .red
-     indicator.csHeight(3)
-     indicator.corner(radius: 1.5)
-     return (-10,30)
-     return (-10,nil)
- }) { (index) in
-     print(index)
- }
- tview.addTo(self.view).csFullfillHorizontal().csHeight(60).csTop(100)
- */
-
-/// 平分宽度的选择title
+/// A view with many titles by default, you can add leftView,rightView, leftBtn, rightBtn if needed.
 open class SKTitleView: UIView {
-    
-    var configBtnClosure: ((_ view:UIView, _ btn:UIButton, _ index:Int , _ text:String)->())!
-    var configIndiClosure: ((_ indicator:UIView)->(CGFloat,CGFloat?))!
-    var tapClosure: ((_ index:Int) -> ())?
-    var titles:[String] = []
-    
-    /// 初始化
-    /// - Parameter titles: 按钮title
-    /// - Parameter configBtnClosure: 配置按钮，以及按钮和view的约束关系
-    /// - Parameter configIndiClosure: 配置indicator的背景颜色 圆角，高度约束，返回（底部距离，宽度），宽度为空时设定为等与按钮宽
-    /// - Parameter tapClosure: 点击block
-    public convenience init(titles:[String],configBtnClosure:@escaping ((_ view:UIView, _ btn:UIButton , _ index:Int , _ text:String)->()),configIndiClosure:@escaping ((_ indicator:UIView)->(CGFloat,CGFloat?)),tapClosure:@escaping ((_ index:Int)->())){
-        self.init()
-        self.configBtnClosure = configBtnClosure
-        self.configIndiClosure = configIndiClosure
-        self.tapClosure = tapClosure
-        self.titles = titles
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
         buildViews()
     }
+    public var titles:[String] = []
+    public var btns:[UIButton]! = []
+    public var selectBtn:UIButton?
+    var titleTapClosure:((Int)->Void)?
     
-    var indicator = UIView()
-    var csIndicatorCenterX:NSLayoutConstraint!
-    var btnsArray:[UIButton] = []
+    public var scrollView:UIScrollView!
+    var contentView:UIView!
+    public var csScrollViewLeft:NSLayoutConstraint!
+    public var csScrollViewRight:NSLayoutConstraint!
+        
+    public var leftBtn:UIButton?
+    public var rightBtn:UIButton?
+
+    public var leftView:UIView?
+    public var rightView:UIView?
+    
     func buildViews() {
-        var lastView:UIView?
-        var currentView:UIView!
-        var btn:UIButton!
-        for i in 0...(self.titles.count-1) {
-            currentView = UIView()
-            self.addSubview(currentView)
-            currentView.csFullfillVertical()
-            if let lastView = lastView {
-                currentView.cstoRightOf(view: lastView).csWidth(lastView)
-            }else{
-                currentView.csLeft()
-            }
-            if i == self.titles.count-1 {
-                currentView.csRight()
-            }
-            
-            btn = UIButton()
-            btn.tag = i
-            currentView.addSubview(btn)
-            btn.addTarget(self, action: #selector(btnTap(btn:)), for: .touchUpInside)
-            btnsArray.append(btn)
-            
-            self.configBtnClosure(currentView,btn,btn.tag,self.titles[i])
-            
-            if i == 0 {
-                btn.isSelected = true
-                
-                self.addSubview(indicator)
-                self.csIndicatorCenterX = NSLayoutConstraint.init(item: indicator, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: btn, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1.0, constant: 0)
-                self.csIndicatorCenterX.isActive = true
-                
-                let (bottomOffSet,width) = self.configIndiClosure(indicator)
-                indicator.csBottom(bottomOffSet)
-                //如果有给宽度 ，设置给定宽度 否则 设置等宽高度
-                if let width = width {
-                    indicator.csWidth(width)
-                }else{
-                    indicator.csWidth(btn)
-                }
-            }
-            
-            lastView = currentView;
+        scrollView = UIScrollView()
+        self.addSubview(scrollView)
+        scrollView.csFullfillVertical()
+        scrollView.showsHorizontalScrollIndicator = false
+        
+        csScrollViewLeft = scrollView.csLeft().lastCS!
+        csScrollViewRight = scrollView.csRight().lastCS!
+        
+        contentView = UIView()
+        scrollView.addSubview(contentView)
+        contentView.csFullfill().csHeight(self)
+    }
+    
+    /// set titles of the view
+    /// - Parameters:
+    ///   - titles: titles
+    ///   - selectIndex: default index selected, set 0 if it is out of range
+    ///   - titleBtnConfig: configure title and image of the btn
+    ///   - titleTap: tap event , if you want to use add target , add it in titleBtnConfig
+    /// - Returns: return
+    public func setTitles(titles:[String],selectIndex:UInt,titleBtnConfig:((UIButton,String,Int)->()),titleTap: ((Int)->())?){
+        guard titles.count > 0 else {
+            return
         }
+        self.titleTapClosure = titleTap
+        
+        contentView.removeAllSubviews()
+        selectBtn = nil
+        
+        let defaultIndex = selectIndex >= titles.count ? 0 : selectIndex
+        self.titles = titles
+        var lastBtn:UIButton?
+        for (i,str) in titles.enumerated() {
+            let btn = UIButton()
+            btn.setTitle(str, for: .normal)
+            btn.tag = i
+            if let _ = titleTap {
+                btn.addTarget(self, action: #selector(titleTap(btn:)), for: .touchUpInside)
+            }
+            titleBtnConfig(btn,str,i)
+            
+            if i == defaultIndex {
+                btn.isSelected = true
+                selectBtn = btn
+            }
+            
+            contentView.addSubview(btn)
+            btn.csTo(attrs: .top,.bottom)
+            if lastBtn == nil {
+                btn.csLeft()
+            }else{
+                btn.cstoRightOf(view: lastBtn!)
+            }
+            if i == titles.count-1{
+                btn.csRight()
+            }
+            btn.csWidth(btn.intrinsicContentSize.width+20)
+            
+            btns.append(btn)
+            lastBtn = btn
+        }
+    }
+    
+    @objc func titleTap(btn:UIButton){
+        if selectBtn?.tag == btn.tag { return }
+        
+        selectBtn?.isSelected = false
+        
+        selectBtn = btn
+        selectBtn?.isSelected = true
+        
+        //防止左右滚动越界
+        var toX = btn.frame.origin.x-scrollView.frame.size.width/2+btn.frame.size.width/2
+        toX = max(0, toX)
+        if toX+scrollView.frame.size.width > scrollView.contentSize.width {
+            toX = scrollView.contentSize.width - scrollView.frame.size.width
+        }
+        if scrollView.contentSize.width>scrollView.frame.width{
+            scrollView.setContentOffset(CGPoint(x: toX, y: 0), animated: true)
+        }
+        
+        self.titleTapClosure?(btn.tag)
+    }
+    
+    /// add leftBtn
+    /// - Parameters:
+    ///   - width: the width of leftBtn
+    ///   - configBtn: configure title and image here
+    ///   - tapClosure: tap event,if you want use add target, add it in configBtn
+    public func addLeftBtn(width:CGFloat,configBtn:((UIButton)->()),tapClosure:UIButtonTargetClosure?){
+        self.leftView?.removeFromSuperview()
+        
+        leftBtn = UIButton().addTo(self).csLeft().csFullfillVertical().csWidth(width)
+        if let tapClosure = tapClosure {
+            leftBtn?.addTargetClosure(closure: tapClosure)
+        }
+        configBtn(leftBtn!)
+        self.csScrollViewLeft.constant = width
+    }
+    
+    /// add rightBtn
+    /// - Parameters:
+    ///   - width: the width of leftBtn
+    ///   - configBtn: configure title and image here
+    ///   - tapClosure: tap event,if you want use add target, add it in configBtn
+    public func addRightBtn(width:CGFloat,configBtn:((UIButton)->()),tapClosure:UIButtonTargetClosure?){
+        self.rightView?.removeFromSuperview()
+        
+        rightBtn = UIButton().addTo(self).csRight().csFullfillVertical().csWidth(width)
+        if let tapClosure = tapClosure {
+            rightBtn?.addTargetClosure(closure: tapClosure)
+        }
+        configBtn(rightBtn!)
+        self.csScrollViewRight.constant = -width
+    }
+    
+    /// add leftView
+    /// - Parameters:
+    ///   - width: width of leftView
+    ///   - config: configure leftView and its subviews
+    /// - Returns: return
+    public func addLeftView(width:CGFloat,config:((UIView)->())){
+        self.leftBtn?.removeFromSuperview()
+        
+        leftView = UIView().addTo(self).csLeft().csFullfillVertical().csWidth(width)
+        config(leftView!)
+        self.csScrollViewLeft.constant = width
+    }
+    
+    public func addRightView(width:CGFloat,config:((UIView)->())){
+        self.rightBtn?.removeFromSuperview()
+        
+        rightView = UIView().addTo(self).csLeft().csFullfillVertical().csWidth(width)
+        config(rightView!)
+        self.csScrollViewRight.constant = -width
     }
 
-    @objc func btnTap(btn:UIButton){
-        btnsArray.forEach { (inbtn) in
-            inbtn.isSelected = false
-        }
-        btn.isSelected = true
-        
-        self.layoutIfNeeded()
-        UIView.animate(withDuration: 0.25) {
-            self.csIndicatorCenterX.constant = CGFloat(btn.tag) * btn.superview!.frame.size.width
-            self.layoutIfNeeded()
-        }
-        
-        self.tapClosure?(btn.tag)
-    }
 }

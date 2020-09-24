@@ -67,9 +67,12 @@ public enum LayoutConstraintAttribute : Int {
 #if os(iOS)
 
 public extension UIView {
-    /// try to get the last constriant added
+    /// try to get the last constriant added , sometimes the cs is added to its superView
     var lastCS : NSLayoutConstraint? {
         get {
+            if (self.constraints.isEmpty && self.superview != nil){
+                return self.superview?.lastCS
+            }
             return self.constraints.last
         }
     }

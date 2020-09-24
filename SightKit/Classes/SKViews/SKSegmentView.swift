@@ -7,121 +7,107 @@
 
 import Foundation
 
+
+/*
+ let tview = SKSegmentView.init(titles: ["按钮1","按钮2","按钮3"], configBtnClosure: { (view, btn,index,text) in
+     btn.csFullfill()
+     btn.wTitle(text).wFont(pfr(20)).wTitleColor(.blue)
+     btn.setTitleColor(.red, for: .selected)
+ }, configIndiClosure: { (indicator) -> (CGFloat, CGFloat?) in
+     indicator.backgroundColor = .red
+     indicator.csHeight(3)
+     indicator.corner(radius: 1.5)
+     return (-10,30)
+     return (-10,nil)
+ }) { (index) in
+     print(index)
+ }
+ tview.addTo(self.view).csFullfillHorizontal().csHeight(60).csTop(100)
+ */
+
+/// 平分宽度的选择title
 open class SKSegmentView: UIView {
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
+    
+    var configBtnClosure: ((_ view:UIView, _ btn:UIButton, _ index:Int , _ text:String)->())!
+    var configIndiClosure: ((_ indicator:UIView)->(CGFloat,CGFloat?))!
+    var tapClosure: ((_ index:Int) -> ())?
+    var titles:[String] = []
+    
+    /// 初始化
+    /// - Parameter titles: 按钮title
+    /// - Parameter configBtnClosure: 配置按钮，以及按钮和view的约束关系
+    /// - Parameter configIndiClosure: 配置indicator的背景颜色 圆角，高度约束，返回（底部距离，宽度），宽度为空时设定为等与按钮宽
+    /// - Parameter tapClosure: 点击block
+    public convenience init(titles:[String],configBtnClosure:@escaping ((_ view:UIView, _ btn:UIButton , _ index:Int , _ text:String)->()),configIndiClosure:@escaping ((_ indicator:UIView)->(CGFloat,CGFloat?)),tapClosure:@escaping ((_ index:Int)->())){
+        self.init()
+        self.configBtnClosure = configBtnClosure
+        self.configIndiClosure = configIndiClosure
+        self.tapClosure = tapClosure
+        self.titles = titles
         buildViews()
     }
-    var titles:[String] = []
-    var normalColor:UIColor = UIColor.lightGray
-    var selectColor:UIColor = UIColor.black
-    var normalFont:UIFont = UIFont.init(name: "PingFangSC-Regular", size: 15)!
-    var selectFont:UIFont = UIFont.init(name: "PingFangSC-Medium", size: 17)!
     
-    var scrollView:UIScrollView!
-    var contentView:UIView!
-    var rightBtn:UIButton!
-    
-    var btns:[UIButton]! = []
-    var selectBtn:UIButton?
-    
-    var titleTapClosure:((_ index:Int)->Void)?
-    var rightTapClosure:(()->Void)?
+    var indicator = UIView()
+    var csIndicatorCenterX:NSLayoutConstraint!
+    var btnsArray:[UIButton] = []
     func buildViews() {
-        scrollView = UIScrollView()
-        self.addSubview(scrollView)
-        scrollView.csTo(attrs: .left,.top,.bottom)
-        scrollView.showsHorizontalScrollIndicator = false
-        
-        contentView = UIView()
-        scrollView.addSubview(contentView)
-        contentView.csFullfill().csHeight(self)
-        
-        rightBtn = UIButton()
-        self.addSubview(rightBtn)
-        rightBtn.csTo(attrs: .top,.right,.bottom).csWidth(60).cstoRightOf(view: scrollView)
-        rightBtn.addTarget(self, action: #selector(rightTap), for: .touchUpInside)
-        
-        let line = UIView.init()
-        line.backgroundColor = .lightGray
-        self.addSubview(line)
-        line.csTo(attrs: .left,.bottom,.right)
-        line.csHeight(0.5)
-    }
-    
-    @objc func rightTap(){
-        self.rightTapClosure?()
-    }
-    
-    public func setTitles(titles:[String],titleTap:@escaping ((_ index:Int)->Void),rightTap:@escaping (()->Void)){
-        guard titles.count > 0 else {
-            print("titles is empty")
-            return
-        }
-        self.titleTapClosure = titleTap
-        self.rightTapClosure = rightTap
-        
-        contentView.removeAllSubviews()
-        selectBtn = nil
-        
-        self.titles = titles
-        var lastBtn:UIButton?
-        for (i,str) in titles.enumerated() {
-            let btn = UIButton()
-            btn.setTitle(str, for: .normal)
-            btn.setTitleColor(normalColor, for: .normal)
-            btn.setTitleColor(selectColor, for: .selected)
-            btn.titleLabel?.font = normalFont
-            btn.tag = i
+        var lastView:UIView?
+        var currentView:UIView!
+        var btn:UIButton!
+        for i in 0...(self.titles.count-1) {
+            currentView = UIView()
+            self.addSubview(currentView)
+            currentView.csFullfillVertical()
+            if let lastView = lastView {
+                currentView.cstoRightOf(view: lastView).csWidth(lastView)
+            }else{
+                currentView.csLeft()
+            }
+            if i == self.titles.count-1 {
+                currentView.csRight()
+            }
             
-            btn.addTarget(self, action: #selector(titleTap(btn:)), for: .touchUpInside)
+            btn = UIButton()
+            btn.tag = i
+            currentView.addSubview(btn)
+            btn.addTarget(self, action: #selector(btnTap(btn:)), for: .touchUpInside)
+            btnsArray.append(btn)
+            
+            self.configBtnClosure(currentView,btn,btn.tag,self.titles[i])
+            
             if i == 0 {
                 btn.isSelected = true
-                btn.titleLabel?.font = selectFont
-                selectBtn = btn
+                
+                self.addSubview(indicator)
+                self.csIndicatorCenterX = NSLayoutConstraint.init(item: indicator, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: btn, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1.0, constant: 0)
+                self.csIndicatorCenterX.isActive = true
+                
+                let (bottomOffSet,width) = self.configIndiClosure(indicator)
+                indicator.csBottom(bottomOffSet)
+                //如果有给宽度 ，设置给定宽度 否则 设置等宽高度
+                if let width = width {
+                    indicator.csWidth(width)
+                }else{
+                    indicator.csWidth(btn)
+                }
             }
             
-            contentView.addSubview(btn)
-            btn.csTo(attrs: .top,.bottom)
-            if lastBtn == nil {
-                btn.csLeft()
-            }else{
-                btn.cstoRightOf(view: lastBtn!)
-            }
-            if i == titles.count-1{
-                btn.csRight()
-            }
-            btn.csWidth(btn.intrinsicContentSize.width+20)
-            
-            btns.append(btn)
-            lastBtn = btn
+            lastView = currentView;
         }
     }
-    
-    @objc func titleTap(btn:UIButton){
-        if selectBtn?.tag == btn.tag { return }
-        
-        selectBtn?.isSelected = false
-        selectBtn?.titleLabel?.font = normalFont
-        
-        selectBtn = btn
-        selectBtn?.isSelected = true
-        selectBtn?.titleLabel?.font = selectFont
-        
-        //防止左右滚动越界
-        var toX = btn.frame.origin.x-scrollView.frame.size.width/2+btn.frame.size.width/2
-        toX = max(0, toX)
-        if toX+scrollView.frame.size.width > scrollView.contentSize.width {
-            toX = scrollView.contentSize.width - scrollView.frame.size.width
+
+    @objc func btnTap(btn:UIButton){
+        btnsArray.forEach { (inbtn) in
+            inbtn.isSelected = false
         }
-        if scrollView.contentSize.width>scrollView.frame.width{
-            scrollView.setContentOffset(CGPoint(x: toX, y: 0), animated: true)
+        btn.isSelected = true
+        
+        self.layoutIfNeeded()
+        UIView.animate(withDuration: 0.25) {
+            self.csIndicatorCenterX.constant = CGFloat(btn.tag) * btn.superview!.frame.size.width
+            self.layoutIfNeeded()
         }
         
-        self.titleTapClosure?(btn.tag)
+        self.tapClosure?(btn.tag)
     }
 }
