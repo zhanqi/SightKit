@@ -66,14 +66,19 @@ public enum LayoutConstraintAttribute : Int {
 
 #if os(iOS)
 
-public extension UIView {
-    /// try to get the last constriant added , sometimes the cs is added to its superView
-    var lastCS : NSLayoutConstraint? {
+extension UIView {
+    private struct SwiftCustomProperties{
+        static var lastCS:NSLayoutConstraint? = nil
+    }
+    
+    public var lastCS:NSLayoutConstraint?{
         get {
-            if (self.constraints.isEmpty && self.superview != nil){
-                return self.superview?.lastCS
+            return objc_getAssociatedObject(self, &SwiftCustomProperties.lastCS) as? NSLayoutConstraint
+        }
+        set {
+            if let unwrappedValue = newValue {
+                objc_setAssociatedObject(self, &SwiftCustomProperties.lastCS, unwrappedValue as NSLayoutConstraint?, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             }
-            return self.constraints.last
         }
     }
 }
@@ -90,7 +95,10 @@ public extension UIView {
         if attr == .center {
             return self
         }else{
-            NSLayoutConstraint.init(item: self, attribute: attr.systemAttribute, relatedBy: relatedBy, toItem: toView, attribute: (attrV != nil) ? attrV!.systemAttribute : attr.systemAttribute, multiplier: multi, constant: constant).isActive = true
+            let cs = NSLayoutConstraint.init(item: self, attribute: attr.systemAttribute, relatedBy: relatedBy, toItem: toView, attribute: (attrV != nil) ? attrV!.systemAttribute : attr.systemAttribute, multiplier: multi, constant: constant)
+            cs.isActive = true
+            
+            self.lastCS = cs
         }
         return self
     }
@@ -166,7 +174,9 @@ public extension UIView {
     }
     @discardableResult func csWidth(_ value:CGFloat) -> Self{
         self.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.init(item: self, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: value).isActive = true
+        let cs = NSLayoutConstraint.init(item: self, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: value)
+        cs.isActive = true
+        self.lastCS = cs
         return self
     }
     @discardableResult func csHeight(_ v:UIView) -> Self{
@@ -174,7 +184,9 @@ public extension UIView {
     }
     @discardableResult func csHeight(_ value:CGFloat) -> Self{
         self.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.init(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: value).isActive = true
+        let cs = NSLayoutConstraint.init(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: value)
+        cs.isActive = true
+        self.lastCS = cs
         return self
     }
     @discardableResult func csWidthHeight(_ value:CGFloat) -> Self{
@@ -254,12 +266,16 @@ public extension UIView {
     // MARK: - greaterThanOrEqual
     @discardableResult func csHeightGreaterThanOrEqual(_ value:CGFloat) -> Self{
         self.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.init(item: self, attribute: .height, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant:value).isActive = true
+        let cs = NSLayoutConstraint.init(item: self, attribute: .height, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant:value)
+        cs.isActive = true
+        self.lastCS = cs
         return self
     }
     @discardableResult func csWidthGreaterThanOrEqual(_ value:CGFloat) -> Self{
         self.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.init(item: self, attribute: .width, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: value).isActive = true
+        let cs = NSLayoutConstraint.init(item: self, attribute: .width, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: value)
+        cs.isActive = true
+        self.lastCS = cs
         return self
     }
     @discardableResult func csTopGreaterThanOrEqual(_ value:CGFloat = 0) -> Self{
@@ -290,12 +306,16 @@ public extension UIView {
     // MARK: - lessThanOrEqual
     @discardableResult func csHeightLessThanOrEqual(_ value:CGFloat) -> Self{
         self.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.init(item: self, attribute: .height, relatedBy: .lessThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant:value).isActive = true
+        let cs = NSLayoutConstraint.init(item: self, attribute: .height, relatedBy: .lessThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant:value)
+        cs.isActive = true
+        self.lastCS = cs
         return self
     }
     @discardableResult func csWidthLessThanOrEqual(_ value:CGFloat) -> Self{
         self.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.init(item: self, attribute: .width, relatedBy: .lessThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: value).isActive = true
+        let cs = NSLayoutConstraint.init(item: self, attribute: .width, relatedBy: .lessThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: value)
+        cs.isActive = true
+        self.lastCS = cs
         return self
     }
     @discardableResult func csTopLessThanOrEqual(_ value:CGFloat = 0) -> Self{
@@ -354,36 +374,44 @@ public extension UIView {
     @discardableResult func csSafeAreaTop(_ value:CGFloat = 0) -> Self{
         guard let toView = self.superview else { return self }
         if #available(iOS 11.0, *) {
-            self.topAnchor.constraint(equalTo: toView.safeAreaLayoutGuide.topAnchor, constant: value).isActive = true
+            let cs = self.topAnchor.constraint(equalTo: toView.safeAreaLayoutGuide.topAnchor, constant: value)
+            cs.isActive = true
+            self.lastCS = cs
         } else {
-            self.topAnchor.constraint(equalTo: toView.topAnchor, constant: value).isActive = true
+            csTop(value)
         }
         return self
     }
      @discardableResult func csSafeAreaLeft(_ value:CGFloat = 0) -> Self{
          guard let toView = self.superview else { return self }
          if #available(iOS 11.0, *) {
-             self.leftAnchor.constraint(equalTo: toView.safeAreaLayoutGuide.leftAnchor, constant: value).isActive = true
+            let cs = self.leftAnchor.constraint(equalTo: toView.safeAreaLayoutGuide.leftAnchor, constant: value)
+            cs.isActive = true
+            self.lastCS = cs
          } else {
-             self.leftAnchor.constraint(equalTo: toView.leftAnchor, constant: value).isActive = true
+             csLeft(value)
          }
          return self
      }
     @discardableResult func csSafeAreaBottom(_ value:CGFloat = 0) -> Self{
         guard let toView = self.superview else { return self }
         if #available(iOS 11.0, *) {
-            self.bottomAnchor.constraint(equalTo: toView.safeAreaLayoutGuide.bottomAnchor, constant: value).isActive = true
+            let cs = self.bottomAnchor.constraint(equalTo: toView.safeAreaLayoutGuide.bottomAnchor, constant: value)
+            cs.isActive = true
+            self.lastCS = cs
         } else {
-            self.bottomAnchor.constraint(equalTo: toView.bottomAnchor, constant: value).isActive = true
+            csBottom(value)
         }
         return self
     }
     @discardableResult func csSafeAreaRight(_ value:CGFloat = 0) -> Self{
         guard let toView = self.superview else { return self }
         if #available(iOS 11.0, *) {
-            self.rightAnchor.constraint(equalTo: toView.safeAreaLayoutGuide.rightAnchor, constant: value).isActive = true
+            let cs = self.rightAnchor.constraint(equalTo: toView.safeAreaLayoutGuide.rightAnchor, constant: value)
+            cs.isActive = true
+            self.lastCS = cs
         } else {
-            self.rightAnchor.constraint(equalTo: toView.rightAnchor, constant: value).isActive = true
+            csRight(value)
         }
         return self
     }
@@ -402,36 +430,44 @@ public extension UIView {
     @discardableResult func csSafeAreaTopGreaterThanOrEqual(_ value:CGFloat = 0) -> Self{
         guard let toView = self.superview else { return self }
         if #available(iOS 11.0, *) {
-            self.topAnchor.constraint(greaterThanOrEqualTo: toView.safeAreaLayoutGuide.topAnchor, constant: value).isActive = true
+            let cs = self.topAnchor.constraint(greaterThanOrEqualTo: toView.safeAreaLayoutGuide.topAnchor, constant: value)
+            cs.isActive = true
+            self.lastCS = cs
         } else {
-            self.topAnchor.constraint(greaterThanOrEqualTo: toView.topAnchor, constant: value).isActive = true
+            csTopGreaterThanOrEqual(value)
         }
         return self
     }
     @discardableResult func csSafeAreaLeftGreaterThanOrEqual(_ value:CGFloat = 0) -> Self{
         guard let toView = self.superview else { return self }
         if #available(iOS 11.0, *) {
-            self.leftAnchor.constraint(greaterThanOrEqualTo: toView.safeAreaLayoutGuide.leftAnchor, constant: value).isActive = true
+            let cs = self.leftAnchor.constraint(greaterThanOrEqualTo: toView.safeAreaLayoutGuide.leftAnchor, constant: value)
+            cs.isActive = true
+            self.lastCS = cs
         } else {
-            self.leftAnchor.constraint(greaterThanOrEqualTo: toView.leftAnchor, constant: value).isActive = true
+            csLeftGreaterThanOrEqual(value)
         }
         return self
     }
     @discardableResult func csSafeAreaBottomGreaterThanOrEqual(_ value:CGFloat = 0) -> Self{
         guard let toView = self.superview else { return self }
         if #available(iOS 11.0, *) {
-            self.bottomAnchor.constraint(greaterThanOrEqualTo: toView.safeAreaLayoutGuide.bottomAnchor, constant: value).isActive = true
+            let cs = self.bottomAnchor.constraint(greaterThanOrEqualTo: toView.safeAreaLayoutGuide.bottomAnchor, constant: value)
+            cs.isActive = true
+            self.lastCS = cs
         } else {
-            self.bottomAnchor.constraint(greaterThanOrEqualTo: toView.bottomAnchor, constant: value).isActive = true
+            csBottomGreaterThanOrEqual(value)
         }
         return self
     }
     @discardableResult func csSafeAreaRightGreaterThanOrEqual(_ value:CGFloat = 0) -> Self{
         guard let toView = self.superview else { return self }
         if #available(iOS 11.0, *) {
-            self.rightAnchor.constraint(greaterThanOrEqualTo: toView.safeAreaLayoutGuide.rightAnchor, constant: value).isActive = true
+            let cs = self.rightAnchor.constraint(greaterThanOrEqualTo: toView.safeAreaLayoutGuide.rightAnchor, constant: value)
+            cs.isActive = true
+            self.lastCS = cs
         } else {
-            self.rightAnchor.constraint(greaterThanOrEqualTo: toView.rightAnchor, constant: value).isActive = true
+            csRightGreaterThanOrEqual(value)
         }
         return self
     }
@@ -439,36 +475,44 @@ public extension UIView {
     @discardableResult func csSafeAreaTopLessThanOrEqual(_ value:CGFloat = 0) -> Self{
         guard let toView = self.superview else { return self }
         if #available(iOS 11.0, *) {
-            self.topAnchor.constraint(lessThanOrEqualTo: toView.safeAreaLayoutGuide.topAnchor, constant: value).isActive = true
+            let cs = self.topAnchor.constraint(lessThanOrEqualTo: toView.safeAreaLayoutGuide.topAnchor, constant: value)
+            cs.isActive = true
+            self.lastCS = cs
         } else {
-            self.topAnchor.constraint(lessThanOrEqualTo: toView.topAnchor, constant: value).isActive = true
+            csTopLessThanOrEqual(value)
         }
         return self
     }
      @discardableResult func csSafeAreaLeftLessThanOrEqual(_ value:CGFloat = 0) -> Self{
          guard let toView = self.superview else { return self }
          if #available(iOS 11.0, *) {
-             self.leftAnchor.constraint(lessThanOrEqualTo: toView.safeAreaLayoutGuide.leftAnchor, constant: value).isActive = true
+            let cs = self.leftAnchor.constraint(lessThanOrEqualTo: toView.safeAreaLayoutGuide.leftAnchor, constant: value)
+            cs.isActive = true
+            self.lastCS = cs
          } else {
-             self.leftAnchor.constraint(lessThanOrEqualTo: toView.leftAnchor, constant: value).isActive = true
+            csLeftLessThanOrEqual(value)
          }
          return self
      }
     @discardableResult func csSafeAreaBottomLessThanOrEqual(_ value:CGFloat = 0) -> Self{
         guard let toView = self.superview else { return self }
         if #available(iOS 11.0, *) {
-            self.bottomAnchor.constraint(lessThanOrEqualTo: toView.safeAreaLayoutGuide.bottomAnchor, constant: value).isActive = true
+            let cs = self.bottomAnchor.constraint(lessThanOrEqualTo: toView.safeAreaLayoutGuide.bottomAnchor, constant: value)
+            cs.isActive = true
+            self.lastCS = cs
         } else {
-            self.bottomAnchor.constraint(lessThanOrEqualTo: toView.bottomAnchor, constant: value).isActive = true
+            csBottomLessThanOrEqual(value)
         }
         return self
     }
     @discardableResult func csSafeAreaRightLessThanOrEqual(_ value:CGFloat = 0) -> Self{
         guard let toView = self.superview else { return self }
         if #available(iOS 11.0, *) {
-            self.rightAnchor.constraint(lessThanOrEqualTo: toView.safeAreaLayoutGuide.rightAnchor, constant: value).isActive = true
+            let cs = self.rightAnchor.constraint(lessThanOrEqualTo: toView.safeAreaLayoutGuide.rightAnchor, constant: value)
+            cs.isActive = true
+            self.lastCS = cs
         } else {
-            self.rightAnchor.constraint(lessThanOrEqualTo: toView.rightAnchor, constant: value).isActive = true
+            csRightLessThanOrEqual(value)
         }
         return self
     }

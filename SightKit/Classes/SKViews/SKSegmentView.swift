@@ -25,7 +25,7 @@ import Foundation
  tview.addTo(self.view).csFullfillHorizontal().csHeight(60).csTop(100)
  */
 
-/// 平分宽度的选择title
+/// view with multi titles ,separated equally, not scrollable
 open class SKSegmentView: UIView {
     
     var configBtnClosure: ((_ view:UIView, _ btn:UIButton, _ index:Int , _ text:String)->())!
@@ -47,7 +47,7 @@ open class SKSegmentView: UIView {
         buildViews()
     }
     
-    var indicator = UIView()
+    public var indicator = UIView()
     var csIndicatorCenterX:NSLayoutConstraint!
     var btnsArray:[UIButton] = []
     func buildViews() {

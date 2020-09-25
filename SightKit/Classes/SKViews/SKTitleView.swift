@@ -7,6 +7,26 @@
 
 import Foundation
 
+/*
+ let sView = SKTitleView().addTo(self.view).csCenterY().csFullfillHorizontal().csHeight(60)
+ sView.setTitles(titles: ["btn1","btn2","btn3","btn4","btn5","btn6","btn7","btn7","btn7","btn7","btn7","btn7","btn7","btn7","btn7"], selectIndex: 2, titleBtnConfig: { (btn, text, index) in
+     btn.wFeatures(UIColor.black,pfr12)
+     btn.setTitleColor(.green, for: .selected)
+ }) { (index) in
+     print(index)
+ }
+ 
+ sView.addLeftBtn(width: 80, configBtn: { (btn) in
+     btn.wFeatures("btn",UIColor.red,pfr14)
+ }, tapClosure: { (btn) in
+     print("left tap")
+ })
+
+ sView.addRightView(width: 50) { (rightView) in
+     rightView.backgroundColor = .red
+ }
+ */
+
 /// A view with many titles by default, you can add leftView,rightView, leftBtn, rightBtn if needed.
 open class SKTitleView: UIView {
     required public init?(coder aDecoder: NSCoder) {
@@ -136,7 +156,7 @@ open class SKTitleView: UIView {
     
     /// add rightBtn
     /// - Parameters:
-    ///   - width: the width of leftBtn
+    ///   - width: the width of rightBtn
     ///   - configBtn: configure title and image here
     ///   - tapClosure: tap event,if you want use add target, add it in configBtn
     public func addRightBtn(width:CGFloat,configBtn:((UIButton)->()),tapClosure:UIButtonTargetClosure?){
@@ -163,10 +183,15 @@ open class SKTitleView: UIView {
         self.csScrollViewLeft.constant = width
     }
     
+    /// add rightView
+    /// - Parameters:
+    ///   - width: width of rightView
+    ///   - config: configure rightView and its subviews
+    /// - Returns: return
     public func addRightView(width:CGFloat,config:((UIView)->())){
         self.rightBtn?.removeFromSuperview()
         
-        rightView = UIView().addTo(self).csLeft().csFullfillVertical().csWidth(width)
+        rightView = UIView().addTo(self).csRight().csFullfillVertical().csWidth(width)
         config(rightView!)
         self.csScrollViewRight.constant = -width
     }
