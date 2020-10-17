@@ -78,7 +78,7 @@ public extension UIView{
         return self
     }
     
-    /// 设置圆角和阴影
+    /// 设置圆角和阴影 make sure the view's backgroundColor is not clear color, then this method will work.
     @discardableResult func corner(radius:CGFloat,shadowColor:UIColor,shadowOffset:CGSize,shadowOpacity:Float,shadowRadius:CGFloat) -> Self {
         layer.cornerRadius = radius
         layer.shadowColor = shadowColor.cgColor;
@@ -88,7 +88,7 @@ public extension UIView{
         return self
     }
         
-    /// 添加阴影
+    /// 添加阴影,make sure the view's backgroundColor is not clear color, then this method will work.
     ///
     /// - Parameters:
     ///   - color: shadow color (default is #137992).

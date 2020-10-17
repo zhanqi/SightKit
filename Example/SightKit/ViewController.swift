@@ -28,8 +28,9 @@ class ViewController: UIViewController {
             print(index)
             
         }
-        tview.addTo(self.view).csFullfillHorizontal().csHeight(60).csTop(100)
-        
+        tview.addTo(self.view).csLeft(10).csRight(-10).csHeight(60).csTop(100)
+        tview.wBgColor(.white)
+        tview.corner(radius: 10, shadowColor: .black, shadowOffset: CGSize.init(width: 0, height: 2), shadowOpacity: 0.5, shadowRadius: 2)
         
     }
     
