@@ -348,25 +348,27 @@ public extension UIView {
     /// 水平均分 放置某个子view
     /// - Parameter num: 均分数量
     /// - Parameter index: 第几个view，从0开始，请填入整数
-    @discardableResult func csHorizonSeperate(num:CGFloat,index:CGFloat) -> Self{
-        guard index < num else {
+    @discardableResult func csHorizonSeperate(num:CGFloat,index:Int) -> Self{
+        let floatIndex = CGFloat(index)
+        guard floatIndex < num else {
             print("index out of range ,cannot set horizonSeperate")
             return self
         }
         self.baseCsTo(attr: .width, v: nil, attrV: .width, relatedBy: .equal, multi: 1/num, constant: 0)
-        self.baseCsTo(attr: .centerX, v: nil, attrV: .centerX, relatedBy: .equal, multi: (1+index*2)/num, constant: 0)
+        self.baseCsTo(attr: .centerX, v: nil, attrV: .centerX, relatedBy: .equal, multi: (1+floatIndex*2)/num, constant: 0)
         return self
     }
     /// 垂直均分 放置某个子view
     /// - Parameter num: 均分数量
     /// - Parameter index: 第几个view，从0开始， 请填入整数
-    @discardableResult func csVerticalSeperate(num:CGFloat,index:CGFloat) -> Self{
-        guard index < num else {
+    @discardableResult func csVerticalSeperate(num:CGFloat,index:Int) -> Self{
+        let floatIndex = CGFloat(index)
+        guard floatIndex < num else {
             print("index out of range ,cannot set verticalSeperate")
             return self
         }
         self.baseCsTo(attr: .height, v: nil, attrV: .height, relatedBy: .equal, multi: 1/num, constant: 0)
-        self.baseCsTo(attr: .centerY, v: nil, attrV: .centerY, relatedBy: .equal, multi: (1+index*2)/num, constant: 0)
+        self.baseCsTo(attr: .centerY, v: nil, attrV: .centerY, relatedBy: .equal, multi: (1+floatIndex*2)/num, constant: 0)
         return self
     }
     

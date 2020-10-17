@@ -22,7 +22,11 @@ public extension UIView {
         self.alpha = alpha
         return self
     }
-    
+    @discardableResult func wTag(_ tag:Int) -> Self{
+        self.tag = tag
+        return self
+    }
+
     @discardableResult func addTo(_ fatherView:UIView) -> Self{
         fatherView.addSubview(self)
         return self
