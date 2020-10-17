@@ -86,12 +86,12 @@ open class SKFillableView: UIView {
     ///   - view: the view will be filled
     ///   - height: the height of the view, if nil, then make sure its content constriants is completed
     ///   - verticalSpace: the space to the last view filled or the superView
-    ///   - leftPadding: left margin
-    ///   - rightPadding: right margin,give a positive value
-    public func fillSubView(view: UIView,height:CGFloat?,verticalSpace:CGFloat = 10,leftPadding:CGFloat = 0,rightPadding:CGFloat = 0) {
+    ///   - leftSpace: left margin
+    ///   - rightSpace: right margin,give a positive value
+    public func fillSubView(view: UIView,height:CGFloat?,verticalSpace:CGFloat = 10,leftSpace:CGFloat = 0,rightSpace:CGFloat = 0) {
         contentView.addSubview(view)
         
-        view.csLeft(leftPadding).csRight(-rightPadding)
+        view.csLeft(leftSpace).csRight(-rightSpace)
         if let lastView = lastView{
             view.cstoBottomOf(view: lastView,constant: verticalSpace)
         }else{

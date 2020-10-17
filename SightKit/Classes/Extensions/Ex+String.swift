@@ -471,4 +471,36 @@ public extension String {
         return URL(string: self) != nil
     }
 }
+
+
+// MARK: - number convert
+extension String {
+    var hexaToInt      : Int    { return Int(strtoul(self, nil, 16))      }
+    var hexaToDouble   : Double { return Double(strtoul(self, nil, 16))   }
+    var hexaToBinary   : String { return String(hexaToInt, radix: 2)      }
+    var decimalToHexa  : String { return String(Int(self) ?? 0, radix: 16)}
+    var decimalToBinary: String { return String(Int(self) ?? 0, radix: 2) }
+    var binaryToInt    : Int    { return Int(strtoul(self, nil, 2))       }
+    var binaryToDouble : Double { return Double(strtoul(self, nil, 2))   }
+    var binaryToHexa   : String { return String(binaryToInt, radix: 16)  }
+}
+
+extension Int {
+    var binaryString: String { return String(self, radix: 2)  }
+    var hexaString  : String { return String(self, radix: 16) }
+    var doubleValue : Double { return Double(self) }
+}
+/*
+ "ff".hexaToInt              // "255"
+ "ff".hexaToDouble           // "255.0"
+ "ff".hexaToBinary           // "11111111"
+ "255".decimalToHexa         // "ff"
+ "255".decimalToBinary       // "11111111"
+ "11111111".binaryToInt      // "255"
+ "11111111".binaryToDouble   // "255.0"
+ "11111111".binaryToHexa     // "ff"
+ 255.binaryString            // "11111111"
+ 255.hexaString              // "ff"
+ 255.doubleValue             // 255.0 
+ */
 #endif
