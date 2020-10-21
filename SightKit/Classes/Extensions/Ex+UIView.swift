@@ -232,8 +232,6 @@ open class CornerBgView : UIView {
     var corners:UIRectCorner = []
     
     open override func draw(_ rect: CGRect) {
-//        super.draw(rect)
-        
         let maskPath = UIBezierPath(
             roundedRect: bounds,
             byRoundingCorners: corners,
@@ -242,5 +240,40 @@ open class CornerBgView : UIView {
         let shape = CAShapeLayer()
         shape.path = maskPath.cgPath
         layer.mask = shape
+    }
+}
+
+
+public extension UIView {
+    
+    /// divide the view  horizontally equally with several subviews
+    /// - Parameters:
+    ///   - num: number of subviews
+    ///   - viewEnum: closure to config the subview
+    /// - Returns: self
+    func divideHorizon(num:Int,viewEnum:((_ subView:UIView,_ index:Int)->())){
+        guard num > 0 else {
+            return
+        }
+        
+        for i in 0...num-1 {
+            let view = UIView().addTo(self).csFullfillVertical().csHorizonSeperate(num: CGFloat(num), index: Int(i))
+            viewEnum(view,i)
+        }
+    }
+    /// divide the view  vertically equally with several subviews
+    /// - Parameters:
+    ///   - num: number of subviews
+    ///   - viewEnum: closure to config the subview
+    /// - Returns: self
+    func divideVertical(num:Int,viewEnum:((_ subView:UIView,_ index:Int)->())){
+        guard num > 0 else {
+            return
+        }
+        
+        for i in 0...num-1 {
+            let view = UIView().addTo(self).csFullfillHorizontal().csVerticalSeperate(num: CGFloat(num), index: Int(i))
+            viewEnum(view,i)
+        }
     }
 }

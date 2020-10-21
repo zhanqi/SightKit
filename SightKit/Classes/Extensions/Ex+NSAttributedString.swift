@@ -53,6 +53,18 @@ public extension NSAttributedString {
         }
         return attributedString
     }
+    @discardableResult func wLineSpace(space:CGFloat) -> NSAttributedString{
+        let ph = NSMutableParagraphStyle()
+        ph.lineSpacing = space
+        let attributedString = NSMutableAttributedString.init(attributedString: self)
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: ph, range: NSRange(location: 0, length: self.string.count))
+        return attributedString
+    }
+    @discardableResult func wLetterSpace(space:CGFloat) -> NSAttributedString{
+        let attributedString = NSMutableAttributedString.init(attributedString: self)
+        attributedString.addAttribute(NSAttributedString.Key.kern, value: space, range: NSRange(location: 0, length: self.string.count))
+        return attributedString
+    }
 
 }
 #endif
