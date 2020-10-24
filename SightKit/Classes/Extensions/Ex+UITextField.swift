@@ -64,30 +64,29 @@ public extension UITextField {
         return self
     }
     
-    /// 是居中还是填满
-    enum TextFieldLeftRightFillWay {
-        case center,fullFill
-    }
-    @discardableResult func wLeftView(view:UIView, width:CGFloat,fillWay:TextFieldLeftRightFillWay) -> UITextField {
-        self.setLeftPadding(width)
-        
-        if fillWay == .center {
-            view.addTo(self).csCenterY()
-            NSLayoutConstraint.init(item: view, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1.0, constant: width/2).isActive = true
-        }else{
-            view.addTo(self).csFullfillVertical().csLeft().csWidth(width)
-        }
+    @discardableResult func addLeftView(width:CGFloat,config:((UIView)->Void)) -> UITextField{
+        setLeftPadding(width)
+        let view = UIView().addTo(self).csLeft().csFullfillVertical().csWidth(width)
+        config(view)
         return self
     }
-    @discardableResult func wRightView(view:UIView, width:CGFloat,fillWay:TextFieldLeftRightFillWay) -> UITextField {
-        self.setRightPadding(width)
-        
-        if fillWay == .center {
-            view.addTo(self).csCenterY()
-            NSLayoutConstraint.init(item: view, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1.0, constant: -width/2).isActive = true
-        }else{
-            view.addTo(self).csFullfillVertical().csRight().csWidth(width)
-        }
+
+    @discardableResult func addRightView(width:CGFloat,config:((UIView)->Void)) -> UITextField{
+        setRightPadding(width)
+        let view = UIView().addTo(self).csRight().csFullfillVertical().csWidth(width)
+        config(view)
+        return self
+    }
+
+    @discardableResult func addLeftView(width:CGFloat,view:UIView) -> UITextField{
+        setLeftPadding(width)
+        view.addTo(self).csLeft().csFullfillVertical().csWidth(width)
+        return self
+    }
+
+    @discardableResult func addRightView(width:CGFloat,view:UIView) -> UITextField{
+        setRightPadding(width)
+        view.addTo(self).csRight().csFullfillVertical().csWidth(width)
         return self
     }
 }
@@ -115,17 +114,19 @@ public extension UITextField {
 public extension UITextField {
     
     /// 设置左边偏移距离
-    func setLeftPadding(_ amount:CGFloat){
+    @discardableResult func setLeftPadding(_ amount:CGFloat) -> UITextField{
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: 1))
         self.leftView = paddingView
         self.leftViewMode = .always
+        return self
     }
     
     /// 设置右边偏移距离
-    func setRightPadding(_ amount:CGFloat) {
+    @discardableResult func setRightPadding(_ amount:CGFloat) -> UITextField{
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: 1))
         self.rightView = paddingView
         self.rightViewMode = .always
+        return self
     }
 }
 

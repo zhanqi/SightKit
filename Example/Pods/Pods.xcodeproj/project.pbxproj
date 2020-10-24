@@ -11,6 +11,8 @@
 		01904B0245AC2031E9ADD586BE7224C0 /* EndWith.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723B254B5835BB0ED07B971FFE462EAF /* EndWith.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		01DAA6DD1809A39129FF7C72DDF93054 /* mach_excServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 466716BBEF52AA763D1EA0D672CB003F /* mach_excServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0440864F251B70BB0054A6CB /* Ex+CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440864E251B70BB0054A6CB /* Ex+CGPoint.swift */; };
+		046189082542D20D00D3E29A /* SKNoticeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046189072542D20D00D3E29A /* SKNoticeBar.swift */; };
+		04676AA52544471800FA5C34 /* SKGetVerifyCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04676AA42544471800FA5C34 /* SKGetVerifyCodeView.swift */; };
 		0683FC9DDCAB80660BD11E7159607DB6 /* World+DSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 707AEBC43F5F7CF3F440B7808237617A /* World+DSL.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		0725A6F6AF5A97F9D46B3188E135D5B2 /* NMBExceptionCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 693AEC1129C22005082E9DCE61AC4307 /* NMBExceptionCapture.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0834E167066BF3659E39621F58F440A6 /* BeVoid.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4946D510D04B66A4D656FA06EFA0F0C /* BeVoid.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -259,6 +261,8 @@
 
 /* Begin PBXFileReference section */
 		0440864E251B70BB0054A6CB /* Ex+CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+CGPoint.swift"; sourceTree = "<group>"; };
+		046189072542D20D00D3E29A /* SKNoticeBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKNoticeBar.swift; sourceTree = "<group>"; };
+		04676AA42544471800FA5C34 /* SKGetVerifyCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKGetVerifyCodeView.swift; sourceTree = "<group>"; };
 		0513ABDD1CDCF03BC7B82AC7E18620EE /* BeAKindOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeAKindOf.swift; path = Sources/Nimble/Matchers/BeAKindOf.swift; sourceTree = "<group>"; };
 		05F3D57DE6385F0B15FDECFB5D0CD321 /* QuickSpecBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QuickSpecBase.h; path = Sources/QuickSpecBase/include/QuickSpecBase.h; sourceTree = "<group>"; };
 		07AA53066840A725482D02920A46BC4C /* CwlCatchException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CwlCatchException.swift; path = Carthage/Checkouts/CwlCatchException/Sources/CwlCatchException/CwlCatchException.swift; sourceTree = "<group>"; };
@@ -561,6 +565,8 @@
 				38749450251A441000FC8BC9 /* SKScrollBannerView.swift */,
 				38749452251A4C4300FC8BC9 /* SKTitleView.swift */,
 				3874944C251A3BC300FC8BC9 /* SKFillableView.swift */,
+				046189072542D20D00D3E29A /* SKNoticeBar.swift */,
+				04676AA42544471800FA5C34 /* SKGetVerifyCodeView.swift */,
 			);
 			name = SKViews;
 			path = SightKit/Classes/SKViews;
@@ -1297,6 +1303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				38C0DDB32518E2F300647936 /* Ex+NSArray.swift in Sources */,
+				04676AA52544471800FA5C34 /* SKGetVerifyCodeView.swift in Sources */,
 				389BB9712518FBAD0013CF0C /* Ex+UIImage+gif.swift in Sources */,
 				38C0DDA82518DBE400647936 /* Ex+UILabel.swift in Sources */,
 				3824B2132532AC9500D4389A /* Request.swift in Sources */,
@@ -1325,6 +1332,7 @@
 				3893D4A72517BB71009347A5 /* Ex+NSAttributedString.swift in Sources */,
 				389BB97B251900D30013CF0C /* Ex+UIViewController.swift in Sources */,
 				389BB9692518F75A0013CF0C /* Ex+UIButton.swift in Sources */,
+				046189082542D20D00D3E29A /* SKNoticeBar.swift in Sources */,
 				38FB085D251BA4D80007E5D5 /* Ex+UIWindow.swift in Sources */,
 				389BB9732518FC3A0013CF0C /* Ex+UIImageView.swift in Sources */,
 				38C0DDB42518E2F300647936 /* Toast+Loading.swift in Sources */,

@@ -78,7 +78,7 @@ open class SKFillableView: UIView {
     /// Fill a subview ,the height of it depends on its contents, so make sure constraints inside is completed
     /// - Parameter view: the view will be filled
     public func fillSubView(view: UIView) {
-        self.fillSubView(view: view, height: nil)
+        self.fillSubView(view: view, height: nil, verticalSpace: 0, leftSpace: 0, rightSpace: 0)
     }
     
     /// Fill a subview
@@ -88,7 +88,7 @@ open class SKFillableView: UIView {
     ///   - verticalSpace: the space to the last view filled or the superView
     ///   - leftSpace: left margin
     ///   - rightSpace: right margin,give a positive value
-    public func fillSubView(view: UIView,height:CGFloat?,verticalSpace:CGFloat = 10,leftSpace:CGFloat = 0,rightSpace:CGFloat = 0) {
+    public func fillSubView(view: UIView,height:CGFloat?,verticalSpace:CGFloat,leftSpace:CGFloat,rightSpace:CGFloat) {
         contentView.addSubview(view)
         
         view.csLeft(leftSpace).csRight(-rightSpace)

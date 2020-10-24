@@ -7,25 +7,24 @@
 
 import Foundation
 
-
-/*
- let tview = SKSegmentView.init(titles: ["按钮1","按钮2","按钮3"], configBtnClosure: { (view, btn,index,text) in
-     btn.csFullfill()
-     btn.wTitle(text).wFont(pfr(20)).wTitleColor(.blue)
-     btn.setTitleColor(.red, for: .selected)
+/** view with multi titles ,separated equally, not scrollable
+ ## 使用示例
+ ```
+ let sView = SKSegmentView.init(titles: ["按钮1","按钮2","按钮3"], configBtnClosure: { (view, btn,index,text) in
+ btn.csFullfill()
+ btn.wTitle(text).wFont(pfr(20)).wTitleColor(.blue)
+ btn.setTitleColor(.red, for: .selected)
  }, configIndiClosure: { (indicator) -> (CGFloat, CGFloat?) in
-     indicator.backgroundColor = .red
-     indicator.csHeight(3)
-     indicator.corner(radius: 1.5)
-     return (-10,30)
-     return (-10,nil)
+ indicator.backgroundColor = .red
+ indicator.csHeight(3)
+ indicator.corner(radius: 1.5)
+ return (-10,30)
+ return (-10,nil)
  }) { (index) in
-     print(index)
+ print(index)
  }
- tview.addTo(self.view).csFullfillHorizontal().csHeight(60).csTop(100)
+ sView.addTo(self.view).csFullfillHorizontal().csHeight(60).csTop(100)
  */
-
-/// view with multi titles ,separated equally, not scrollable
 open class SKSegmentView: UIView {
     
     var configBtnClosure: ((_ view:UIView, _ btn:UIButton, _ index:Int , _ text:String)->())!
@@ -103,7 +102,7 @@ open class SKSegmentView: UIView {
         btn.isSelected = true
         
         self.layoutIfNeeded()
-        UIView.animate(withDuration: 0.25) {
+        UIView.animate(withDuration: 0.2) {
             self.csIndicatorCenterX.constant = CGFloat(btn.tag) * btn.superview!.frame.size.width
             self.layoutIfNeeded()
         }

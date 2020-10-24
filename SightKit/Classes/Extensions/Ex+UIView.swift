@@ -82,7 +82,7 @@ public extension UIView{
     @discardableResult func corner(radius:CGFloat,shadowColor:UIColor,shadowOffset:CGSize,shadowOpacity:Float,shadowRadius:CGFloat) -> Self {
         layer.cornerRadius = radius
         layer.shadowColor = shadowColor.cgColor;
-        layer.shadowOffset = shadowOffset
+        layer.shadowOffset = shadowOffset //(0,0)时是四周都有阴影
         layer.shadowOpacity = shadowOpacity;
         layer.shadowRadius = shadowRadius;
         return self

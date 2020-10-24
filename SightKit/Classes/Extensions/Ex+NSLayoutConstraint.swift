@@ -71,6 +71,7 @@ extension UIView {
         static var lastCS:NSLayoutConstraint? = nil
     }
     
+    /// the last constraint added
     public var lastCS:NSLayoutConstraint?{
         get {
             return objc_getAssociatedObject(self, &SwiftCustomProperties.lastCS) as? NSLayoutConstraint
@@ -193,29 +194,53 @@ public extension UIView {
         self.csWidth(value).csHeight(value)
         return self
     }
+    /// 按宽高比设定宽度
+    @discardableResult func csWidth_W_H_Rate(_ value:CGFloat) -> Self{
+        guard value > 0 else {
+            return self
+        }
+        let cs = NSLayoutConstraint.init(item: self, attribute: .width, relatedBy: .equal, toItem: self, attribute: .height, multiplier: value, constant: 0)
+        cs.isActive = true
+        self.lastCS = cs
+        return self
+    }
+    /// 按宽高比设定高度
+    @discardableResult func csHeight_W_H_Rate(_ value:CGFloat) -> Self{
+        guard value > 0 else {
+            return self
+        }
+        let cs = NSLayoutConstraint.init(item: self, attribute: .height, relatedBy: .equal, toItem: self, attribute: .width, multiplier: 1.0/value, constant: 0)
+        cs.isActive = true
+        self.lastCS = cs
+        return self
+    }
 
     
-    
+    /// put view on top of given view
     @discardableResult func cstoTopOf(view:UIView,constant:CGFloat = 0) -> Self{
         self.baseCsTo(attr: .bottom, v: view, attrV: .top, constant: constant)
         return self;
     }
 
+    /// put view on bottom of given view
     @discardableResult func cstoBottomOf(view:UIView,constant:CGFloat = 0) -> Self{
         self.baseCsTo(attr: .top, v: view, attrV: .bottom, constant: constant)
         return self;
     }
     
+    /// put view on right of given view
     @discardableResult func cstoRightOf(view:UIView,constant:CGFloat = 0) -> Self{
         self.baseCsTo(attr: .left, v: view, attrV: .right, constant: constant)
         return self;
     }
-    
+
+    /// put view on left of given view
     @discardableResult func cstoLeftOf(view:UIView,constant:CGFloat = 0) -> Self{
         self.baseCsTo(attr: .right, v: view, attrV: .left, constant: constant)
         return self;
     }
     
+    /// set space of left and right to given view  or superView
     @discardableResult func csLeftRight(view:UIView? = nil,constant:CGFloat) -> Self{
         self.baseCsTo(attr: .left, v: view ?? self.superview, constant: constant)
         self.baseCsTo(attr: .right, v: view ?? self.superview,  constant: -constant)
