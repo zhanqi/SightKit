@@ -166,10 +166,10 @@ public extension UITextField {
     }
 }
 
-extension UITextField {
+public extension UITextField {
     
     /// 使得输入框依次唤起键盘 使用举例：UITextField.connectAllTxtFieldFields(txtfields: [txtField, txtField2, txtField3])
-    class func connectAllTxtFieldFields(txtfields:[UITextField]) -> Void {
+    class func connectAllTxtFieldFields(txtfields:UITextField...) -> Void {
         guard let last = txtfields.last else {
             return
         }

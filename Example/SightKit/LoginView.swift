@@ -131,6 +131,8 @@ class LoginView: UIView {
         let _ = UIView().wBgColor(mainColor).addTo(getCodeView).csCenterY().csLeft().csWidth(1).csHeight(20)
         
         codeField.csBottom()
+        
+        UITextField.connectAllTxtFieldFields(txtfields: phoneField,codeField)
     }
     
     func makeAccountLoginView(){
@@ -149,5 +151,7 @@ class LoginView: UIView {
         }
         passWordField.isSecureTextEntry = true
         passWordField.csBottom()
+        
+        UITextField.connectAllTxtFieldFields(txtfields: accountField,passWordField)
     }
 }

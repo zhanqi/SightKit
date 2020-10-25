@@ -21,24 +21,22 @@ class RegisterView: UIView {
     var passWordField:UITextField!
     var passWordConfirmField:UITextField!
     func buildViews() {
-        makeNavBarForBaseVC
-        let imgBg = UIView().addTo(self).csHeight(100).csTop().csFullfillHorizontal()
+        let imgBg = UIView().addTo(self).csHeight(200).csTop().csFullfillHorizontal()
         imgBg.addGradient(startColor: UIColor.init(hex: 0xe4cc6c), endColor: UIColor.init(hex: 0xcaa258), isVertical: false)
 
-        let fillableView = SKFillableView().addTo(self).csFullfill()
-        
         let backView = addNavView()
-        fillableView.fillSubView(view: backView)
         
-
-        phoneField = UITextField().wPlaceholder(text: "请输入手机号", color: UIColor.init(hex: 0xBEBEBE), font: pfr14).border(width: 0.5, color: mainColor).corner(radius: 20)
-        fillableView.fillSubView(view: phoneField, height: 40, verticalSpace: 30, leftSpace: 15, rightSpace: 15)
+        let bg = UIView().wBgColor(.white).addTo(self).cstoBottomOf(view: backView).csFullfillHorizontal().csBottom()
+        bg.corner(radius: 20)
+        
+        phoneField = UITextField().wPlaceholder(text: "请输入手机号", color: UIColor.init(hex: 0xBEBEBE), font: pfr14).addTo(bg).border(width: 0.5, color: mainColor).corner(radius: 20)
+        phoneField.csTop(30).csLeftRight(constant: 25).csHeight(40)
         phoneField.addLeftView(width: 48) { (view) in
             let _ = UIImageView().wBgColor(.red).addTo(view).csCenter().csWidthHeight(22)
         }
         
-        codeField = UITextField().wPlaceholder(text: "请输入手机验证码", color: UIColor.init(hex: 0xBEBEBE), font: pfr14).border(width: 0.5, color: UIColor.init(hex: 0xB0BAC5)).corner(radius: 20)
-        fillableView.fillSubView(view: codeField, height: 40, verticalSpace: 30, leftSpace: 15, rightSpace: 15)
+        codeField = UITextField().wPlaceholder(text: "请输入手机验证码", color: UIColor.init(hex: 0xBEBEBE), font: pfr14).addTo(bg).border(width: 0.5, color: UIColor.init(hex: 0xB0BAC5)).corner(radius: 20)
+        codeField.cstoBottomOf(view: phoneField, constant: 20).csLeftRight(constant: 25).csHeight(40)
         codeField.addLeftView(width: 48) { (view) in
             let _ = UIImageView().wBgColor(.red).addTo(view).csCenter().csWidthHeight(22)
         }
@@ -48,11 +46,36 @@ class RegisterView: UIView {
             getCodeView.start()
         }
         let _ = UIView().wBgColor(mainColor).addTo(getCodeView).csCenterY().csLeft().csWidth(1).csHeight(20)
+        
+        passWordField = UITextField().wPlaceholder(text: "请设置6-20位登录密码", color: UIColor.init(hex: 0xBEBEBE), font: pfr14).addTo(bg).border(width: 0.5, color: UIColor.init(hex: 0xB0BAC5)).corner(radius: 20)
+        passWordField.cstoBottomOf(view: codeField, constant: 20).csLeftRight(constant: 25).csHeight(40)
+        passWordField.addLeftView(width: 48) { (view) in
+            let _ = UIImageView().wBgColor(.red).addTo(view).csCenter().csWidthHeight(22)
+        }
 
+        passWordConfirmField = UITextField().wPlaceholder(text: "请再次输入密码", color: UIColor.init(hex: 0xBEBEBE), font: pfr14).addTo(bg).border(width: 0.5, color: UIColor.init(hex: 0xB0BAC5)).corner(radius: 20)
+        passWordConfirmField.cstoBottomOf(view: passWordField, constant: 20).csLeftRight(constant: 25).csHeight(40)
+        passWordConfirmField.addLeftView(width: 48) { (view) in
+            let _ = UIImageView().wBgColor(.red).addTo(view).csCenter().csWidthHeight(22)
+        }
+
+        let agreeIcon = UIImageView().wBgColor(.red).addTo(bg).csWidthHeight(30).csLeft(25+24-15).cstoBottomOf(view: passWordConfirmField, constant: 10)
+        let agreeLabel = UILabel().wFeatures("我同意",pfr13,bg).csCenterY(agreeIcon).cstoRightOf(view: agreeIcon, constant: 15)
+        let policyBtn = UIButton().wFeatures("《注册协议》",bg,mainColor,pfr13).cstoRightOf(view: agreeLabel).csCenterY(agreeLabel).csHeight(40)
+        policyBtn.setTitleColor(.gray, for: .highlighted)
+        
+        let registerBtn = UIButton().wFeatures("完成",UIColor.white,pfr16,bg).cstoBottomOf(view: policyBtn, constant: 52).csLeftRight(constant: 25).csHeight(38)
+        registerBtn.corner(radius: 19).addGradient(startColor: UIColor.init(hex: 0xe4cc6c), endColor: UIColor.init(hex: 0xcaa258), isVertical: false)
+        registerBtn.setBackgroundColor(.lightGray, for: .highlighted)
+        registerBtn.addTarget(self, action: #selector(registerBtnTap), for: .touchUpInside)
+
+        UITextField.connectAllTxtFieldFields(txtfields: phoneField,codeField,passWordField,passWordConfirmField)
     }
-    
+    @objc func registerBtnTap(){
+        
+    }
     func addNavView() -> UIView{
-        let view = UIView().csHeight(NavStatusBarHeight)
+        let view = UIView().addTo(self).csHeight(NavStatusBarHeight).csTop().csFullfillHorizontal()
         let btn = UIButton().addTo(view).csLeft().csWidthHeight(44).csBottom()
         btn.addTargetClosure { (_) in
             self.viewController?.dismiss(animated: true, completion: nil)
