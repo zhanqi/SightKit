@@ -14,7 +14,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let lv = LoginView().addTo(self.view).csFullfill()
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "home_title_BgImg")?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
+        self.navigationController?.navigationBar.isTranslucent = false
+        
+        let img = "this is just a long or short string to be qr code".toQRcodeImg(imageWidth: 300, logo: "icon_taochan".toImg())
+        let imgView = UIImageView.init(image: img).addTo(self.view).csCenter()
     }
     
     override func didReceiveMemoryWarning() {

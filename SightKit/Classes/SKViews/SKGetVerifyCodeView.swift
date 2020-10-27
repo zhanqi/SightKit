@@ -10,7 +10,7 @@ import Foundation
 /** 获取验证码 控件，放在UITextfield右边
  ## 使用示例
  ```
-let getCodeView = SKGetVerifyCodeView()
+ let getCodeView = SKGetVerifyCodeView()
  codeField.addRightView(width: 93, view: getCodeView)
  getCodeView.btn.addTargetClosure { (btn) in
      getCodeView.start()
