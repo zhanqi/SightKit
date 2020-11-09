@@ -69,6 +69,8 @@ class SKWebView: UIView ,WKNavigationDelegate,WKUIDelegate,WKScriptMessageHandle
     
     // 在收到响应后，决定是否跳转
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+        decisionHandler(WKNavigationResponsePolicy.allow)
+        return
         
         guard let response = navigationResponse.response as? HTTPURLResponse,
             let url = navigationResponse.response.url else {

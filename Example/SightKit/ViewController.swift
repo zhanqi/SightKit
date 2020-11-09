@@ -18,8 +18,13 @@ class ViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "home_title_BgImg")?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
         self.navigationController?.navigationBar.isTranslucent = false
         
-        let img = "this is just a long or short string to be qr code".toQRcodeImg(imageWidth: 300, logo: "icon_taochan".toImg())
-        let imgView = UIImageView.init(image: img).addTo(self.view).csCenter()
+        
+        let htmlPath = Bundle.main.path(forResource: "webdata", ofType: "webarchive")
+        let htmlUrl = URL(fileURLWithPath: htmlPath!, isDirectory: false)
+        
+        let w = SKWebView().addTo(self.view).csFullfill()
+        w.webView.loadFileURL(htmlUrl, allowingReadAccessTo: htmlUrl)
+
     }
     
     override func didReceiveMemoryWarning() {
