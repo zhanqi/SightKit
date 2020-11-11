@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SightKit'
-  s.version          = '0.1.1'
+  s.version          = '0.1.4'
   s.summary          = 'SightKit is a tool kit for fast development.'
   s.swift_version    = '5.0'
 
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://github.com/zhanqi/SightKit'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'zaky0006' => 'richardzhan2017@gmail.com' }
+  s.author           = { 'zhanqi' => 'richardzhan2017@gmail.com' }
   s.source           = { :git => 'https://github.com/zhanqi/SightKit.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
