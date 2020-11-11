@@ -19,12 +19,14 @@ class ViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = false
         
         
-        let htmlPath = Bundle.main.path(forResource: "webdata", ofType: "webarchive")
-        let htmlUrl = URL(fileURLWithPath: htmlPath!, isDirectory: false)
         
-        let w = SKWebView().addTo(self.view).csFullfill()
-        w.webView.loadFileURL(htmlUrl, allowingReadAccessTo: htmlUrl)
+        let f = SKFillableView().addTo(self.view).csFullfill()
+        let v = UIView()
+        f.fillSubView(view: v, height: 1200, verticalSpace: 0, leftSpace: 0, rightSpace: 0)
 
+//        let s = UIScrollView().addTo(self.view).csFullfill()
+//        let v = UIView().addTo(s).csFullfill().csWidth(s)
+//        let subv = UIView().addTo(v).csTop().csFullfillHorizontal().csHeight(2000).csBottomLessThanOrEqual()
     }
     
     override func didReceiveMemoryWarning() {

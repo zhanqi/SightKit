@@ -59,19 +59,19 @@ open class SKFillableView: UIView {
     }
     
     //穿透点击事件 使得可以点击空处解散键盘
-    open override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        if let view = super.hitTest(point, with: event){
-            if view.className == "UIView" || view.className == "UIScrollView"{
-                if let superView = view.superview {
-                    if superView is UICollectionViewCell || superView is UITableViewCell{
-                        return view
-                    }
-                }
-                return self.dismissBtn
-            }
-        }
-        return super.hitTest(point, with: event)
-    }
+//    open override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+//        if let view = super.hitTest(point, with: event){
+//            if view.className == "UIView" || view.className == "UIScrollView"{
+//                if let superView = view.superview {
+//                    if superView is UICollectionViewCell || superView is UITableViewCell{
+//                        return view
+//                    }
+//                }
+//                return self.dismissBtn
+//            }
+//        }
+//        return super.hitTest(point, with: event)
+//    }
     
     public var lastView: UIView?
     
