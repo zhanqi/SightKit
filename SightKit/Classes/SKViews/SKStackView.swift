@@ -7,13 +7,24 @@
 
 import UIKit
 
-class SKStackView<T>: UIView {
-    typealias ConfigSingleView = (_ item:T,_ subView:UIView,_ isFirst:Bool)->()
-    typealias ConfigTapView = (_ item:T,_ index:Int)->()
+open class SKStackView<T>: UIView {
+    public typealias ConfigSingleView = (_ item:T,_ subView:UIView,_ isFirst:Bool)->()
+    public typealias ConfigSelection = (_ item:T,_ view:UIView,_ select:Bool)->()
+    
     var array:[T] = []
-
-    func updateWith(array:[T],allowMultiSelect:Bool,width:CGFloat,config:ConfigSingleView){
+    var views:[UIView] = []
+    var allowMultiSelect = false
+    var selectedIndexs:[Int] = []
+    var configSelect:ConfigSelection!
+    public func updateWith(array:[T],allowMultiSelect:Bool,width:CGFloat,configView:ConfigSingleView,configSelect:@escaping ConfigSelection){
+        self.array.removeAll()
         self.array.append(contentsOf: array)
+        self.allowMultiSelect = allowMultiSelect
+        self.selectedIndexs.removeAll()
+        self.configSelect = configSelect
+        
+        self.views.removeAll()
+        self.removeAllSubviews()
         var last:UIView?
         for (index,value) in self.array.enumerated(){
             let view = UIView().addTo(self).csFullfillVertical().csWidth(width)
@@ -22,12 +33,37 @@ class SKStackView<T>: UIView {
             }else{
                 view.csLeft()
             }
+            configView(value,view,index==0)
             
+            let btn = UIButton().addTo(view).wTag(index).csFullfill()
+            btn.addTarget(self, action: #selector(btnTap(btn:)), for: .touchUpInside)
+            
+            self.views.append(view)
             last = view
         }
     }
     
-    
+    @objc func btnTap(btn:UIButton){
+        let contain = selectedIndexs.contains { (index) -> Bool in
+            return index == btn.tag
+        }
+        
+        if contain {
+            selectedIndexs.remove(element: btn.tag)
+        }else{
+            if !allowMultiSelect {
+                selectedIndexs.removeAll()
+            }
+            selectedIndexs.append(btn.tag)
+        }
+        
+        for (index,value) in array.enumerated(){
+            let contain = selectedIndexs.contains { (inIndex) -> Bool in
+                return inIndex == index
+            }
+            configSelect(value,views[index],contain)
+        }
+    }
 }
 
 

@@ -20,13 +20,16 @@ class ViewController: UIViewController {
         
         
         
-        let f = SKFillableView().addTo(self.view).csFullfill()
-        let v = UIView()
-        f.fillSubView(view: v, height: 1200, verticalSpace: 0, leftSpace: 0, rightSpace: 0)
+        
+        let v = SKStackView<Person>().addTo(self.view).csCenterY().csFullfillHorizontal().csHeight(60).wBgColor(.lightGray)
+        
+        v.updateWith(array: [Person(age: 1),Person(age: 2),Person(age: 3),Person(age: 4)], allowMultiSelect: true, width: 50) { (p, v, isfirst) in
+            UILabel().wFeatures(pfr12,UIColor.red,v,NSTextAlignment.center).csFullfill().wText("\(p.age)").wTag(1)
+        } configSelect: { (p, v, select) in
+            let label = v.viewWithTag(1)
+            label?.backgroundColor = select ? .green : .blue
+        }
 
-//        let s = UIScrollView().addTo(self.view).csFullfill()
-//        let v = UIView().addTo(s).csFullfill().csWidth(s)
-//        let subv = UIView().addTo(v).csTop().csFullfillHorizontal().csHeight(2000).csBottomLessThanOrEqual()
     }
     
     override func didReceiveMemoryWarning() {
@@ -36,3 +39,6 @@ class ViewController: UIViewController {
     
 }
 
+struct Person {
+    var age = 0
+}
