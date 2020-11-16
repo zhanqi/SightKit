@@ -65,11 +65,11 @@ public var appLevelRequestResponse:((_ data:Data?,_ response:URLResponse?,_ erro
 /// open log for normal request result
 public var openRequestLog = false
 
-public func skRq<T:Decodable>(urlString:String?,method:RequestMethod = .get,paraDic:[String:Any]=[:],configRqHead:ConfigRqHeadClosure? = nil, rpClosure: @escaping (Data?, URLResponse?, Error?,T?) -> Void)  {
+public func skRq(urlString:String?,method:RequestMethod = .get,paraDic:[String:Any]=[:],configRqHead:ConfigRqHeadClosure? = nil, rpClosure: @escaping (Data?, URLResponse?, Error?) -> Void)  {
     guard let urlString = urlString else {
         print("Error: urlString is null")
         
-        rpClosure(nil,nil,Local_Error.null_url,nil)
+        rpClosure(nil,nil,Local_Error.null_url)
         return
     }
     
@@ -94,7 +94,7 @@ public func skRq<T:Decodable>(urlString:String?,method:RequestMethod = .get,para
         guard let url = URL(string: finalStr) else {
             print("Error: cannot create url with urlString:\(urlString)")
             
-            rpClosure(nil,nil,Local_Error.invalid_url,nil)
+            rpClosure(nil,nil,Local_Error.invalid_url)
             return
         }
         
@@ -111,7 +111,7 @@ public func skRq<T:Decodable>(urlString:String?,method:RequestMethod = .get,para
         guard let url = URL(string: urlString) else {
             print("Error: cannot create url with urlString:\(urlString)")
             
-            rpClosure(nil,nil,Local_Error.invalid_url,nil)
+            rpClosure(nil,nil,Local_Error.invalid_url)
             return
         }
         
@@ -131,7 +131,7 @@ public func skRq<T:Decodable>(urlString:String?,method:RequestMethod = .get,para
         } catch {
             print("Error: cannot creat Json from paraDic \(String(describing: finalParaDic))")
             
-            rpClosure(nil,nil,Local_Error.invalid_paramDic_to_data,nil)
+            rpClosure(nil,nil,Local_Error.invalid_paramDic_to_data)
             return
         }
         
@@ -166,9 +166,7 @@ public func skRq<T:Decodable>(urlString:String?,method:RequestMethod = .get,para
         }
 
         //return block
-        let newData:Data = data ?? Data()
-        let model = try? JSONDecoder().decode(T.self, from: newData)
-        rpClosure(data,response,error,model)
+        rpClosure(data,response,error)
         
         //for app level error handle
         DispatchQueue.main.async {

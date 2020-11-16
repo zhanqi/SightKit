@@ -13,6 +13,7 @@
 		0440864F251B70BB0054A6CB /* Ex+CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440864E251B70BB0054A6CB /* Ex+CGPoint.swift */; };
 		046189082542D20D00D3E29A /* SKNoticeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046189072542D20D00D3E29A /* SKNoticeBar.swift */; };
 		04676AA52544471800FA5C34 /* SKGetVerifyCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04676AA42544471800FA5C34 /* SKGetVerifyCodeView.swift */; };
+		048B8E7125629FF200899E14 /* SKStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B8E7025629FF200899E14 /* SKStackView.swift */; };
 		048F061325592EF3005F2595 /* Ex+pdf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048F061225592EF3005F2595 /* Ex+pdf.swift */; };
 		0683FC9DDCAB80660BD11E7159607DB6 /* World+DSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 707AEBC43F5F7CF3F440B7808237617A /* World+DSL.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		0725A6F6AF5A97F9D46B3188E135D5B2 /* NMBExceptionCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 693AEC1129C22005082E9DCE61AC4307 /* NMBExceptionCapture.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -264,6 +265,7 @@
 		0440864E251B70BB0054A6CB /* Ex+CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+CGPoint.swift"; sourceTree = "<group>"; };
 		046189072542D20D00D3E29A /* SKNoticeBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKNoticeBar.swift; sourceTree = "<group>"; };
 		04676AA42544471800FA5C34 /* SKGetVerifyCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKGetVerifyCodeView.swift; sourceTree = "<group>"; };
+		048B8E7025629FF200899E14 /* SKStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKStackView.swift; sourceTree = "<group>"; };
 		048F061225592EF3005F2595 /* Ex+pdf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+pdf.swift"; sourceTree = "<group>"; };
 		0513ABDD1CDCF03BC7B82AC7E18620EE /* BeAKindOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeAKindOf.swift; path = Sources/Nimble/Matchers/BeAKindOf.swift; sourceTree = "<group>"; };
 		05F3D57DE6385F0B15FDECFB5D0CD321 /* QuickSpecBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = QuickSpecBase.h; path = Sources/QuickSpecBase/include/QuickSpecBase.h; sourceTree = "<group>"; };
@@ -569,6 +571,7 @@
 				3874944C251A3BC300FC8BC9 /* SKFillableView.swift */,
 				046189072542D20D00D3E29A /* SKNoticeBar.swift */,
 				04676AA42544471800FA5C34 /* SKGetVerifyCodeView.swift */,
+				048B8E7025629FF200899E14 /* SKStackView.swift */,
 			);
 			name = SKViews;
 			path = SightKit/Classes/SKViews;
@@ -1324,6 +1327,7 @@
 				436FEF0801D752A9237C2076EBD6F1C7 /* SightKit-dummy.m in Sources */,
 				389BB9672518F6D40013CF0C /* Ex+UIApplication.swift in Sources */,
 				38C0DDBE2518ECA800647936 /* Ex+Number.swift in Sources */,
+				048B8E7125629FF200899E14 /* SKStackView.swift in Sources */,
 				38C0DDBC2518EBF900647936 /* Ex+Dictionary.swift in Sources */,
 				389BB9792518FD230013CF0C /* Ex+UITextField.swift in Sources */,
 				38C0DDC02518ED6C00647936 /* Ex+Data.swift in Sources */,
