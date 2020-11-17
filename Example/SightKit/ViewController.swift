@@ -21,14 +21,27 @@ class ViewController: UIViewController {
         
         
         
-        let v = SKStackView<Person>().addTo(self.view).csCenterY().csFullfillHorizontal().csHeight(60).wBgColor(.lightGray)
         
-        v.updateWith(array: [Person(age: 1),Person(age: 2),Person(age: 3),Person(age: 4)], allowMultiSelect: true, width: 50) { (p, v, isfirst) in
-            UILabel().wFeatures(pfr12,UIColor.red,v,NSTextAlignment.center).csFullfill().wText("\(p.age)").wTag(1)
-        } configSelect: { (p, v, select) in
-            let label = v.viewWithTag(1)
-            label?.backgroundColor = select ? .green : .blue
+        struct Person {
+            var age = 0
         }
+        let v = SKStackView<Person>().addTo(self.view).csCenterY().csFullfillHorizontal().wBgColor(.lightGray)
+        v.updateWith(array: [Person(age: 1),Person(age: 2),Person(age: 3)],direction: .vertical, widthHeight: 50, option: .multi) { (p, v, index, select) in
+            let label = v.viewWithTag(tag: 100) { () -> UIView in
+                return UILabel().wFeatures(pfr12,UIColor.black,NSTextAlignment.center,v,"\(p.age)").csFullfill().wTag(100)
+            }
+            label.backgroundColor = select ? .red : .blue
+        } select: { (array) in
+            print(array)
+        }
+        
+        
+//        v.updateWith(array: [Person(age: 1),Person(age: 2),Person(age: 3),Person(age: 4)], allowMultiSelect: true, width: 50) { (p, v, isfirst) in
+//            UILabel().wFeatures(pfr12,UIColor.red,v,NSTextAlignment.center).csFullfill().wText("\(p.age)").wTag(1)
+//        } configSelect: { (p, v, select) in
+//            let label = v.viewWithTag(1)
+//            label?.backgroundColor = select ? .green : .blue
+//        }
 
     }
     
@@ -39,6 +52,3 @@ class ViewController: UIViewController {
     
 }
 
-struct Person {
-    var age = 0
-}
