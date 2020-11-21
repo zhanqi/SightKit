@@ -25,12 +25,21 @@ class ViewController: UIViewController {
         struct Person {
             var age = 0
         }
-        let v = SKStackView<Person>().addTo(self.view).csCenterY().csFullfillHorizontal().wBgColor(.lightGray)
-        v.updateWith(array: [Person(age: 1),Person(age: 2),Person(age: 3)],direction: .vertical, widthHeight: 50, option: .multi) { (p, v, index, select) in
-            let label = v.viewWithTag(tag: 100) { () -> UIView in
-                return UILabel().wFeatures(pfr12,UIColor.black,NSTextAlignment.center,v,"\(p.age)").csFullfill().wTag(100)
+        class PersonView:UIView{
+            required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+            override init(frame: CGRect) {
+                super.init(frame: frame)
+                buildViews()
             }
-            label.backgroundColor = select ? .red : .blue
+            var label:UILabel!
+            func buildViews() {
+                label = UILabel().wFeatures(pfr12,UIColor.green,NSTextAlignment.center,self).csFullfill()
+            }
+        }
+        let v = SKStackView<Person,PersonView>().addTo(self.view).csCenterY().csFullfillHorizontal().wBgColor(.lightGray)
+        v.updateWith(array: [Person(age: 1),Person(age: 2),Person(age: 3)],direction: .vertical, widthHeight: 50, option: .single) { (p, v, index, select) in
+            v.label.text = "\(p.age)"
+            v.label.backgroundColor = select ? .red : .blue
         } select: { (array) in
             print(array)
         }
