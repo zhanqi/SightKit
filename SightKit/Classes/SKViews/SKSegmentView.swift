@@ -10,20 +10,18 @@ import Foundation
 /** view with multi titles ,separated equally, not scrollable
  ## 使用示例
  ```
- let sView = SKSegmentView.init(titles: ["按钮1","按钮2","按钮3"], configBtnClosure: { (view, btn,index,text) in
- btn.csFullfill()
- btn.wTitle(text).wFont(pfr(20)).wTitleColor(.blue)
- btn.setTitleColor(.red, for: .selected)
- }, configIndiClosure: { (indicator) -> (CGFloat, CGFloat?) in
- indicator.backgroundColor = .red
- indicator.csHeight(3)
- indicator.corner(radius: 1.5)
- return (-10,30)
- return (-10,nil)
+ let sView = SKSegmentView.init(titles: ["快速登录","账号密码登录"], configBtnClosure: { (view, btn,index,text) in
+     btn.csFullfill()
+     btn.wTitle(text).wFont(pfr(16)).wTitleColor(UIColor.init(hex: 0x333333))
+     btn.setTitleColor(UIColor.init(hex: 0xD29341), for: .selected)
+ }, configIndiClosure: { (indicator) -> (bottomOffset:CGFloat, width:CGFloat?) in
+     indicator.backgroundColor = UIColor.init(hex: 0xD29341)
+     indicator.csHeight(2)
+     return (-5,40)
  }) { (index) in
- print(index)
+     print(index)
  }
- sView.addTo(self.view).csFullfillHorizontal().csHeight(60).csTop(100)
+ sView.addTo(self.view).csCenterY().csFullfillHorizontal().csHeight(50)
  */
 open class SKSegmentView: UIView {
     
@@ -102,7 +100,7 @@ open class SKSegmentView: UIView {
         btn.isSelected = true
         
         self.layoutIfNeeded()
-        UIView.animate(withDuration: 0.2) {
+        UIView.animate(withDuration: 0.15) {
             self.csIndicatorCenterX.constant = CGFloat(btn.tag) * btn.superview!.frame.size.width
             self.layoutIfNeeded()
         }

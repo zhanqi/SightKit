@@ -19,38 +19,18 @@ class ViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = false
         
         
-        
-        
-        
-        struct Person {
-            var age = 0
+        let sView = SKSegmentView.init(titles: ["快速登录","账号密码登录"], configBtnClosure: { (view, btn,index,text) in
+            btn.csFullfill()
+            btn.wTitle(text).wFont(pfr(16)).wTitleColor(UIColor.init(hex: 0x333333))
+            btn.setTitleColor(UIColor.init(hex: 0xD29341), for: .selected)
+        }, configIndiClosure: { (indicator) -> (bottomOffset:CGFloat, width:CGFloat?) in
+            indicator.backgroundColor = UIColor.init(hex: 0xD29341)
+            indicator.csHeight(2)
+            return (-5,40)
+        }) { (index) in
+            print(index)
         }
-        class PersonView:UIView{
-            required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-            override init(frame: CGRect) {
-                super.init(frame: frame)
-                buildViews()
-            }
-            var label:UILabel!
-            func buildViews() {
-                label = UILabel().wFeatures(pfr12,UIColor.green,NSTextAlignment.center,self).csFullfill()
-            }
-        }
-        let v = SKStackView<Person,PersonView>().addTo(self.view).csCenterY().csFullfillHorizontal().wBgColor(.lightGray)
-        v.updateWith(array: [Person(age: 1),Person(age: 2),Person(age: 3)],direction: .vertical, widthHeight: 50, option: .single) { (p, v, index, select) in
-            v.label.text = "\(p.age)"
-            v.label.backgroundColor = select ? .red : .blue
-        } select: { (array) in
-            print(array)
-        }
-        
-        
-//        v.updateWith(array: [Person(age: 1),Person(age: 2),Person(age: 3),Person(age: 4)], allowMultiSelect: true, width: 50) { (p, v, isfirst) in
-//            UILabel().wFeatures(pfr12,UIColor.red,v,NSTextAlignment.center).csFullfill().wText("\(p.age)").wTag(1)
-//        } configSelect: { (p, v, select) in
-//            let label = v.viewWithTag(1)
-//            label?.backgroundColor = select ? .green : .blue
-//        }
+        sView.addTo(self.view).csCenterY().csFullfillHorizontal().csHeight(50)
 
     }
     
