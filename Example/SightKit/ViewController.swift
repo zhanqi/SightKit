@@ -19,19 +19,6 @@ class ViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = false
         
         
-        let sView = SKSegmentView.init(titles: ["快速登录","账号密码登录"], configBtnClosure: { (view, btn,index,text) in
-            btn.csFullfill()
-            btn.wTitle(text).wFont(pfr(16)).wTitleColor(UIColor.init(hex: 0x333333))
-            btn.setTitleColor(UIColor.init(hex: 0xD29341), for: .selected)
-        }, configIndiClosure: { (indicator) -> (bottomOffset:CGFloat, width:CGFloat?) in
-            indicator.backgroundColor = UIColor.init(hex: 0xD29341)
-            indicator.csHeight(2)
-            return (-5,40)
-        }) { (index) in
-            print(index)
-        }
-        sView.addTo(self.view).csCenterY().csFullfillHorizontal().csHeight(50)
-
     }
     
     override func didReceiveMemoryWarning() {

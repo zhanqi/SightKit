@@ -176,7 +176,20 @@ public extension UIButton {
 
 // MARK: - 图片和文字位置
 public extension UIButton {
+    /// 如果labei显示成省略号 尝试 将label隐藏 另外创建label放置来解决
+    /// label被压缩成省略号的原因是 默认情况下 image在左，titleLabel在右， 给定的button宽度不足就会成省略号，而setImgToTop 等方法仅仅是改变image和titleLabel的位置，不能改变压缩的情况。
+    @discardableResult func fixCompressedLabel() -> UIButton{
+        if let label = self.titleLabel{
+            let fixLabel = UILabel().addTo(self).csCenterX().csCenterY(label)
+            fixLabel.wText(label.text).wFont(label.font).wTextColor(label.textColor)
+            fixLabel.attributedText = label.attributedText
+            label.isHidden = true
+        }
+        return self
+    }
+    
     /// **NOTE**: Before invoke this methods you should setup title with font and image already 在使用约束的情况下，如果宽高给的不够 会导致位置错误
+    /// inset是相对原来位置的偏移 ， 将它理解为title的新位置与title旧位置之间的相对关系
     @discardableResult func setImgToTop(titleSpace space: CGFloat = 4.0) -> UIButton{
         guard let currentImage = currentImage else { return self }
         guard let currentTitle = currentTitle as NSString? else { return self }
