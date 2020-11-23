@@ -7,6 +7,23 @@
 
 import Foundation
 
+public func rgb(_ hex:String,_ alpha:Float = 1.0) -> UIColor {
+    var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+    var rgbValue:UInt32 = 10066329 //color #999999 if string has wrong format
+
+    if (cString.hasPrefix("#")) {
+        cString.remove(at: cString.startIndex)
+    }
+
+    if ((cString.count) == 6) {
+        Scanner(string: cString).scanHexInt32(&rgbValue)
+    }
+
+    let r = CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0
+    let g = CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0
+    let b = CGFloat(rgbValue & 0x0000FF) / 255.0
+    return UIColor.init(red: r, green: g, blue: b, alpha: CGFloat(alpha))
+}
 
 public extension UIColor {
     /// 十六进制创建颜色
