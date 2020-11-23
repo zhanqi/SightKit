@@ -69,7 +69,7 @@ public func skRq(urlString:String?,method:RequestMethod = .get,paraDic:[String:A
     guard let urlString = urlString else {
         print("Error: urlString is null")
         
-        rpClosure(nil,nil,Local_Error.null_url)
+        DispatchQueue.main.async { rpClosure(nil,nil,Local_Error.null_url) }
         return
     }
     
@@ -94,7 +94,7 @@ public func skRq(urlString:String?,method:RequestMethod = .get,paraDic:[String:A
         guard let url = URL(string: finalStr) else {
             print("Error: cannot create url with urlString:\(urlString)")
             
-            rpClosure(nil,nil,Local_Error.invalid_url)
+            DispatchQueue.main.async { rpClosure(nil,nil,Local_Error.invalid_url) }
             return
         }
         
@@ -111,7 +111,7 @@ public func skRq(urlString:String?,method:RequestMethod = .get,paraDic:[String:A
         guard let url = URL(string: urlString) else {
             print("Error: cannot create url with urlString:\(urlString)")
             
-            rpClosure(nil,nil,Local_Error.invalid_url)
+            DispatchQueue.main.async { rpClosure(nil,nil,Local_Error.invalid_url) }
             return
         }
         
@@ -131,7 +131,7 @@ public func skRq(urlString:String?,method:RequestMethod = .get,paraDic:[String:A
         } catch {
             print("Error: cannot creat Json from paraDic \(String(describing: finalParaDic))")
             
-            rpClosure(nil,nil,Local_Error.invalid_paramDic_to_data)
+            DispatchQueue.main.async { rpClosure(nil,nil,Local_Error.invalid_paramDic_to_data) }
             return
         }
         
@@ -166,7 +166,7 @@ public func skRq(urlString:String?,method:RequestMethod = .get,paraDic:[String:A
         }
 
         //return block
-        rpClosure(data,response,error)
+        DispatchQueue.main.async { rpClosure(data,response,error) }
         
         //for app level error handle
         DispatchQueue.main.async {

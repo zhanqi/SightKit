@@ -6,7 +6,12 @@
 //
 
 import Foundation
-
+/** rgb字符串转UIColor，如果格式错误 会使用颜色 #999999
+ ## 使用示例
+ ```
+ rgb("ED2343")
+ rgb("ED2343",0.8)
+ */
 public func rgb(_ hex:String,_ alpha:Float = 1.0) -> UIColor {
     var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
     var rgbValue:UInt32 = 10066329 //color #999999 if string has wrong format
