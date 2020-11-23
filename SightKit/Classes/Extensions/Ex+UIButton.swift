@@ -176,17 +176,7 @@ public extension UIButton {
 
 // MARK: - 图片和文字位置
 public extension UIButton {
-    /// 如果labei显示成省略号 尝试 将label隐藏 另外创建label放置来解决
-    /// label被压缩成省略号的原因是 默认情况下 image在左，titleLabel在右， 给定的button宽度不足就会成省略号，而setImgToTop 等方法仅仅是改变image和titleLabel的位置，不能改变压缩的情况。
-    @discardableResult func fixCompressedLabel() -> UIButton{
-        if let label = self.titleLabel{
-            let fixLabel = UILabel().addTo(self).csCenterX().csCenterY(label)
-            fixLabel.wText(label.text).wFont(label.font).wTextColor(label.textColor)
-            fixLabel.attributedText = label.attributedText
-            label.isHidden = true
-        }
-        return self
-    }
+    /// label被压缩成省略号的原因是 默认情况下 image在左，titleLabel在右， 给定的button宽度不足就会成省略号
     
     /// **NOTE**: Before invoke this methods you should setup title with font and image already 在使用约束的情况下，如果宽高给的不够 会导致位置错误
     /// inset是相对原来位置的偏移 ， 将它理解为title的新位置与title旧位置之间的相对关系
@@ -194,6 +184,9 @@ public extension UIButton {
         guard let currentImage = currentImage else { return self }
         guard let currentTitle = currentTitle as NSString? else { return self }
         guard let titleLabel = titleLabel else { return self }
+        
+        //先放大内容区域 以防止宽高不够导致的label被压缩问题
+        contentEdgeInsets = UIEdgeInsets(top: -1000, left: -1000, bottom: -1000, right: -1000)
         
         let halfSpace = (space / 2.0)
         let halfImageWidth = (currentImage.size.width / 2.0)
@@ -221,6 +214,9 @@ public extension UIButton {
         guard let currentTitle = currentTitle as NSString? else { return self }
         guard let titleLabel = titleLabel else { return self }
         
+        //先放大内容区域 以防止宽高不够导致的label被压缩问题
+        contentEdgeInsets = UIEdgeInsets(top: -1000, left: -1000, bottom: -1000, right: -1000)
+
         let halfSpace = (space / 2.0)
         let halfImageWidth = (currentImage.size.width / 2.0)
         let halfImageHeight = (currentImage.size.height / 2.0)
@@ -243,6 +239,9 @@ public extension UIButton {
     
     /// **NOTE**: Before invoke this methods you should setup title with font and image already
     @discardableResult func setImgToLeft(titleSpace space: CGFloat = 4.0) -> UIButton{
+        //先放大内容区域 以防止宽高不够导致的label被压缩问题
+        contentEdgeInsets = UIEdgeInsets(top: -1000, left: -1000, bottom: -1000, right: -1000)
+
         let halfSpace = (space / 2.0)
         titleEdgeInsets = UIEdgeInsets(top: 0,
                                        left: halfSpace,
@@ -264,6 +263,9 @@ public extension UIButton {
         guard let currentTitle = currentTitle as NSString? else { return self }
         guard let titleLabel = titleLabel else { return self }
         
+        //先放大内容区域 以防止宽高不够导致的label被压缩问题
+        contentEdgeInsets = UIEdgeInsets(top: -1000, left: -1000, bottom: -1000, right: -1000)
+
         let halfSpace = (space / 2.0)
         let imageWidth = currentImage.size.width
         let edgeWidth = currentTitle.size(withAttributes: [.font: titleLabel.font!]).width

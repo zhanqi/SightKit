@@ -1,5 +1,5 @@
 //
-//  SKStackView.swift
+//  SKSelectView.swift
 //  SightKit
 //
 //  Created by mac on 16/11/2020.
@@ -24,7 +24,7 @@ import UIKit
          label = UILabel().wFeatures(pfr12,UIColor.green,NSTextAlignment.center,self).csFullfill()
      }
  }
- let v = SKStackView<Person,PersonView>().addTo(self.view).csCenterY().csFullfillHorizontal().wBgColor(.lightGray)
+ let v = SKSelectView<Person,PersonView>().addTo(self.view).csCenterY().csFullfillHorizontal().wBgColor(.lightGray)
  v.updateWith(array: [Person(age: 1),Person(age: 2),Person(age: 3)],direction: .vertical, widthHeight: 50, option: .single) { (p, v, index, select) in
      v.label.text = "\(p.age)"
      v.label.backgroundColor = select ? .red : .blue
@@ -32,7 +32,7 @@ import UIKit
      print(array)
  }
  */
-open class SKStackView<T,V:UIView>: UIView {
+open class SKSelectView<T,V:UIView>: UIView {
     public typealias ConfigSingleView = (_ item:T,_ subView:V,_ index:Int,_ select:Bool)->()
     public typealias ConfigSelectionChange = (_ selections:[T])->()
     public enum SelectOption {
