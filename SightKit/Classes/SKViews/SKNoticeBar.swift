@@ -10,11 +10,11 @@ import Foundation
 /** 跑马灯
  ## 使用示例
  ```
- UINoticeBar.height = 30
- let noticeBar = UINoticeBar().addTo(self.view).csCenterY().csFullfillHorizontal().csHeight(30)
+ SKNoticeBar.height = 30
+ let noticeBar = SKNoticeBar().addTo(self.view).csCenterY().csFullfillHorizontal().csHeight(30)
  noticeBar.noticesArray = ["SightKit is a fast development kit for iOS,it saves a lot of work time, it is great!","SightKit 是一个快速开发库，可以极大的加快开发速度。"]
  */
-public class UINoticeBar: UIView {
+public class SKNoticeBar: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -62,20 +62,20 @@ public class UINoticeBar: UIView {
         csLabel1Left = label1.csLeft().lastCS
         
         label2 = UILabel().wTextColor(.black).wFont(pfr12).addTo(self).csLeft().csHeight(self)
-        csLabel2Top = label2.csTop(UINoticeBar.height).lastCS
+        csLabel2Top = label2.csTop(SKNoticeBar.height).lastCS
         cslabel2Left = label2.csLeft().lastCS
     }
 
     @objc func moveHorizon(){
         let label:UILabel = label1.frame.origin.y==0 ? label1 : label2
         if (label.intrinsicContentSize.width <= self.frame.size.width){
-            DispatchQueue.main.asyncAfter(wallDeadline: DispatchWallTime.now() + TimeInterval(UINoticeBar.minimunStaySeconds)) {
+            DispatchQueue.main.asyncAfter(wallDeadline: DispatchWallTime.now() + TimeInterval(SKNoticeBar.minimunStaySeconds)) {
                 self.moveYPosition()
             }
         }else{
             let offset = label.intrinsicContentSize.width-self.frame.size.width
-            var timeInterval = offset/UINoticeBar.PPS
-            timeInterval = max(timeInterval, UINoticeBar.minimunStaySeconds)
+            var timeInterval = offset/SKNoticeBar.PPS
+            timeInterval = max(timeInterval, SKNoticeBar.minimunStaySeconds)
             UIView.animate(withDuration: TimeInterval(timeInterval), animations: {
                 self.csLabel1Left.constant = -offset
                 self.layoutIfNeeded()
@@ -88,7 +88,7 @@ public class UINoticeBar: UIView {
     }
     @objc func moveYPosition(){
         UIView.animate(withDuration: 1.0, animations: {
-            self.csLabel1Top.constant = -UINoticeBar.height
+            self.csLabel1Top.constant = -SKNoticeBar.height
             self.csLabel2Top.constant = 0
             self.layoutIfNeeded()
         }) { (finish) in
@@ -109,7 +109,7 @@ public class UINoticeBar: UIView {
             label2.text = self.noticesArray![index2]
             
             self.csLabel1Top.constant = 0
-            self.csLabel2Top.constant = UINoticeBar.height
+            self.csLabel2Top.constant = SKNoticeBar.height
             self.layoutIfNeeded()
             self.moveHorizon()
         }
