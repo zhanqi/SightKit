@@ -145,7 +145,7 @@ public extension UITextField {
     }
     
     /// 唤起键盘时，键盘上方添加完成按钮 .inputView 可以使得不唤起键盘 而是唤起 一个自定义的view
-    fileprivate func addDoneButtonOnKeyboard()
+    @discardableResult func addDoneButtonOnKeyboard() -> UITextField
     {
         let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
         doneToolbar.barStyle = .default
@@ -159,6 +159,7 @@ public extension UITextField {
         doneToolbar.sizeToFit()
         
         self.inputAccessoryView = doneToolbar
+        return self
     }
     
     @objc func doneButtonAction(){

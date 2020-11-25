@@ -183,7 +183,7 @@ public extension UIView {
     ///
     /// - Parameters:
     ///   - tag: tag of the subView
-    ///   - creatClosure: if the sbuView with tag not exist,create in this closure,dont forget to set the right tag in the closure
+    ///   - creatClosure: if the sbuView with tag not exist,create in this closure and add to self,dont forget to set the right tag in the closure
     /// - Returns: the view with the tag
     func viewWithTag(tag:Int,creatClosure:tagViewClosure) -> UIView {
         return self.viewWithTag(tag) ?? creatClosure()
