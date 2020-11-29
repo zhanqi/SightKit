@@ -7,28 +7,62 @@
 
 import Foundation
 
-/*
-enum TimeFormat:String
+
+public enum TimeFormat:String
 {
-    case format_default            = "yyyy-MM-dd HH:mm:ss"
-    case format_yyMdHm             = "yy-MM-dd HH:mm"
-    case format_yyyyMdHm           = "yyyy-MM-dd HH:mm"
-    case format_yMd                = "yyyy-MM-dd"
-    case format_MdHms              = "MM-dd HH:mm:ss"
-    case format_MdHm               = "MM-dd HH:mm"
-    case format_Hms                = "HH:mm:ss"
-    case format_Hm                 = "HH:mm"
-    case format_Md                 = "MM-dd"
-    case format_yyMd               = "yy-MM-dd"
-    case format_YYMMdd             = "yyyyMMdd"
-    case format_yyyyMdHms          = "yyyyMMddHHmmss"
-    case format_yyyyMdHmsS         = "yyyy-MM-dd HH:mm:ss.SSS"
-    case format_yyyyMMddHHmmssSSS  = "yyyyMMddHHmmssSSS"
-    case format_yMdWithSlash       = "yyyy/MM/dd"
-    case format_yM                 = "yyyy-MM"
-    case format_yMdChangeSeparator = "yyyy.MM.dd"
+    
+    /// yyyy-MM-dd HH:mm:ss
+    case yyyy_MM_ddHHmmss       = "yyyy-MM-dd HH:mm:ss"
+    
+    /// yy-MM-dd HH:mm
+    case yy_MM_ddHHmm           = "yy-MM-dd HH:mm"
+    
+    /// yyyy-MM-dd HH:mm
+    case yyyy_MM_ddHHmm         = "yyyy-MM-dd HH:mm"
+    
+    /// yyyy-MM-dd
+    case yyyy_MM_dd             = "yyyy-MM-dd"
+    
+    /// MM-dd HH:mm:ss
+    case MM_ddHHmmss            = "MM-dd HH:mm:ss"
+    
+    /// MM-dd HH:mm
+    case MM_ddHHmm              = "MM-dd HH:mm"
+    
+    /// HH:mm:ss
+    case HHmmss                 = "HH:mm:ss"
+    
+    /// HH:mm
+    case HHmm                   = "HH:mm"
+    
+    /// MM-dd
+    case MM_dd                  = "MM-dd"
+    
+    /// yy-MM-dd
+    case yy_MM_dd               = "yy-MM-dd"
+    
+    /// yyyyMMdd
+    case yyyyMMdd               = "yyyyMMdd"
+    
+    /// yyyyMMddHHmmss
+    case yyyyMMddHHmmss         = "yyyyMMddHHmmss"
+    
+    /// yyyy-MM-dd HH:mm:ss.SSS
+    case yyyy_MM_ddHHmmssSSS    = "yyyy-MM-dd HH:mm:ss.SSS"
+    
+    /// yyyyMMddHHmmssSSS
+    case yyyyMMddHHmmssSSS      = "yyyyMMddHHmmssSSS"
+    
+    /// yyyy/MM/dd
+    case yyyyMMddSlash          = "yyyy/MM/dd"
+    
+    /// yyyy-MM
+    case yyyy_MM                = "yyyy-MM"
+    
+    /// yyyy.MM.dd
+    case yyyyMMddDot            = "yyyy.MM.dd"
 }
-*/
+ 
 
 public extension Int {
     var date:Date {
@@ -79,7 +113,7 @@ public var currentUnixTimeSecStr:String{
     }
 }
 
-extension Date {
+public extension Date {
     
     /// 两个日期中间有几天
     func days(between otherDate: Date) -> Int {
@@ -95,9 +129,9 @@ extension Date {
 
 // MARK: - 日期
 public extension Date{
-    func stringWith(format:String) -> String{
+    func stringWith(format:TimeFormat) -> String{
         let dateFormate = DateFormatter()
-        dateFormate.dateFormat = format
+        dateFormate.dateFormat = format.rawValue
         let str = dateFormate.string(from: self)
         return str
     }
@@ -159,7 +193,7 @@ public func currentTimeDes(timeStampStr: String) -> String {
     
     //获取当前的时间戳
     let currentTime = Date().timeIntervalSince1970
-//    print(currentTime,   timeStamp, "sdsss")
+    //    print(currentTime,   timeStamp, "sdsss")
     //时间戳为毫秒级要 ／ 1000， 秒就不用除1000，参数带没带000
     let timeSta:TimeInterval = TimeInterval(timeStamp / 1000)
     //时间差
@@ -187,4 +221,101 @@ public func currentTimeDes(timeStampStr: String) -> String {
     //yyyy-MM-dd HH:mm:ss
     dfmatter.dateFormat="yyyy年MM月dd日 HH:mm:ss"
     return dfmatter.string(from: date as Date)
+}
+
+public extension Date {
+    /// 日期这一天的0点0分0秒
+    var today:Date{
+        get {
+            let calendar:NSCalendar = NSCalendar.current as NSCalendar
+            let unitFlags: NSCalendar.Unit = [
+                NSCalendar.Unit.year,
+                NSCalendar.Unit.month,
+                NSCalendar.Unit.day,
+                .hour,
+                .minute,
+                .second ]
+            //calendar.components(unitFlags, fromDate: self)//解析当前的时间 返回NSDateComponents 解析后的数据后面设置解析后的时间在反转
+            var components = calendar.components(unitFlags, from: self as Date)
+            components.hour = 0
+            components.minute = 0
+            components.second = 0
+            let date = calendar.date(from: components)
+            
+            return date!
+        }
+    }
+    
+    /// 日期所在周的周一 0点0分0秒
+    var monday:Date {
+        get {
+            let nowDate = self
+            let calendar = Calendar.current
+            let comp = calendar.dateComponents([.year, .month, .day, .weekday], from: nowDate)
+            
+            // 获取今天是周几
+            let weekDay = comp.weekday
+            // 获取几天是几号
+            let day = comp.day
+            
+            // 计算当前日期和本周的星期一相差天数
+            var firstDiff: Int
+            // weekDay = 1;
+            if (weekDay == 1) {
+                firstDiff = -6;
+            } else {
+                firstDiff = calendar.firstWeekday - weekDay! + 1
+            }
+            
+            // 在当前日期(去掉时分秒)基础上加上差的天数
+            var firstDayComp = calendar.dateComponents([.year, .month, .day], from: nowDate)
+            firstDayComp.day = day! + firstDiff
+            let firstDayOfWeek = calendar.date(from: firstDayComp)
+            
+            return firstDayOfWeek!;
+        }
+    }
+    
+    /// 日期所在周的周日 0点0分0秒
+    var sunday:Date {
+        get {
+            let nowDate = self
+            let calendar = Calendar.current
+            let comp = calendar.dateComponents([.year, .month, .day, .weekday], from: nowDate)
+            
+            // 获取今天是周几
+            let weekDay = comp.weekday
+            // 获取几天是几号
+            let day = comp.day
+            
+            // 计算当前日期和本周的星期天相差天数
+            var lastDiff: Int
+            // weekDay = 1;
+            if (weekDay == 1) {
+                lastDiff = 0;
+            } else {
+                lastDiff = 8 - weekDay!
+            }
+            
+            // 在当前日期(去掉时分秒)基础上加上差的天数
+            var lastDayComp = calendar.dateComponents([.year, .month, .day], from: nowDate)
+            lastDayComp.day = day! + lastDiff
+            let lastDayOfWeek = calendar.date(from: lastDayComp)
+            
+            return lastDayOfWeek!;
+        }
+    }
+    
+    /// 日期所在月的第一天
+    var firstDayOfMonth:Date {
+        get {
+            let nowDayDate = self
+            
+            let calendar = Calendar.current
+            let components = calendar.dateComponents([.year, .month], from: nowDayDate)
+            let startOfMonth = calendar.date(from: components)
+            
+            return startOfMonth!
+        }
+    }
 }
