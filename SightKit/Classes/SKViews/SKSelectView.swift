@@ -28,13 +28,13 @@ import UIKit
  v.updateWith(array: [Person(age: 1),Person(age: 2),Person(age: 3)],direction: .vertical, widthHeight: 50, option: .single) { (p, v, index, select) in
      v.label.text = "\(p.age)"
      v.label.backgroundColor = select ? .red : .blue
- } select: { (array) in
+ } select: { (indexs,array) in
      print(array)
  }
  */
 open class SKSelectView<T,V:UIView>: UIView {
     public typealias ConfigSingleView = (_ item:T,_ subView:V,_ index:Int,_ select:Bool)->()
-    public typealias ConfigSelectionChange = (_ selections:[T])->()
+    public typealias ConfigSelectionChange = (_ indexs:[Int],_ selections:[T])->()
     public enum SelectOption {
         /// 最多只能选一个
         case single
@@ -113,7 +113,7 @@ open class SKSelectView<T,V:UIView>: UIView {
         }
         
         updateUI()
-        selectClosure(self.selectArray())
+        selectClosure(self.selectedIndexs, self.selectArray())
     }
     func updateUI(){
         for (index,value) in array.enumerated(){
