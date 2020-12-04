@@ -30,6 +30,20 @@ public func rgb(_ hex:String,_ alpha:Float = 1.0) -> UIColor {
     return UIColor.init(red: r, green: g, blue: b, alpha: CGFloat(alpha))
 }
 
+public extension String {
+    var toColor:UIColor{
+        get {
+            return rgb(self)
+        }
+    }
+}
+
+public extension UIColor {
+    func wAlpha(_ alpha:Float) -> UIColor {
+        return self.withAlphaComponent(CGFloat(alpha))
+    }
+}
+
 public extension UIColor {
     /// 十六进制创建颜色
     convenience init(hex: Int, alpha: Double = 1.0) {

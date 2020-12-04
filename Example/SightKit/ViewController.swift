@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "home_title_BgImg")?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
         self.navigationController?.navigationBar.isTranslucent = false
         
-        UIView().addTo(self.view).csCenter().csWidthHeight(60).wBgColor(rgb("542444"))        
+        UIView().addTo(self.view).csCenter().csWidthHeight(60).wBgColor("542444".toColor.wAlpha(0.4))        
     }
     
     override func didReceiveMemoryWarning() {
