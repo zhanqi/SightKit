@@ -65,6 +65,8 @@ public var appLevelRequestResponse:((_ data:Data?,_ response:URLResponse?,_ erro
 /// open log for normal request result
 public var openRequestLog = false
 
+public var skSessionConfiguration = URLSessionConfiguration.default
+
 public func skRq(urlString:String?,method:RequestMethod = .get,paraDic:[String:Any]=[:],configRqHead:ConfigRqHeadClosure? = nil, rpClosure: @escaping (Data?, URLResponse?, Error?) -> Void)  {
     guard let urlString = urlString else {
         print("Error: urlString is null")
@@ -143,7 +145,9 @@ public func skRq(urlString:String?,method:RequestMethod = .get,paraDic:[String:A
         }
     }
     
-    let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+    skSessionConfiguration.httpMaximumConnectionsPerHost = 4
+    let session = URLSession(configuration: skSessionConfiguration)
+    let task = session.dataTask(with: request) { (data, response, error) in
         //for log
         if (openRequestLog){
             print("url:",request.url?.absoluteString ?? "")
