@@ -214,36 +214,6 @@ public extension UIView{
     }
 }
 
-// MARK: - 添加若干个圆角的背景图
-public extension UIView {
-    func addCornerBg(corners:UIRectCorner,bgColor:UIColor,radius:CGFloat){
-        guard let superView = self.superview else { return }
-        let cView = CornerBgView()
-        superView.insertSubview(cView, belowSubview: self)
-        cView.csFullFillTo(view: self)
-        
-        cView.backgroundColor = bgColor
-        cView.corners = corners
-        cView.radius = radius
-    }
-}
-open class CornerBgView : UIView {
-    var radius:CGFloat = 0
-    var corners:UIRectCorner = []
-    
-    open override func draw(_ rect: CGRect) {
-        let maskPath = UIBezierPath(
-            roundedRect: bounds,
-            byRoundingCorners: corners,
-            cornerRadii: CGSize(width: radius, height: radius))
-        
-        let shape = CAShapeLayer()
-        shape.path = maskPath.cgPath
-        layer.mask = shape
-    }
-}
-
-
 public extension UIView {
     
     /// divide the view  horizontally equally with several subviews
@@ -275,5 +245,34 @@ public extension UIView {
             let view = UIView().addTo(self).csFullfillHorizontal().csVerticalSeperate(num: CGFloat(num), index: Int(i))
             viewEnum(view,i)
         }
+    }
+}
+
+public enum SKViewEdge {
+    case top,left,bottom,right
+}
+
+public extension UIView {
+    /** 添加边线
+     
+     view.addLine(edges: .right,.top,.bottom, color: .lightGray, value: 0.5)
+     */
+    @discardableResult func addLine(edges:SKViewEdge...,color:UIColor,value:Float) -> Self{
+        for edge in edges {
+            let line = UIView().wBgColor(color).addTo(self)
+            
+            switch edge {
+            case .top:
+                line.csTop().csFullfillHorizontal().csHeight(value.cgfloat)
+            case .left:
+                line.csLeft().csFullfillVertical().csWidth(value.cgfloat)
+            case .bottom:
+                line.csBottom().csFullfillHorizontal().csHeight(value.cgfloat)
+            case .right:
+                line.csRight().csFullfillVertical().csWidth(value.cgfloat)
+            }            
+        }
+        
+        return self
     }
 }

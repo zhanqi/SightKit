@@ -13,6 +13,7 @@
 		0440864F251B70BB0054A6CB /* Ex+CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440864E251B70BB0054A6CB /* Ex+CGPoint.swift */; };
 		046189082542D20D00D3E29A /* SKNoticeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046189072542D20D00D3E29A /* SKNoticeBar.swift */; };
 		04676AA52544471800FA5C34 /* SKGetVerifyCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04676AA42544471800FA5C34 /* SKGetVerifyCodeView.swift */; };
+		048069D7257F5A8D00852D2F /* Ex+UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048069D6257F5A8D00852D2F /* Ex+UITextView.swift */; };
 		048B8E7125629FF200899E14 /* SKSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B8E7025629FF200899E14 /* SKSelectView.swift */; };
 		048F061325592EF3005F2595 /* Ex+pdf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048F061225592EF3005F2595 /* Ex+pdf.swift */; };
 		0683FC9DDCAB80660BD11E7159607DB6 /* World+DSL.h in Headers */ = {isa = PBXBuildFile; fileRef = 707AEBC43F5F7CF3F440B7808237617A /* World+DSL.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -265,6 +266,7 @@
 		0440864E251B70BB0054A6CB /* Ex+CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+CGPoint.swift"; sourceTree = "<group>"; };
 		046189072542D20D00D3E29A /* SKNoticeBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKNoticeBar.swift; sourceTree = "<group>"; };
 		04676AA42544471800FA5C34 /* SKGetVerifyCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKGetVerifyCodeView.swift; sourceTree = "<group>"; };
+		048069D6257F5A8D00852D2F /* Ex+UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+UITextView.swift"; sourceTree = "<group>"; };
 		048B8E7025629FF200899E14 /* SKSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSelectView.swift; sourceTree = "<group>"; };
 		048F061225592EF3005F2595 /* Ex+pdf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+pdf.swift"; sourceTree = "<group>"; };
 		0513ABDD1CDCF03BC7B82AC7E18620EE /* BeAKindOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeAKindOf.swift; path = Sources/Nimble/Matchers/BeAKindOf.swift; sourceTree = "<group>"; };
@@ -604,6 +606,7 @@
 				389BB9762518FCD40013CF0C /* Ex+UIScrollView.swift */,
 				3874944E251A439500FC8BC9 /* Ex+UITabbar.swift */,
 				389BB9782518FD230013CF0C /* Ex+UITextField.swift */,
+				048069D6257F5A8D00852D2F /* Ex+UITextView.swift */,
 				38C0DDA52518D38C00647936 /* Ex+UIView.swift */,
 				38FB085C251BA4D80007E5D5 /* Ex+UIWindow.swift */,
 				389BB97A251900D30013CF0C /* Ex+UIViewController.swift */,
@@ -1312,6 +1315,7 @@
 				04676AA52544471800FA5C34 /* SKGetVerifyCodeView.swift in Sources */,
 				389BB9712518FBAD0013CF0C /* Ex+UIImage+gif.swift in Sources */,
 				38C0DDA82518DBE400647936 /* Ex+UILabel.swift in Sources */,
+				048069D7257F5A8D00852D2F /* Ex+UITextView.swift in Sources */,
 				3824B2132532AC9500D4389A /* Request.swift in Sources */,
 				388FF3B22516FCA2004ED238 /* Ex+NSLayoutConstraint.swift in Sources */,
 				38C0DDB62518E64600647936 /* Ex+Class.swift in Sources */,

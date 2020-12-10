@@ -35,7 +35,7 @@ open class SKFillableView: UIView {
         dismissBtn.addTarget(self, action: #selector(dismissAction), for: .touchUpInside)
         
         scrollView = UIScrollView()
-//        scrollView.delaysContentTouches = false //让内部的按钮 点击立即能改变背景颜色 但是会导致scrollview无法滚动
+//        scrollView.delaysContentTouches = false //让内部的按钮 点击立即能改变背景颜色 但是当内部满是（UIButton，UITextField）等control的时候会导致scrollview无法滚动
         mainView.addSubview(scrollView)
         scrollView.csFullfill()
         

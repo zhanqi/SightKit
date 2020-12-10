@@ -18,6 +18,11 @@ public extension UITextField {
         }
         return false
     }
+    
+    /// no nill, absolutely exist text
+    var string:String {
+        return self.text ?? ""
+    }
 }
 
 public extension UITextField {

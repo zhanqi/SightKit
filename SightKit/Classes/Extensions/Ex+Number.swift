@@ -98,6 +98,9 @@ public extension Float {
     var floor:Float{
         return floorf(self)
     }
+    var cgfloat:CGFloat{
+        return CGFloat(self)
+    }
 }
 
 public extension Optional {
