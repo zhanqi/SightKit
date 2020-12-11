@@ -139,9 +139,10 @@ public extension UIButton {
     }
     
     /// block方式点击回调
-    func addTargetClosure(closure: @escaping UIButtonTargetClosure) {
+    @discardableResult func addTargetClosure(closure: @escaping UIButtonTargetClosure) -> Self{
         targetClosure = closure
         addTarget(self, action: #selector(closureAction), for: .touchUpInside)
+        return self
     }
     
     @objc func closureAction() {

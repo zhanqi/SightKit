@@ -104,6 +104,33 @@ public extension UIView{
     }
 }
 
+// MARK: - 设置部分或全部圆角
+public extension UIView{
+    /// 部分或全部圆角，在设置约束之后调用即可生效
+    ///
+    /// - Parameters:
+    ///   - radius: radius for selected corners.
+    ///   - corners: array of corners to change (example: .bottomLeft, .topRight).
+    @discardableResult func corner(radius: CGFloat,corners: UIRectCorner...) -> Self{
+        self.layoutIfNeeded() //这句使得本方法适用于约束
+        
+        var corner:UIRectCorner = []
+        for v in corners {
+            corner.insert(UIRectCorner.Element(rawValue: v.rawValue))
+        }
+        let maskPath = UIBezierPath(
+            roundedRect: bounds,
+            byRoundingCorners: corner,
+            cornerRadii: CGSize(width: radius, height: radius))
+        
+        let shape = CAShapeLayer()
+        shape.path = maskPath.cgPath
+        layer.mask = shape
+        
+        return self
+    }
+}
+
 // MARK: - 找到view所在的vc
 public extension UIView {
     
@@ -187,30 +214,6 @@ public extension UIView {
     /// - Returns: the view with the tag
     func viewWithTag(tag:Int,creatClosure:tagViewClosure) -> UIView {
         return self.viewWithTag(tag) ?? creatClosure()
-    }
-}
-
-
-// MARK: - 设置部分或全部圆角
-public extension UIView{
-    /// 部分或全部圆角，在设置约束之后调用即可生效
-    ///
-    /// - Parameters:
-    ///   - corners: array of corners to change (example: [.bottomLeft, .topRight]).
-    ///   - radius: radius for selected corners.
-    @discardableResult func roundCorners(_ corners: UIRectCorner, radius: CGFloat) -> Self{
-        self.layoutIfNeeded() //这句使得本方法适用于约束
-        
-        let maskPath = UIBezierPath(
-            roundedRect: bounds,
-            byRoundingCorners: corners,
-            cornerRadii: CGSize(width: radius, height: radius))
-        
-        let shape = CAShapeLayer()
-        shape.path = maskPath.cgPath
-        layer.mask = shape
-        
-        return self
     }
 }
 

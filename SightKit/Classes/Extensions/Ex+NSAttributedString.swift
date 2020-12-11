@@ -65,7 +65,12 @@ public extension NSAttributedString {
         attributedString.addAttribute(NSAttributedString.Key.kern, value: space, range: NSRange(location: 0, length: self.string.count))
         return attributedString
     }
-
+    
+    static func + (left: NSAttributedString, right: NSAttributedString) -> NSAttributedString {
+        let final = NSMutableAttributedString(attributedString: left)
+        final.append(right)
+        return final
+    }
 }
 #endif
 

@@ -8,15 +8,7 @@
 import Foundation
 
 
-public extension UILabel{
-    /// 快捷初始化方法
-    convenience init(color: UIColor,font: UIFont,text:String? = nil){
-        self.init()
-        self.textColor = color
-        self.font = font
-        self.text = text
-    }
-    
+public extension UILabel{    
     @discardableResult func wFont(_ font:UIFont?) -> UILabel{
         self.font = font
         return self
