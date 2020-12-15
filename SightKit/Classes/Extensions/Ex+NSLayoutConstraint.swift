@@ -17,77 +17,35 @@ import UIKit
 import AppKit
 #endif
 
-
-public enum LayoutConstraintAttribute : Int {
-    case left
-    
-    case right
-    
-    case top
-    
-    case bottom
-    
-    case width
-    
-    case height
-    
-    case centerX
-    
-    case centerY
-    
-    case center //特殊处理，包含centerX和centerY
-    
-    var systemAttribute:NSLayoutConstraint.Attribute {
-        get {
-            switch self {
-            case .left:
-                return .left
-            case .right:
-                return .right
-            case .top:
-                return .top
-            case .bottom:
-                return .bottom
-            case .width:
-                return .width
-            case .height:
-                return .height
-            case .centerX:
-                return .centerX
-            case .centerY:
-                return .centerY
-            default:
-                return .notAnAttribute
-            }
-        }
-    }
+extension NSLayoutConstraint.Attribute {
+    static var center = NSLayoutConstraint.Attribute(rawValue: 2020)
 }
 
 
 #if os(iOS)
 
 extension UIView {
-    private struct SwiftCustomProperties{
+    private struct CustomLayoutProperties{
         static var lastCS:NSLayoutConstraint? = nil
     }
     
     /// the last constraint added
     public var lastCS:NSLayoutConstraint?{
         get {
-            return objc_getAssociatedObject(self, &SwiftCustomProperties.lastCS) as? NSLayoutConstraint
+            return objc_getAssociatedObject(self, &CustomLayoutProperties.lastCS) as? NSLayoutConstraint
         }
         set {
             if let unwrappedValue = newValue {
-                objc_setAssociatedObject(self, &SwiftCustomProperties.lastCS, unwrappedValue as NSLayoutConstraint?, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                objc_setAssociatedObject(self, &CustomLayoutProperties.lastCS, unwrappedValue as NSLayoutConstraint?, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             }
         }
     }
 }
 
 public extension UIView {
-    @discardableResult fileprivate func baseCsTo(attr:LayoutConstraintAttribute,v:UIView? = nil,attrV:LayoutConstraintAttribute? = nil,relatedBy:NSLayoutConstraint.Relation = .equal,multi:CGFloat = 1.0,constant:CGFloat = 0) -> Self{
+    @discardableResult fileprivate func baseCsTo(attr:NSLayoutConstraint.Attribute,v:UIView? = nil,attrV:NSLayoutConstraint.Attribute? = nil,relatedBy:NSLayoutConstraint.Relation = .equal,multi:CGFloat = 1.0,constant:CGFloat = 0) -> Self{
         guard let toView = v ?? self.superview else {
-            print("no another view or superView,cannot make cs")
+            print("no another view or superView,cannot make cs for " + Self.className)
             return self
         }
         
@@ -96,7 +54,7 @@ public extension UIView {
         if attr == .center {
             return self
         }else{
-            let cs = NSLayoutConstraint.init(item: self, attribute: attr.systemAttribute, relatedBy: relatedBy, toItem: toView, attribute: (attrV != nil) ? attrV!.systemAttribute : attr.systemAttribute, multiplier: multi, constant: constant)
+            let cs = NSLayoutConstraint.init(item: self, attribute: attr, relatedBy: relatedBy, toItem: toView, attribute: (attrV != nil) ? attrV! : attr, multiplier: multi, constant: constant)
             cs.isActive = true
             
             self.lastCS = cs
@@ -279,7 +237,7 @@ public extension UIView {
         return self
     }
     
-    @discardableResult func csTo(attrs:LayoutConstraintAttribute...,v:UIView? = nil) -> Self{
+    @discardableResult func csTo(attrs:NSLayoutConstraint.Attribute...,v:UIView? = nil) -> Self{
         guard let toView = v ?? self.superview else { return self}
         
         for att in attrs {

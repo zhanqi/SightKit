@@ -25,13 +25,13 @@ import AppKit
 #if os(iOS)
 
 public extension String {
-    func toAttrStr() -> NSAttributedString {
+    var toAttrStr : NSAttributedString {
         return NSAttributedString.init(string: self)
     }
 }
 
 public extension NSAttributedString {
-    @discardableResult func wFont(font:UIFont,subStr:String? = nil) -> NSAttributedString{
+    @discardableResult func wFont(_ font:UIFont,subStr:String? = nil) -> NSAttributedString{
         let text = subStr ?? self.string
         let attributedString = NSMutableAttributedString.init(attributedString: self)
         if text == self.string {
@@ -42,7 +42,7 @@ public extension NSAttributedString {
         }
         return attributedString
     }
-    @discardableResult func wTextColor(color:UIColor,subStr:String? = nil) -> NSAttributedString{
+    @discardableResult func wTextColor(_ color:UIColor,subStr:String? = nil) -> NSAttributedString{
         let text = subStr ?? self.string
         let attributedString = NSMutableAttributedString.init(attributedString: self)
         if text == self.string {
@@ -78,7 +78,7 @@ public extension NSAttributedString {
 #if os(macOS)
 
 public extension String {
-    func toAttrStr() -> NSAttributedString {
+    var toAttrStr : NSAttributedString {
         return NSAttributedString.init(string: self)
     }
 }

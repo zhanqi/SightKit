@@ -119,8 +119,27 @@ public extension Optional {
         return self.str
     }
 }
+public extension Optional where Wrapped == Data {
+    /// guarantee to return a data
+    var orEmpty: Wrapped { return self ?? Data() }
+}
+public extension Optional where Wrapped: ExpressibleByIntegerLiteral {
+    /// guarantee to return a numerical value
+    var orZero: Wrapped { return self ?? 0 }
+}
 
+public extension Optional where Wrapped: ExpressibleByBooleanLiteral {
+    /// guarantee to return a bool value
+    var orFalse: Wrapped { return self ?? false }
+}
 
+public extension Optional where Wrapped: Collection {
+    /// 无法区分Array 和 Dictionary ，待解决
+//    var orEmpty: Wrapped {
+//        return self ?? [:] as! Wrapped
+//        return self ?? [] as! Wrapped
+//    }
+}
 
 public extension BinaryFloatingPoint {
 

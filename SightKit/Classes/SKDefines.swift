@@ -25,13 +25,10 @@ public let NavStatusBarHeight: CGFloat = hasTopNotch ? 88 : 64
 public let TabbarHeight: CGFloat = hasTopNotch ? 83 : 49
 public let BottomExtraHeight: CGFloat = hasTopNotch ? 34 : 0
 
-public func widthForRate(nowH:CGFloat, w:CGFloat,h:CGFloat) -> CGFloat {
-    return w*nowH/h
-}
+public func widthForRate(nowH:CGFloat, w:CGFloat,h:CGFloat) -> CGFloat { return w*nowH/h }
+public func heightForRate(nowW:CGFloat, w:CGFloat,h:CGFloat) -> CGFloat { return h*nowW/w }
 
-public func heightForRate(nowW:CGFloat, w:CGFloat,h:CGFloat) -> CGFloat {
-    return h*nowW/w
-}
+let isPad: Bool = UIDevice.current.userInterfaceIdiom == .pad
 
 
 

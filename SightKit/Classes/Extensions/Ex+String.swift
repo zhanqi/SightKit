@@ -78,6 +78,13 @@ public extension String {
     //https://www.jianshu.com/p/120c91c0871a
 }
 
+public extension Optional where Wrapped == String {
+    /// guarantee to return a nonil string.(一定返回一个字符串）
+    var orEmpty: Wrapped { return self ?? "" }
+    
+    var isEmpty: Bool { return orEmpty.count == 0 }
+}
+
 public extension String {
     func isNewVersion(than compareVersion:String? = nil) -> Bool {
         let localVersion = (Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String) ?? "0"

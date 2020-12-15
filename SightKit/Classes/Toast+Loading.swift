@@ -56,12 +56,12 @@ public func showToast(toast:String?,fromView: UIView?=nil,duration:TimeInterval=
     }
 }
 public func showLoading(fromView: UIView){
-    showLoading(loadingText: "加载中...", fromView: fromView, duration: 1.5)
+    showLoading(loadingText: "加载中...", fromView: fromView)
 }
 public func showLoading(loadingText: String){
-    showLoading(loadingText: loadingText, fromView: nil, duration: 1.5)
+    showLoading(loadingText: loadingText, fromView: nil)
 }
-public func showLoading(loadingText:String?="加载中...",fromView: UIView?=nil,duration:TimeInterval?=1.5){
+public func showLoading(loadingText:String?="加载中...",fromView: UIView?=nil){
     guard let fromView = fromView ?? UIApplication.shared.keyWindow else {
         print("cannot make loading for there is no fatherView or window")
         return

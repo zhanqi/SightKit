@@ -19,11 +19,11 @@ class ViewController: UIViewController {
         self.navigationController?.navigationBar.isTranslucent = false
         
         let label = UILabel().wNumberOfLines(4).addTo(self.view).csCenter()
-        label.attributedText = "SightKit".toAttrStr().wFont(font: pfr13).wTextColor(color: .green) +
-            "is".toAttrStr().wFont(font: pfm16).wTextColor(color: .black) +
-            "powerful".toAttrStr().wFont(font: pfb20).wTextColor(color: .red) +
-            "and".toAttrStr().wFont(font: pfb10).wTextColor(color: .gray) +
-            "perfect".toAttrStr().wFont(font: pfm16).wTextColor(color: .blue)
+        label.attributedText = "SightKit".toAttrStr.wFont(pfr13).wTextColor(.green) +
+            "is".toAttrStr.wFont(pfm16).wTextColor(.black) +
+            "powerful".toAttrStr.wFont(pfb20).wTextColor(.red) +
+            "and".toAttrStr.wFont(pfb10).wTextColor(.gray) +
+            "perfect".toAttrStr.wFont(pfm16).wTextColor(.blue)
         
     }
     
