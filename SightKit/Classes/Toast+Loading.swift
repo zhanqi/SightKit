@@ -10,6 +10,8 @@ import Foundation
 public let tagForToastView = 2020001
 public let tagForLoadingView = 2020002
 
+public var skDefaultLoadingText = "加载中..."
+
 public func showToast(toast:String?,fromView: UIView?=nil,duration:TimeInterval=1.5){
     guard let fromView = fromView ?? UIApplication.shared.keyWindow else {
         print("cannot make toast for there is no fatherView or window")
@@ -56,18 +58,14 @@ public func showToast(toast:String?,fromView: UIView?=nil,duration:TimeInterval=
     }
 }
 public func showLoading(fromView: UIView){
-    showLoading(loadingText: "加载中...", fromView: fromView)
+    showLoading(loadingText: skDefaultLoadingText, fromView: fromView)
 }
 public func showLoading(loadingText: String){
     showLoading(loadingText: loadingText, fromView: nil)
 }
-public func showLoading(loadingText:String?="加载中...",fromView: UIView?=nil){
+public func showLoading(loadingText:String!=skDefaultLoadingText,fromView: UIView?=nil){
     guard let fromView = fromView ?? UIApplication.shared.keyWindow else {
         print("cannot make loading for there is no fatherView or window")
-        return
-    }
-    guard let loadingText = loadingText else {
-        print("loading string is null ,nothing to show")
         return
     }
     
