@@ -503,18 +503,48 @@ public extension UIView {
     }
 }
 
+// MARK: - 为了写代码的时候更便捷，创建如下变量来配合csWidth方法使用
+public let ska_left = NSLayoutConstraint.Attribute.left
+public let ska_right = NSLayoutConstraint.Attribute.right
+public let ska_top = NSLayoutConstraint.Attribute.top
+public let ska_bottom = NSLayoutConstraint.Attribute.bottom
+public let ska_width = NSLayoutConstraint.Attribute.width
+public let ska_height = NSLayoutConstraint.Attribute.height
+public let ska_centerX = NSLayoutConstraint.Attribute.centerX
+public let ska_centerY = NSLayoutConstraint.Attribute.centerY
+public let ska_center = NSLayoutConstraint.Attribute.center!
+
+public let skr_equal = NSLayoutConstraint.Relation.equal
+public let skr_less = NSLayoutConstraint.Relation.lessThanOrEqual
+public let skr_greater = NSLayoutConstraint.Relation.greaterThanOrEqual
+
 public extension UIView {
-    @discardableResult func csWith(_ configs:[Any]...) -> Self {
+    /** 极简方式添加多个约束
+     
+     label.csWith(
+         [ska_right,-20.0],
+         [ska_top,self.view,30],
+         [ska_left,self.view,ska_centerX,40],
+         [ska_bottom,self.view,ska_centerY,skr_greater,20,0.8]
+     )
+     */
+    @discardableResult func csWith(_ configs:[Any?]...) -> Self {
         for array in configs {
             
-            var attribute:NSLayoutConstraint.Attribute? = nil
+            var attribute_first:NSLayoutConstraint.Attribute? = nil
             var view:UIView? = nil
+            var attribute_second:NSLayoutConstraint.Attribute? = nil
             var relation = NSLayoutConstraint.Relation.equal
-            var constant:CGFloat = 0
+            var constant:CGFloat? = nil
+            var multi:CGFloat = 1.0
             
             for element in array {
                 if let element = element as? NSLayoutConstraint.Attribute {
-                    attribute = element
+                    if attribute_first == nil {
+                        attribute_first = element
+                    }else{
+                        attribute_second = element
+                    }
                 }
                 if let element = element as? UIView{
                     view = element
@@ -523,15 +553,28 @@ public extension UIView {
                     relation = element
                 }
                 if let element = element as? Int {
-                    constant = CGFloat(element)
+                    if (constant == nil){
+                        constant = CGFloat(element)
+                    }else{
+                        multi = CGFloat(element)
+                    }
                 }
                 if let element = element as? Double {
-                    constant = CGFloat(element)
+                    if (constant == nil){
+                        constant = CGFloat(element)
+                    }else{
+                        multi = CGFloat(element)
+                    }
                 }
             }
             
-            if let attr = attribute {
-                baseCsTo(attr: attr, v: view, attrV: attr, relatedBy: relation, multi: 1.0, constant: constant)
+            if let attr = attribute_first {
+                if attr == .center{
+                    baseCsTo(attr: .centerX, v: view, attrV: .centerX, relatedBy: relation, multi: multi, constant: constant.orZero)
+                    baseCsTo(attr: .centerY, v: view, attrV: .centerY, relatedBy: relation, multi: multi, constant: constant.orZero)
+                }else{
+                    baseCsTo(attr: attr, v: view, attrV: attribute_second ?? attr, relatedBy: relation, multi: multi, constant: constant.orZero)
+                }
             }
         }
         

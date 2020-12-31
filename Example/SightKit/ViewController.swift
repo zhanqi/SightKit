@@ -24,11 +24,15 @@ class ViewController: UIViewController {
             "powerful".toAttrStr.wFont(pfb20).wTextColor(.red) +
             "and".toAttrStr.wFont(pfb10).wTextColor(.gray) +
             "perfect".toAttrStr.wFont(pfm16).wTextColor(.blue)
-        label.csWith(
-            [NSLayoutConstraint.Attribute.left,20],
-            [NSLayoutConstraint.Attribute.top,200]
-            
-        )
+//        label.csWith(
+//            [ska_right,-20.0],
+//            [ska_top,self.view,30],
+//            [ska_left,self.view,ska_centerX,40],
+//            [ska_bottom,self.view,ska_centerY,skr_greater,20,0.8]
+//        )
+        
+        //此处存疑，[ska_width,100] 是等于self.view的宽度加100，不是我想要的
+        UIButton().wBgColor(.gray).addTo(self.view).csWith([ska_center],[ska_width,100],[ska_right,40])
     }
     
     override func didReceiveMemoryWarning() {
