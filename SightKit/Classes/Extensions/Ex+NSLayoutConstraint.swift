@@ -123,8 +123,8 @@ public extension UIView {
     }
 
     @discardableResult func csCenter(_ v:UIView? = nil) -> Self{
-        baseCsTo(attr: .centerX)
-        baseCsTo(attr: .centerY)
+        baseCsTo(attr: .centerX, v: v)
+        baseCsTo(attr: .centerY, v: v)
         return self
     }
     
@@ -503,5 +503,40 @@ public extension UIView {
     }
 }
 
+public extension UIView {
+    @discardableResult func csWith(_ configs:[Any]...) -> Self {
+        for array in configs {
+            
+            var attribute:NSLayoutConstraint.Attribute? = nil
+            var view:UIView? = nil
+            var relation = NSLayoutConstraint.Relation.equal
+            var constant:CGFloat = 0
+            
+            for element in array {
+                if let element = element as? NSLayoutConstraint.Attribute {
+                    attribute = element
+                }
+                if let element = element as? UIView{
+                    view = element
+                }
+                if let element = element as? NSLayoutConstraint.Relation {
+                    relation = element
+                }
+                if let element = element as? Int {
+                    constant = CGFloat(element)
+                }
+                if let element = element as? Double {
+                    constant = CGFloat(element)
+                }
+            }
+            
+            if let attr = attribute {
+                baseCsTo(attr: attr, v: view, attrV: attr, relatedBy: relation, multi: 1.0, constant: constant)
+            }
+        }
+        
+        return self
+    }
+}
 #endif
 
