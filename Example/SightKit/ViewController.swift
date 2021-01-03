@@ -18,7 +18,11 @@ class ViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "home_title_BgImg")?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
         self.navigationController?.navigationBar.isTranslucent = false
         
-        UIView().addTo(self.view).csCenter().csWidthHeight(60).wBgColor("542444".toColor.wAlpha(0.4))
+        let v = UIView().addTo(self.view).csHeight(200).csTop().csLeft()
+        for i in 0...30 {
+            let btn = UIButton().addTo(v)
+            btn.csFormation(index: i, rowNum: 4, direction: .horizontal, widthHeight: 30, horizonSpace: 10, verticalSpace: 10, top: 5, left: 5, bottom: 5, right: 5)
+        }
         
         HttpManager.GetRequestSession(urlstr: "http://apis.eolinker.com/common/weather/get15DaysWeatherByArea", parameters: [:]) { (response) in
             

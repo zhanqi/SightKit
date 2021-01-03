@@ -397,6 +397,76 @@ public extension UIView {
         return self
     }
     
+    /// 放置阵列单元
+    /// - Parameters:
+    ///   - index: 第几个
+    ///   - rowNum: 每行几个
+    ///   - direction: 纵向还是横向
+    ///   - widthHeight: 单元高度（纵向），宽度（横向）
+    ///   - horizonSpace: 单元间纵向间距
+    ///   - verticalSpace: 单元间横向间距
+    ///   - top: 上边距，正值
+    ///   - left: 左边距，正值
+    ///   - bottom: 下边距，正值
+    ///   - right: 右边距，正值
+    /// - Returns: self
+    @discardableResult func csFormation(index:Int,rowNum:Int,direction:UICollectionView.ScrollDirection,widthHeight:CGFloat,horizonSpace:CGFloat,verticalSpace:CGFloat,top:CGFloat,left:CGFloat,bottom:CGFloat,right:CGFloat) -> Self{
+        guard rowNum > 0 else {
+            print("rowNum is 0 , no formation can be build")
+            return self
+        }
+        guard let sView = self.superview else {
+            print("no superview, no formation can be build")
+            return self
+        }
+                
+        if direction == .horizontal {
+            csLeft(left+CGFloat(index/rowNum)*(widthHeight+horizonSpace))
+            csWidth(widthHeight)
+            csRightLessThanOrEqual(-right)
+            
+            var lastView:UIView?
+            for i in 0..<rowNum {
+                let isMe = index % rowNum == i
+                let v = isMe ? self : UIView().addTo(sView)
+                v.isHidden = !isMe
+                if let lastView = lastView {
+                    v.cstoBottomOf(view: lastView, constant: verticalSpace).csHeight(lastView)
+                }else{
+                    v.csTop(top)
+                }
+                if i == rowNum - 1 {
+                    v.csBottom(-bottom)
+                }
+                
+                lastView = v
+            }
+        }else{
+            csTop(top+CGFloat(index/rowNum)*(widthHeight+verticalSpace))
+            csHeight(widthHeight)
+            csBottomLessThanOrEqual(-bottom)
+            
+            var lastView:UIView?
+            for i in 0..<rowNum {
+                let isMe = index % rowNum == i
+                let v = isMe ? self : UIView().addTo(sView)
+                v.isHidden = !isMe
+                if let lastView = lastView {
+                    v.cstoRightOf(view: lastView, constant: horizonSpace).csWidth(lastView)
+                }else{
+                    v.csLeft(left)
+                }
+                if i == rowNum - 1 {
+                    v.csRight(-right)
+                }
+                
+                lastView = v
+            }
+        }
+        
+        return self
+    }
+    
     // MARK: - SafeArea 相关
     @discardableResult func csSafeAreaTop(_ value:CGFloat = 0) -> Self{
         guard let toView = self.superview else { return self }

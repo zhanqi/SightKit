@@ -106,6 +106,12 @@ open class SKFillableView: UIView {
         lastView = view
     }
     
+    @discardableResult public func fillSpace(_ height:CGFloat) -> UIView{
+        let view = UIView().csHeight(height)
+        self.fillSubView(view: view)
+        return view
+    }
+    
     public func clearAll(){
         self.contentView.removeAllSubviews()
         self.lastView = nil
