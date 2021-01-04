@@ -355,6 +355,76 @@ public extension UIView {
         return self
     }
     
+    /// 放置阵列单元
+    /// - Parameters:
+    ///   - index: 第几个
+    ///   - rowNum: 每行几个
+    ///   - direction: 纵向还是横向
+    ///   - widthHeight: 单元高度（纵向），宽度（横向）
+    ///   - horizonSpace: 单元间纵向间距
+    ///   - verticalSpace: 单元间横向间距
+    ///   - top: 上边距，正值
+    ///   - left: 左边距，正值
+    ///   - bottom: 下边距，正值
+    ///   - right: 右边距，正值
+    /// - Returns: self
+    @discardableResult func csFormation(index:Int,rowNum:Int,direction:UICollectionView.ScrollDirection,widthHeight:CGFloat,horizonSpace:CGFloat,verticalSpace:CGFloat,top:CGFloat,left:CGFloat,bottom:CGFloat,right:CGFloat) -> Self{
+        guard rowNum > 0 else {
+            print("rowNum is 0 , no formation can be build")
+            return self
+        }
+        guard let sView = self.superview else {
+            print("no superview, no formation can be build")
+            return self
+        }
+                
+        if direction == .horizontal {
+            csLeft(left+CGFloat(index/rowNum)*(widthHeight+horizonSpace))
+            csWidth(widthHeight)
+            csRightLessThanOrEqual(-right)
+            
+            var lastView:UIView?
+            for i in 0..<rowNum {
+                let isMe = index % rowNum == i
+                let v = isMe ? self : UIView().addTo(sView)
+                v.isHidden = !isMe
+                if let lastView = lastView {
+                    v.cstoBottomOf(view: lastView, constant: verticalSpace).csHeight(lastView)
+                }else{
+                    v.csTop(top)
+                }
+                if i == rowNum - 1 {
+                    v.csBottom(-bottom)
+                }
+                
+                lastView = v
+            }
+        }else{
+            csTop(top+CGFloat(index/rowNum)*(widthHeight+verticalSpace))
+            csHeight(widthHeight)
+            csBottomLessThanOrEqual(-bottom)
+            
+            var lastView:UIView?
+            for i in 0..<rowNum {
+                let isMe = index % rowNum == i
+                let v = isMe ? self : UIView().addTo(sView)
+                v.isHidden = !isMe
+                if let lastView = lastView {
+                    v.cstoRightOf(view: lastView, constant: horizonSpace).csWidth(lastView)
+                }else{
+                    v.csLeft(left)
+                }
+                if i == rowNum - 1 {
+                    v.csRight(-right)
+                }
+                
+                lastView = v
+            }
+        }
+        
+        return self
+    }
+    
     // MARK: - SafeArea 相关
     @discardableResult func csSafeAreaTop(_ value:CGFloat = 0) -> Self{
         guard let toView = self.superview else { return self }
@@ -503,83 +573,6 @@ public extension UIView {
     }
 }
 
-// MARK: - 为了写代码的时候更便捷，创建如下变量来配合csWidth方法使用
-public let ska_left = NSLayoutConstraint.Attribute.left
-public let ska_right = NSLayoutConstraint.Attribute.right
-public let ska_top = NSLayoutConstraint.Attribute.top
-public let ska_bottom = NSLayoutConstraint.Attribute.bottom
-public let ska_width = NSLayoutConstraint.Attribute.width
-public let ska_height = NSLayoutConstraint.Attribute.height
-public let ska_centerX = NSLayoutConstraint.Attribute.centerX
-public let ska_centerY = NSLayoutConstraint.Attribute.centerY
-public let ska_center = NSLayoutConstraint.Attribute.center!
 
-public let skr_equal = NSLayoutConstraint.Relation.equal
-public let skr_less = NSLayoutConstraint.Relation.lessThanOrEqual
-public let skr_greater = NSLayoutConstraint.Relation.greaterThanOrEqual
-
-public extension UIView {
-    /** 极简方式添加多个约束
-     
-     label.csWith(
-         [ska_right,-20.0],
-         [ska_top,self.view,30],
-         [ska_left,self.view,ska_centerX,40],
-         [ska_bottom,self.view,ska_centerY,skr_greater,20,0.8]
-     )
-     */
-    @discardableResult func csWith(_ configs:[Any?]...) -> Self {
-        for array in configs {
-            
-            var attribute_first:NSLayoutConstraint.Attribute? = nil
-            var view:UIView? = nil
-            var attribute_second:NSLayoutConstraint.Attribute? = nil
-            var relation = NSLayoutConstraint.Relation.equal
-            var constant:CGFloat? = nil
-            var multi:CGFloat = 1.0
-            
-            for element in array {
-                if let element = element as? NSLayoutConstraint.Attribute {
-                    if attribute_first == nil {
-                        attribute_first = element
-                    }else{
-                        attribute_second = element
-                    }
-                }
-                if let element = element as? UIView{
-                    view = element
-                }
-                if let element = element as? NSLayoutConstraint.Relation {
-                    relation = element
-                }
-                if let element = element as? Int {
-                    if (constant == nil){
-                        constant = CGFloat(element)
-                    }else{
-                        multi = CGFloat(element)
-                    }
-                }
-                if let element = element as? Double {
-                    if (constant == nil){
-                        constant = CGFloat(element)
-                    }else{
-                        multi = CGFloat(element)
-                    }
-                }
-            }
-            
-            if let attr = attribute_first {
-                if attr == .center{
-                    baseCsTo(attr: .centerX, v: view, attrV: .centerX, relatedBy: relation, multi: multi, constant: constant.orZero)
-                    baseCsTo(attr: .centerY, v: view, attrV: .centerY, relatedBy: relation, multi: multi, constant: constant.orZero)
-                }else{
-                    baseCsTo(attr: attr, v: view, attrV: attribute_second ?? attr, relatedBy: relation, multi: multi, constant: constant.orZero)
-                }
-            }
-        }
-        
-        return self
-    }
-}
 #endif
 
