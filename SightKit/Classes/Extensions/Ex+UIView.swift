@@ -230,7 +230,7 @@ public extension UIView {
         }
         
         for i in 0...num-1 {
-            let view = UIView().addTo(self).csFullfillVertical().csHorizonSeperate(num: CGFloat(num), index: Int(i))
+            let view = UIView().addTo(self).csFullfillVertical().csHorizonSeparate(num: CGFloat(num), index: Int(i))
             viewEnum(view,i)
         }
     }
@@ -245,7 +245,7 @@ public extension UIView {
         }
         
         for i in 0...num-1 {
-            let view = UIView().addTo(self).csFullfillHorizontal().csVerticalSeperate(num: CGFloat(num), index: Int(i))
+            let view = UIView().addTo(self).csFullfillHorizontal().csVerticalSeparate(num: CGFloat(num), index: Int(i))
             viewEnum(view,i)
         }
     }

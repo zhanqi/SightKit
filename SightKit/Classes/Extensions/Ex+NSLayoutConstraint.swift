@@ -21,6 +21,7 @@ extension NSLayoutConstraint.Attribute {
     static var center = NSLayoutConstraint.Attribute(rawValue: 2020)
 }
 
+public typealias SKFormationDirection = UICollectionView.ScrollDirection
 
 #if os(iOS)
 
@@ -331,7 +332,7 @@ public extension UIView {
     /// 水平均分 放置某个子view
     /// - Parameter num: 均分数量
     /// - Parameter index: 第几个view，从0开始，请填入整数
-    @discardableResult func csHorizonSeperate(num:CGFloat,index:Int) -> Self{
+    @discardableResult func csHorizonSeparate(num:CGFloat,index:Int) -> Self{
         let floatIndex = CGFloat(index)
         guard floatIndex < num else {
             print("index out of range ,cannot set horizonSeperate")
@@ -344,7 +345,7 @@ public extension UIView {
     /// 垂直均分 放置某个子view
     /// - Parameter num: 均分数量
     /// - Parameter index: 第几个view，从0开始， 请填入整数
-    @discardableResult func csVerticalSeperate(num:CGFloat,index:Int) -> Self{
+    @discardableResult func csVerticalSeparate(num:CGFloat,index:Int) -> Self{
         let floatIndex = CGFloat(index)
         guard floatIndex < num else {
             print("index out of range ,cannot set verticalSeperate")
@@ -368,7 +369,11 @@ public extension UIView {
     ///   - bottom: 下边距，正值
     ///   - right: 右边距，正值
     /// - Returns: self
-    @discardableResult func csFormation(index:Int,rowNum:Int,direction:UICollectionView.ScrollDirection,widthHeight:CGFloat,horizonSpace:CGFloat,verticalSpace:CGFloat,top:CGFloat,left:CGFloat,bottom:CGFloat,right:CGFloat) -> Self{
+    @discardableResult func csFormation(index:Int,rowNum:Int,direction:SKFormationDirection,widthHeight:CGFloat,horizonSpace:CGFloat,verticalSpace:CGFloat,top:CGFloat,left:CGFloat,bottom:CGFloat,right:CGFloat) -> Self{
+        guard index >= 0 else {
+            print("index is valid for formation")
+            return self
+        }
         guard rowNum > 0 else {
             print("rowNum is 0 , no formation can be build")
             return self
