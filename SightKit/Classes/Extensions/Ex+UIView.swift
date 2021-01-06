@@ -217,6 +217,7 @@ public extension UIView {
     }
 }
 
+// MARK: - divide
 public extension UIView {
     
     /// divide the view  horizontally equally with several subviews
@@ -224,7 +225,7 @@ public extension UIView {
     ///   - num: number of subviews
     ///   - viewEnum: closure to config the subview
     /// - Returns: self
-    func divideHorizon(num:Int,viewEnum:((_ subView:UIView,_ index:Int)->())){
+    func divideHorizontal(num:Int,viewEnum:((_ subView:UIView,_ index:Int)->())){
         guard num > 0 else {
             return
         }
@@ -251,6 +252,72 @@ public extension UIView {
     }
 }
 
+// MARK: - repeatAdd
+public extension UIView {
+    private struct SKAddViewProperties{
+        static var lastSKAddView:UIView? = nil
+    }
+    
+    var lastSKAddView:UIView?{
+        get {
+            return objc_getAssociatedObject(self, &SKAddViewProperties.lastSKAddView) as? UIView
+        }
+        set {
+            if let unwrappedValue = newValue {
+                objc_setAssociatedObject(self, &SKAddViewProperties.lastSKAddView, unwrappedValue as UIView?, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            }
+        }
+    }
+    
+    
+    /// 横向填充一个view，宽度由内部决定，或在block中配置
+    @discardableResult func addSubviewHorizontal(viewConfig:((_ subView:UIView)->())) -> UIView? {
+        let view = UIView()
+        if let lastV = self.lastSKAddView {
+            view.addTo(self).cstoRightOf(view: lastV).csFullfillVertical().csRightLessThanOrEqual()
+        }else{
+            view.addTo(self).csLeft().csFullfillVertical().csRightLessThanOrEqual()
+        }
+        viewConfig(view)
+        self.lastSKAddView = view
+        return view
+    }
+    
+    /// 纵向填充一个view，高度由内部决定，或在block中配置
+    @discardableResult func addSubviewVertical(viewConfig:((_ subView:UIView)->())) -> UIView? {
+        let view = UIView()
+        if let lastV = self.lastSKAddView {
+            view.addTo(self).cstoBottomOf(view: lastV).csFullfillHorizontal().csBottomLessThanOrEqual()
+        }else{
+            view.addTo(self).csTop().csFullfillHorizontal().csBottomLessThanOrEqual()
+        }
+        viewConfig(view)
+        self.lastSKAddView = view
+        return view
+    }
+    
+    /// 横向填充多个view，宽度由内部决定，或在block中配置
+    @discardableResult func addSubViewHorizontalRepeat(num:UInt,viewConfig:(_ subView:UIView,_ index:UInt)->()) -> UIView?{
+        for i in 0..<num {
+            addSubviewHorizontal { (v) in
+                viewConfig(v,i)
+            }
+        }
+        return self.lastSKAddView
+    }
+    
+    /// 纵向填充多个view，高度由内部决定，或在block中配置
+    @discardableResult func addSubViewVerticalRepeat(num:UInt,viewConfig:(_ subView:UIView,_ index:UInt)->()) -> UIView?{
+        for i in 0..<num {
+            addSubviewVertical(viewConfig: { (v) in
+                viewConfig(v,i)
+            })
+        }
+        return self.lastSKAddView
+    }
+}
+
+// MARK: - addline
 public enum SKViewEdge {
     case top,left,bottom,right
 }

@@ -18,12 +18,19 @@ class ViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "home_title_BgImg")?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch), for: .default)
         self.navigationController?.navigationBar.isTranslucent = false
         
-        let label = UILabel().wNumberOfLines(4).addTo(self.view)
+        let label = UILabel().wNumberOfLines(4).addTo(self.view).csCenter()
         label.attributedText = "SightKit".toAttrStr.wFont(pfr13).wTextColor(.green) +
             "is".toAttrStr.wFont(pfm16).wTextColor(.black) +
             "powerful".toAttrStr.wFont(pfb20).wTextColor(.red) +
             "and".toAttrStr.wFont(pfb10).wTextColor(.gray) +
             "perfect".toAttrStr.wFont(pfm16).wTextColor(.blue)
+        
+//        self.view.addSubviewHorizontal { (v) in
+//            v.csWidth(90)
+//        }
+        self.view.addSubViewVerticalRepeat(num: 5) { (v, index) in
+            v.csHeight(90)
+        }
     }
     
     override func didReceiveMemoryWarning() {
