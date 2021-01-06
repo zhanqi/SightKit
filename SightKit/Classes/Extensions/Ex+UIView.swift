@@ -296,6 +296,30 @@ public extension UIView {
         return view
     }
     
+    /// 横向填充一个view
+    @discardableResult func addSubviewHorizontalSpace(width:CGFloat) -> UIView? {
+        let view = UIView()
+        if let lastV = self.lastSKAddView {
+            view.addTo(self).cstoRightOf(view: lastV).csWidth(width).csFullfillVertical().csRightLessThanOrEqual()
+        }else{
+            view.addTo(self).csLeft().csWidth(width).csFullfillVertical().csRightLessThanOrEqual()
+        }
+        self.lastSKAddView = view
+        return view
+    }
+    
+    /// 纵向填充一个view
+    @discardableResult func addSubviewVerticalSpace(height:CGFloat) -> UIView? {
+        let view = UIView()
+        if let lastV = self.lastSKAddView {
+            view.addTo(self).cstoBottomOf(view: lastV).csHeight(height).csFullfillHorizontal().csBottomLessThanOrEqual()
+        }else{
+            view.addTo(self).csTop().csHeight(height).csFullfillHorizontal().csBottomLessThanOrEqual()
+        }
+        self.lastSKAddView = view
+        return view
+    }
+    
     /// 横向填充多个view，宽度由内部决定，或在block中配置
     @discardableResult func addSubViewHorizontalRepeat(num:UInt,viewConfig:(_ subView:UIView,_ index:UInt)->()) -> UIView?{
         for i in 0..<num {
