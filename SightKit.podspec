@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-  SightKit is a tool kit for fast development. it will be updated continually.
+  SightKit is a tool kit for fast iOS development. it is being updated continually.
                        DESC
 
   s.homepage         = 'https://github.com/zhanqi/SightKit'
