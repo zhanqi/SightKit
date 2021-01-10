@@ -196,3 +196,40 @@ public func errorTipFrom(head:RPHead?, response: URLResponse?,error:Error?)->Str
 }
 
 
+public class SKRq {
+    public var request:URLRequest?
+    public var url:String = ""
+    public var param:[String:Any] = [:]
+    public var header:[String:Any] = [:]
+    public static var globalHeader:[String:Any] = [:]
+
+    @discardableResult public func wUrl(_ u:String) -> SKRq {
+        url = u
+        return self
+    }
+    @discardableResult public func wParam(_ p:[String:Any]) -> SKRq {
+        param = p
+        return self
+    }
+    @discardableResult public func wHeader(_ h:[String:Any]) -> SKRq {
+        header = h
+        return self
+    }
+    @discardableResult public func resume(_ result:((SKResult)->Void)) -> SKRq {
+        return self
+    }
+}
+
+public class SKResult {
+    public var data:Data?
+    public var response:URLResponse?
+    public var error:Error?
+    public var json:SKJSON?
+    
+    init(d:Data?,r:URLResponse?,e:Error?) {
+        data = d
+        response = r
+        error = e
+        json = try? SKJSON(data: data.orEmpty)
+    }
+}

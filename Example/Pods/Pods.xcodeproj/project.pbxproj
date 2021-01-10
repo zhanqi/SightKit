@@ -40,6 +40,7 @@
 		2EA6B2E10F38275D4CEB37B7ADDAE0E0 /* QuickConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 17736B10D5474525ED04B80F4DB7A120 /* QuickConfiguration.m */; };
 		3722B93E1E8BF31C11CDF45AA815A767 /* QuickTestSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5732E0ED6DBBBB00596C66A8CC05A3 /* QuickTestSuite.swift */; };
 		38005520251B8DAD0047E270 /* Ex+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3800551F251B8DAD0047E270 /* Ex+URL.swift */; };
+		3813322525AA2A8000300249 /* SKJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3813322425AA2A8000300249 /* SKJSON.swift */; };
 		3824B2132532AC9500D4389A /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3824B2122532AC9500D4389A /* Request.swift */; };
 		3874944D251A3BC300FC8BC9 /* SKFillableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3874944C251A3BC300FC8BC9 /* SKFillableView.swift */; };
 		3874944F251A439500FC8BC9 /* Ex+UITabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3874944E251A439500FC8BC9 /* Ex+UITabbar.swift */; };
@@ -303,6 +304,7 @@
 		35A32AC5FC9462774488E6F2773D7570 /* AssertionRecorder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AssertionRecorder.swift; path = Sources/Nimble/Adapters/AssertionRecorder.swift; sourceTree = "<group>"; };
 		35B40039F6722F45C625502705A61845 /* Quick.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Quick.h; path = Sources/QuickObjectiveC/Quick.h; sourceTree = "<group>"; };
 		3800551F251B8DAD0047E270 /* Ex+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+URL.swift"; sourceTree = "<group>"; };
+		3813322425AA2A8000300249 /* SKJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SKJSON.swift; path = SightKit/Classes/SKJSON.swift; sourceTree = "<group>"; };
 		3824B2122532AC9500D4389A /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Request.swift; path = SightKit/Classes/Request.swift; sourceTree = "<group>"; };
 		3874944C251A3BC300FC8BC9 /* SKFillableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKFillableView.swift; sourceTree = "<group>"; };
 		3874944E251A439500FC8BC9 /* Ex+UITabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+UITabbar.swift"; sourceTree = "<group>"; };
@@ -631,6 +633,7 @@
 				3893D4AC2517C26D009347A5 /* SKDefines.swift */,
 				38C0DDB22518E2F300647936 /* Toast+Loading.swift */,
 				3824B2122532AC9500D4389A /* Request.swift */,
+				3813322425AA2A8000300249 /* SKJSON.swift */,
 				EAFD3CF46BA039F81DC34CED6002A965 /* Pod */,
 				A050FAE1A4CC9AC717FFD76EF3B7EBF2 /* Support Files */,
 			);
@@ -1337,6 +1340,7 @@
 				38C0DDC02518ED6C00647936 /* Ex+Data.swift in Sources */,
 				3893D4AD2517C26D009347A5 /* SKDefines.swift in Sources */,
 				048F061325592EF3005F2595 /* Ex+pdf.swift in Sources */,
+				3813322525AA2A8000300249 /* SKJSON.swift in Sources */,
 				389BB9752518FC960013CF0C /* Ex+UINavigationBar.swift in Sources */,
 				38005520251B8DAD0047E270 /* Ex+URL.swift in Sources */,
 				38C0DDA62518D38C00647936 /* Ex+UIView.swift in Sources */,
