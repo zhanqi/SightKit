@@ -196,7 +196,7 @@ public func errorTipFrom(head:RPHead?, response: URLResponse?,error:Error?)->Str
 }
 
 
-public class SKRq {
+public class SKRq : NSObject{
     public var request:URLRequest?
     public var url:String = ""
     public var param:[String:Any] = [:]

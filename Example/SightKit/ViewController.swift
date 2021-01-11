@@ -31,6 +31,9 @@ class ViewController: UIViewController {
         self.view.addSubViewVerticalRepeat(num: 5) { (v, index) in
             v.csHeight(90)
         }
+        SKRq().wUrl("https://google.com").resume { (result) in
+            
+        }
     }
     
     override func didReceiveMemoryWarning() {
