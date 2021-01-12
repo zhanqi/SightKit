@@ -35,9 +35,7 @@ class ViewController: UIViewController {
 //            print(result)
 //        }
         
-        let btn = UIButton().addTo(self.view).csFullFillTo(view: label).addAction {
-            
-        }
+        let btn = UIButton().addTo(self.view).csFullFillTo(view: label)
 //        btn.addTarget(for: .touchUpInside) {
 //            print("touch up inside ")
 //        }
