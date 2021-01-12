@@ -42,6 +42,7 @@
 		38005520251B8DAD0047E270 /* Ex+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3800551F251B8DAD0047E270 /* Ex+URL.swift */; };
 		3813322525AA2A8000300249 /* SKJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3813322425AA2A8000300249 /* SKJSON.swift */; };
 		3824B2132532AC9500D4389A /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3824B2122532AC9500D4389A /* Request.swift */; };
+		38250FD825AE06F000F18D9B /* Ex+UIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38250FD725AE06F000F18D9B /* Ex+UIControl.swift */; };
 		3874944D251A3BC300FC8BC9 /* SKFillableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3874944C251A3BC300FC8BC9 /* SKFillableView.swift */; };
 		3874944F251A439500FC8BC9 /* Ex+UITabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3874944E251A439500FC8BC9 /* Ex+UITabbar.swift */; };
 		38749451251A441000FC8BC9 /* SKScrollBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38749450251A441000FC8BC9 /* SKScrollBannerView.swift */; };
@@ -306,6 +307,7 @@
 		3800551F251B8DAD0047E270 /* Ex+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+URL.swift"; sourceTree = "<group>"; };
 		3813322425AA2A8000300249 /* SKJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SKJSON.swift; path = SightKit/Classes/SKJSON.swift; sourceTree = "<group>"; };
 		3824B2122532AC9500D4389A /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Request.swift; path = SightKit/Classes/Request.swift; sourceTree = "<group>"; };
+		38250FD725AE06F000F18D9B /* Ex+UIControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+UIControl.swift"; sourceTree = "<group>"; };
 		3874944C251A3BC300FC8BC9 /* SKFillableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKFillableView.swift; sourceTree = "<group>"; };
 		3874944E251A439500FC8BC9 /* Ex+UITabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+UITabbar.swift"; sourceTree = "<group>"; };
 		38749450251A441000FC8BC9 /* SKScrollBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKScrollBannerView.swift; sourceTree = "<group>"; };
@@ -612,6 +614,7 @@
 				38C0DDA52518D38C00647936 /* Ex+UIView.swift */,
 				38FB085C251BA4D80007E5D5 /* Ex+UIWindow.swift */,
 				389BB97A251900D30013CF0C /* Ex+UIViewController.swift */,
+				38250FD725AE06F000F18D9B /* Ex+UIControl.swift */,
 			);
 			name = Extensions;
 			path = SightKit/Classes/Extensions;
@@ -1332,6 +1335,7 @@
 				38749453251A4C4300FC8BC9 /* SKTitleView.swift in Sources */,
 				3893D4AF2517C824009347A5 /* Ex+UIFont.swift in Sources */,
 				436FEF0801D752A9237C2076EBD6F1C7 /* SightKit-dummy.m in Sources */,
+				38250FD825AE06F000F18D9B /* Ex+UIControl.swift in Sources */,
 				389BB9672518F6D40013CF0C /* Ex+UIApplication.swift in Sources */,
 				38C0DDBE2518ECA800647936 /* Ex+Number.swift in Sources */,
 				048B8E7125629FF200899E14 /* SKSelectView.swift in Sources */,
