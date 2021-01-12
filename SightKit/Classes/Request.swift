@@ -65,7 +65,11 @@ public var appLevelRequestResponse:((_ data:Data?,_ response:URLResponse?,_ erro
 /// open log for normal request result
 public var openRequestLog = false
 
-public var skSessionConfiguration = URLSessionConfiguration.default
+public var skSessionConfiguration:URLSessionConfiguration = {
+    let config = URLSessionConfiguration.default
+    config.httpMaximumConnectionsPerHost = 4
+    return config
+}()
 
 public func skRq(urlString:String?,method:RequestMethod = .get,paraDic:[String:Any]=[:],configRqHead:ConfigRqHeadClosure? = nil, rpClosure: @escaping (Data?, URLResponse?, Error?) -> Void)  {
     guard let urlString = urlString else {
@@ -200,8 +204,9 @@ public class SKRq : NSObject{
     public var request:URLRequest?
     public var url:String = ""
     public var param:[String:Any] = [:]
-    public var header:[String:Any] = [:]
-    public static var globalHeader:[String:Any] = [:]
+    public var method:String = "GET"
+    public var header:[String:String] = [:]
+    public static var globalHeader:[String:String] = [:]
 
     @discardableResult public func wUrl(_ u:String) -> SKRq {
         url = u
@@ -211,11 +216,130 @@ public class SKRq : NSObject{
         param = p
         return self
     }
-    @discardableResult public func wHeader(_ h:[String:Any]) -> SKRq {
+    @discardableResult public func wHeader(_ h:[String:String]) -> SKRq {
         header = h
         return self
     }
-    @discardableResult public func resume(_ result:((SKResult)->Void)) -> SKRq {
+    
+    @discardableResult public func wGet() -> SKRq {
+        method = "GET"
+        return self
+    }
+    @discardableResult public func wPost() -> SKRq {
+        method = "POST"
+        return self
+    }
+    
+    
+    @discardableResult public func resume(_ result:@escaping ((SKResult)->Void)) -> SKRq {
+        var request:URLRequest!
+        var finalParaDic = [String:Any]()
+
+        if (method.lowercased() == "get"){
+            var fixString = ""
+            if param.count > 0 {
+                fixString.append("?")
+                param.forEach { (key: String, value: Any) in
+                    if (fixString.count>1){
+                        fixString.append("&")
+                    }
+                    fixString.append(key)
+                    fixString.append("=")
+                    fixString.append("\(value)")
+                }
+            }
+            
+            let finalStr = url+fixString
+            guard let url = URL(string: finalStr) else {
+                print("Error: cannot create url with urlString:\(finalStr)")
+                
+                DispatchQueue.main.async { result(SKResult(d: nil, r: nil, e: Local_Error.invalid_url)) }
+                return self
+            }
+            
+            request = URLRequest(url: url)
+            request.timeoutInterval = api_timeout
+            request.httpMethod = method
+            SKRq.globalHeader.forEach { (key,value) in
+                request.setValue(value, forHTTPHeaderField: key)
+            }
+            header.forEach { (key,value) in
+                request.setValue(value, forHTTPHeaderField: key)
+            }
+
+        }else{
+            guard let url = URL(string: url) else {
+                print("Error: cannot create url with urlString:\(self.url)")
+                
+                DispatchQueue.main.async { result(SKResult(d: nil, r: nil, e: Local_Error.invalid_url)) }
+                return self
+            }
+            
+            //先添加需要的数据到finalParaDic
+            //然后添加传进来的数据到fainalParaDic
+            param.forEach { (key: String, value: Any) in
+                finalParaDic[key] = value
+            }
+            
+            request = URLRequest(url: url)
+            request.timeoutInterval = api_timeout
+            request.httpMethod = method
+            var jsonData:Data
+            do {
+                jsonData = try JSONSerialization.data(withJSONObject: finalParaDic, options: [])
+                request.httpBody = jsonData
+            } catch {
+                print("Error: cannot creat Json from paraDic \(String(describing: finalParaDic))")
+                
+                DispatchQueue.main.async { result(SKResult(d: nil, r: nil, e: Local_Error.invalid_paramDic_to_data)) }
+                return self
+            }
+            
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            SKRq.globalHeader.forEach { (key,value) in
+                request.setValue(value, forHTTPHeaderField: key)
+            }
+            header.forEach { (key,value) in
+                request.setValue(value, forHTTPHeaderField: key)
+            }
+        }
+        
+        let session = URLSession(configuration: skSessionConfiguration)
+        let task = session.dataTask(with: request) { (data, response, error) in
+            //for log
+            if (openRequestLog){
+                print("url:",request.url?.absoluteString ?? "")
+                print("headFields:",request.allHTTPHeaderFields ?? "")
+                print("param:",finalParaDic)
+                if let data = data {
+                    let json = try? JSONSerialization.jsonObject(with: data,options:.allowFragments) as? [String: Any]
+                    print("json:",json ?? "")
+                    if json == nil {
+                        let str = String(data: data, encoding: String.Encoding.utf8) ?? ""
+                        print("string:",str)
+                    }
+                }
+            }
+            if error != nil {
+                print("Error: ",error.debugDescription)
+            }
+            if data == nil && error == nil &&  response != nil {
+                print("response:",response.debugDescription)
+            }
+
+            //return block
+            DispatchQueue.main.async { result(SKResult(d: data, r: response, e: error)) }
+            
+            //for app level error handle
+            DispatchQueue.main.async {
+                if let appLevelRequestResponse = appLevelRequestResponse{
+                    appLevelRequestResponse(data,response,error)
+                }
+            }
+        }
+        task.resume()
+        
+        
         return self
     }
 }

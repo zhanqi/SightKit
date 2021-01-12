@@ -32,7 +32,7 @@ class ViewController: UIViewController {
             v.csHeight(90)
         }
         SKRq().wUrl("https://google.com").resume { (result) in
-            
+            print(result)
         }
     }
     
