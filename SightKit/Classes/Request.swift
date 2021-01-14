@@ -20,7 +20,7 @@ public enum Local_Error : Error {
     case invalid_responseData_to_jsonDic
 }
 
-public var api_timeout:TimeInterval = 30
+public var api_timeout:TimeInterval = 60
 
 public enum RequestMethod:String{
     case get = "GET"
@@ -62,15 +62,20 @@ public enum RequestMethod:String{
 
 /// every response will pass here ,so we can deal with app level errors
 public var appLevelRequestResponse:((_ data:Data?,_ response:URLResponse?,_ error:Error?)->())?
+
 /// open log for normal request result
+#if DEBUG
+public var openRequestLog = true
+#else
 public var openRequestLog = false
+#endif
 
 public var skSessionConfiguration:URLSessionConfiguration = {
     let config = URLSessionConfiguration.default
     config.httpMaximumConnectionsPerHost = 4
     return config
 }()
-
+/*
 public func skRq(urlString:String?,method:RequestMethod = .get,paraDic:[String:Any]=[:],configRqHead:ConfigRqHeadClosure? = nil, rpClosure: @escaping (Data?, URLResponse?, Error?) -> Void)  {
     guard let urlString = urlString else {
         print("Error: urlString is null")
@@ -185,7 +190,7 @@ public func skRq(urlString:String?,method:RequestMethod = .get,paraDic:[String:A
     }
     task.resume()
 }
-
+*/
 
 public func errorTipFrom(head:RPHead?, response: URLResponse?,error:Error?)->String?{
     if error != nil {
