@@ -48,6 +48,8 @@
 		38749451251A441000FC8BC9 /* SKScrollBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38749450251A441000FC8BC9 /* SKScrollBannerView.swift */; };
 		38749453251A4C4300FC8BC9 /* SKTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38749452251A4C4300FC8BC9 /* SKTitleView.swift */; };
 		38749455251A51DB00FC8BC9 /* SKSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38749454251A51DB00FC8BC9 /* SKSegmentView.swift */; };
+		387E6CC625B1E7EA00FE9B82 /* PrintBeautifulLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 387E6CC425B1E7EA00FE9B82 /* PrintBeautifulLog.h */; };
+		387E6CC725B1E7EA00FE9B82 /* PrintBeautifulLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 387E6CC525B1E7EA00FE9B82 /* PrintBeautifulLog.m */; };
 		388FF3B22516FCA2004ED238 /* Ex+NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388FF3B12516FCA2004ED238 /* Ex+NSLayoutConstraint.swift */; };
 		3893D4A72517BB71009347A5 /* Ex+NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893D4A62517BB71009347A5 /* Ex+NSAttributedString.swift */; };
 		3893D4A92517BD2B009347A5 /* Ex+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3893D4A82517BD2B009347A5 /* Ex+String.swift */; };
@@ -313,6 +315,8 @@
 		38749450251A441000FC8BC9 /* SKScrollBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKScrollBannerView.swift; sourceTree = "<group>"; };
 		38749452251A4C4300FC8BC9 /* SKTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTitleView.swift; sourceTree = "<group>"; };
 		38749454251A51DB00FC8BC9 /* SKSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSegmentView.swift; sourceTree = "<group>"; };
+		387E6CC425B1E7EA00FE9B82 /* PrintBeautifulLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PrintBeautifulLog.h; path = SightKit/Classes/PrintBeautifulLog.h; sourceTree = "<group>"; };
+		387E6CC525B1E7EA00FE9B82 /* PrintBeautifulLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PrintBeautifulLog.m; path = SightKit/Classes/PrintBeautifulLog.m; sourceTree = "<group>"; };
 		388FF3B12516FCA2004ED238 /* Ex+NSLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+NSLayoutConstraint.swift"; sourceTree = "<group>"; };
 		3893D4A62517BB71009347A5 /* Ex+NSAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+NSAttributedString.swift"; sourceTree = "<group>"; };
 		3893D4A82517BD2B009347A5 /* Ex+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+String.swift"; sourceTree = "<group>"; };
@@ -637,6 +641,8 @@
 				38C0DDB22518E2F300647936 /* Toast+Loading.swift */,
 				3824B2122532AC9500D4389A /* Request.swift */,
 				3813322425AA2A8000300249 /* SKJSON.swift */,
+				387E6CC425B1E7EA00FE9B82 /* PrintBeautifulLog.h */,
+				387E6CC525B1E7EA00FE9B82 /* PrintBeautifulLog.m */,
 				EAFD3CF46BA039F81DC34CED6002A965 /* Pod */,
 				A050FAE1A4CC9AC717FFD76EF3B7EBF2 /* Support Files */,
 			);
@@ -1079,6 +1085,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E668E7708165C05B8872D95382D89561 /* SightKit-umbrella.h in Headers */,
+				387E6CC625B1E7EA00FE9B82 /* PrintBeautifulLog.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1358,6 +1365,7 @@
 				38C0DDB42518E2F300647936 /* Toast+Loading.swift in Sources */,
 				38749451251A441000FC8BC9 /* SKScrollBannerView.swift in Sources */,
 				3874944F251A439500FC8BC9 /* Ex+UITabbar.swift in Sources */,
+				387E6CC725B1E7EA00FE9B82 /* PrintBeautifulLog.m in Sources */,
 				389BB96B2518FABB0013CF0C /* Ex+UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

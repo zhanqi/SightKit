@@ -44,21 +44,14 @@ class ViewController: UIViewController {
 //            print("another touch ")
 //        }
         
-        openRequestLog = true
 //        skRq(urlString: "http://47.115.54.215:8085/sso/getAuthCode?telephone=186323", method: .get, paraDic: [:], configRqHead: nil) { (data, response, error) in
 //
 //        }
 //        skRq(urlString: "https://jsonplaceholder.typicode.com/todos/1", method: .get, paraDic: [:], configRqHead: nil) { (data, response, error) in
 //
 //        }
-        SKRq().wUrl("http://47.115.54.215:8085/sso/getAuthCode?telephone=186323").resume { (result) in
-            if let json = result.json {
-                let code = json["data"].stringValue
-                SKRq().wUrl("http://47.115.54.215:8085/sso/register").wPost().wParam(["分享码":"1234","密码":"123456","手机号":"186323","用户名":"james","验证码":code]).resume { (r) in
-                    
-                }
-                
-            }
+        SKRq().wUrl("http://47.115.54.215:8085/home/content").resume { (result) in
+            
         }
     }
     
