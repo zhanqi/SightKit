@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SightKit'
-  s.version          = '0.1.10'
+  s.version          = '0.1.12'
   s.summary          = 'SightKit is a tool kit for fast development.'
   s.swift_version    = '4.2'
 
