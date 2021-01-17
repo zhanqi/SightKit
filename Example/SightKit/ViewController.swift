@@ -50,9 +50,14 @@ class ViewController: UIViewController {
 //        skRq(urlString: "https://jsonplaceholder.typicode.com/todos/1", method: .get, paraDic: [:], configRqHead: nil) { (data, response, error) in
 //
 //        }
-        SKRq().wUrl("http://47.115.54.215:8085/home/content").resume { (result) in
-            
-        }
+        
+//        SKRq().wUrl("http://47.115.54.215:8085/home/content").resume { (result) in
+//
+//        }
+        
+        SKRq().wUrl("http://47.115.54.215:8085/sso/login").wPost().wParamInUrl().wParam(["username":"jack","password":"123123"]).resume { (result) in
+        
+                }
     }
     
     override func didReceiveMemoryWarning() {
