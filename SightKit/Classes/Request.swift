@@ -360,7 +360,7 @@ public class SKRq : NSObject{
                 print("method:",self.method)
                 print("param:",finalParaDic)
                 if let data = data {
-                    let json = try? JSONSerialization.jsonObject(with: data,options:.allowFragments) as? [String: Any]
+                    let json = try? (JSONSerialization.jsonObject(with: data,options:.allowFragments) as! [String: Any])
                     print("json:",json ?? "")
                     if json == nil {
                         let str = String(data: data, encoding: String.Encoding.utf8) ?? ""
