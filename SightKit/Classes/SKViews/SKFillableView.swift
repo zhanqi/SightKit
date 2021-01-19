@@ -38,6 +38,11 @@ open class SKFillableView: UIView {
 //        scrollView.delaysContentTouches = false //让内部的按钮 点击立即能改变背景颜色 但是当内部满是（UIButton，UITextField）等control的时候会导致scrollview无法滚动
         mainView.addSubview(scrollView)
         scrollView.csFullfill()
+        if #available(iOS 11.0, *) {
+            scrollView.contentInsetAdjustmentBehavior = .never
+        } else {
+            // Fallback on earlier versions
+        }
         
         contentView = UIView()//高度由内部view决定
         scrollView.addSubview(contentView)
@@ -79,6 +84,10 @@ open class SKFillableView: UIView {
     /// - Parameter view: the view will be filled
     public func fillSubView(view: UIView) {
         self.fillSubView(view: view, height: nil, verticalSpace: 0, leftSpace: 0, rightSpace: 0)
+    }
+    
+    public func fillSubView(view: UIView,verticalSpace:CGFloat) {
+        self.fillSubView(view: view, height: nil, verticalSpace: verticalSpace, leftSpace: 0, rightSpace: 0)
     }
     
     /// Fill a subview
