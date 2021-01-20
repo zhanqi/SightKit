@@ -8,6 +8,14 @@
 import Foundation
 
 public extension UIImage {
+    var toImgView:UIImageView {
+        let imgView = UIImageView()
+        imgView.image = self
+        return imgView
+    }
+}
+
+public extension UIImage {
     static func imgFromPath(path:String) -> UIImage?{
         if path.isFileExist {
             if let data = Data.dataFromPath(path: path){
@@ -225,4 +233,27 @@ public extension UIImage {
         self.init(cgImage: aCgImage)
     }
 
+}
+
+
+public extension UIImage {
+    /// 将图片png数据转为base64字符串 可用于将图片存为代码
+    var base64Str:String {
+        if let imageData = self.pngData() {
+            let base64ImageStr = imageData.base64EncodedString(options: .lineLength64Characters)
+            return base64ImageStr
+        }
+        return ""
+    }
+}
+public extension String {
+    /// 从base64字符串解压为图片
+    /// - Parameter scale: 图片的倍数 1x 2x 3x 默认按2x解压呈现
+    func toImgFromBase64(_ scale:CGFloat = 2) -> UIImage?{
+        if let imgData = Data(base64Encoded: self, options: .ignoreUnknownCharacters),let img = UIImage(data: imgData)?.cgImage {
+            // 其中 scale 参数 1 对应 普通图片， 2 对应 @2x的图片 ，3 对应 @3x的图片
+            return UIImage(cgImage: img, scale: 2, orientation: .up)
+        }
+        return nil
+    }
 }

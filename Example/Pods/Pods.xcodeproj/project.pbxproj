@@ -12,6 +12,7 @@
 		01DAA6DD1809A39129FF7C72DDF93054 /* mach_excServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 466716BBEF52AA763D1EA0D672CB003F /* mach_excServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0440864F251B70BB0054A6CB /* Ex+CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0440864E251B70BB0054A6CB /* Ex+CGPoint.swift */; };
 		046189082542D20D00D3E29A /* SKNoticeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046189072542D20D00D3E29A /* SKNoticeBar.swift */; };
+		0465204B25B83D18001FCD8E /* SKBase64Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0465204A25B83D18001FCD8E /* SKBase64Image.swift */; };
 		04676AA52544471800FA5C34 /* SKGetVerifyCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04676AA42544471800FA5C34 /* SKGetVerifyCodeView.swift */; };
 		048069D7257F5A8D00852D2F /* Ex+UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048069D6257F5A8D00852D2F /* Ex+UITextView.swift */; };
 		048B8E7125629FF200899E14 /* SKSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B8E7025629FF200899E14 /* SKSelectView.swift */; };
@@ -269,6 +270,7 @@
 /* Begin PBXFileReference section */
 		0440864E251B70BB0054A6CB /* Ex+CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+CGPoint.swift"; sourceTree = "<group>"; };
 		046189072542D20D00D3E29A /* SKNoticeBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKNoticeBar.swift; sourceTree = "<group>"; };
+		0465204A25B83D18001FCD8E /* SKBase64Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SKBase64Image.swift; path = SightKit/Classes/SKBase64Image.swift; sourceTree = "<group>"; };
 		04676AA42544471800FA5C34 /* SKGetVerifyCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKGetVerifyCodeView.swift; sourceTree = "<group>"; };
 		048069D6257F5A8D00852D2F /* Ex+UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+UITextView.swift"; sourceTree = "<group>"; };
 		048B8E7025629FF200899E14 /* SKSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSelectView.swift; sourceTree = "<group>"; };
@@ -638,6 +640,7 @@
 				0470FEAD251B6D05007EB73E /* Extensions */,
 				0470FEAC251B6B8E007EB73E /* SKViews */,
 				3893D4AC2517C26D009347A5 /* SKDefines.swift */,
+				0465204A25B83D18001FCD8E /* SKBase64Image.swift */,
 				38C0DDB22518E2F300647936 /* Toast+Loading.swift */,
 				3824B2122532AC9500D4389A /* Request.swift */,
 				3813322425AA2A8000300249 /* SKJSON.swift */,
@@ -1328,6 +1331,7 @@
 				04676AA52544471800FA5C34 /* SKGetVerifyCodeView.swift in Sources */,
 				389BB9712518FBAD0013CF0C /* Ex+UIImage+gif.swift in Sources */,
 				38C0DDA82518DBE400647936 /* Ex+UILabel.swift in Sources */,
+				0465204B25B83D18001FCD8E /* SKBase64Image.swift in Sources */,
 				048069D7257F5A8D00852D2F /* Ex+UITextView.swift in Sources */,
 				3824B2132532AC9500D4389A /* Request.swift in Sources */,
 				388FF3B22516FCA2004ED238 /* Ex+NSLayoutConstraint.swift in Sources */,

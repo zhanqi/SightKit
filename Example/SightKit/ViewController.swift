@@ -25,39 +25,15 @@ class ViewController: UIViewController {
             "and".toAttrStr.wFont(pfb10).wTextColor(.gray) +
             "perfect".toAttrStr.wFont(pfm16).wTextColor(.blue)
         
-//        self.view.addSubviewHorizontal { (v) in
-//            v.csWidth(90)
-//        }
-//        self.view.addSubViewVerticalRepeat(num: 5) { (v, index) in
-//            v.csHeight(90)
-//        }
-//        SKRq().wUrl("https://google.com").resume { (result) in
-//            print(result)
-//        }
+        let img = UIImageView().addTo(self.view).csCenterX().cstoBottomOf(view: label,constant: 20)
+        img.image = SKBase64Image.icon_default
         
-        let btn = UIButton().addTo(self.view).csFullFillTo(view: label)
-//        btn.addTarget(for: .touchUpInside) {
-//            print("touch up inside ")
-//        }
-//        btn.removeTarget(for: .touchUpInside)
-//        btn.addTarget(for: .touchUpInside) {
-//            print("another touch ")
-//        }
+        "back-black".toImgView().addTo(self.view).csCenterX().cstoBottomOf(view: label,constant: 90)
         
-//        skRq(urlString: "http://47.115.54.215:8085/sso/getAuthCode?telephone=186323", method: .get, paraDic: [:], configRqHead: nil) { (data, response, error) in
-//
-//        }
-//        skRq(urlString: "https://jsonplaceholder.typicode.com/todos/1", method: .get, paraDic: [:], configRqHead: nil) { (data, response, error) in
-//
-//        }
         
-//        SKRq().wUrl("http://47.115.54.215:8085/home/content").resume { (result) in
-//
-//        }
-        
-        SKRq().wUrl("http://47.115.54.215:8085/sso/login").wPost().wParamInUrl().wParam(["username":"jack","password":"123123"]).resume { (result) in
-        
-                }
+        if let str = "icon-default".toImg()?.base64Str {
+            print(str)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -66,7 +42,7 @@ class ViewController: UIViewController {
     }
     
 }
-
+//https://shuifeng.me/2020/03/02/create-ios-frameworks.html
 //class SKResponse<T> {
 //
 //    case Success(T),error(V)
