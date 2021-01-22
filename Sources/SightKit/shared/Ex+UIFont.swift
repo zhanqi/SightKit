@@ -70,6 +70,58 @@ public func pft_Thin(_ size:CGFloat) -> UIFont {
     return UIFont.init(name: "PingFangSC-Thin", size: size)!
 }
 
+#endif
+
+#if os(macOS)
+public func pfr(_ size:CGFloat) -> NSFont {
+    return NSFont.init(name: "PingFangSC-Regular", size: size)!
+}
+
+public func pfm(_ size:CGFloat) -> NSFont {
+    return NSFont.init(name: "PingFangSC-Medium", size: size)!
+}
+
+public func pfb(_ size:CGFloat) -> NSFont {
+    return NSFont.init(name: "PingFangSC-Semibold", size: size)!
+}
+
+
+/// PingFangSC-Regular
+/// - Parameter size: size
+public func pf_Regular(_ size:CGFloat) -> NSFont {
+    return NSFont.init(name: "PingFangSC-Regular", size: size)!
+}
+
+/// PingFangSC-Medium
+/// - Parameter size: size
+public func pf_Medium(_ size:CGFloat) -> NSFont {
+    return NSFont.init(name: "PingFangSC-Medium", size: size)!
+}
+
+/// PingFangSC-Semibold
+/// - Parameter size: size
+public func pf_Semibold(_ size:CGFloat) -> NSFont {
+    return NSFont.init(name: "PingFangSC-Semibold", size: size)!
+}
+
+/// PingFangSC-Light
+/// - Parameter size: size
+public func pf_Light(_ size:CGFloat) -> NSFont {
+    return NSFont.init(name: "PingFangSC-Light", size: size)!
+}
+
+/// PingFangSC-Ultralight
+/// - Parameter size: size
+public func pful_Ultralight(_ size:CGFloat) -> NSFont {
+    return NSFont.init(name: "PingFangSC-Ultralight", size: size)!
+}
+
+/// PingFangSC-Thin
+/// - Parameter size: size
+public func pft_Thin(_ size:CGFloat) -> NSFont {
+    return NSFont.init(name: "PingFangSC-Thin", size: size)!
+}
+#endif
 
 public let pfr8 = pfr(8)
 public let pfr9 = pfr(9)
@@ -163,4 +215,3 @@ public let pfb42 = pfb(42)
 public let pfb55 = pfb(55)
 
 
-#endif

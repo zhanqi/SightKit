@@ -83,3 +83,57 @@ public extension UIColor {
 }
 
 #endif
+
+
+#if os(macOS)
+
+/** rgb字符串转UIColor，如果格式错误 会使用颜色 #999999
+ ## 使用示例
+ ```
+ rgb("ED2343")
+ rgb("ED2343",0.8)
+ */
+public func rgb(_ hex:String,_ alpha:Float = 1.0) -> NSColor {
+    var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+    var rgbValue:UInt32 = 10066329 //color #999999 if string has wrong format
+
+    if (cString.hasPrefix("#")) {
+        cString.remove(at: cString.startIndex)
+    }
+
+    if ((cString.count) == 6) {
+        Scanner(string: cString).scanHexInt32(&rgbValue)
+    }
+
+    let r = CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0
+    let g = CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0
+    let b = CGFloat(rgbValue & 0x0000FF) / 255.0
+    return NSColor.init(red: r, green: g, blue: b, alpha: CGFloat(alpha))
+}
+
+public extension String {
+    var toColor:NSColor{
+        get {
+            return rgb(self)
+        }
+    }
+}
+
+public extension NSColor {
+    func wAlpha(_ alpha:Float) -> NSColor {
+        return self.withAlphaComponent(CGFloat(alpha))
+    }
+}
+
+public extension NSColor {
+    /// 十六进制创建颜色
+    convenience init(hex: Int, alpha: Double = 1.0) {
+        let r = CGFloat((hex & 0xFF0000) >> 16) / 255.0
+        let g = CGFloat((hex & 0x00FF00) >> 8) / 255.0
+        let b = CGFloat(hex & 0x0000FF) / 255.0
+        self.init(red: r, green: g, blue: b, alpha: CGFloat(alpha))
+    }
+}
+
+#endif
+
