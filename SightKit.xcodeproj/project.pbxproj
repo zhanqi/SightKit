@@ -270,10 +270,8 @@
 			children = (
 				047C87E125B995E70073F5E1 /* Ex+UIImage.swift */,
 				047C87E225B995E70073F5E1 /* Ex+UIImage+gif.swift */,
-				047C87E325B995E70073F5E1 /* Ex+NSAttributedString.swift */,
 				047C87E425B995E70073F5E1 /* Ex+UIViewController.swift */,
 				047C87E525B995E70073F5E1 /* Ex+UILabel.swift */,
-				047C87E625B995E70073F5E1 /* Ex+URL.swift */,
 				047C87E725B995E70073F5E1 /* Ex+pdf.swift */,
 				047C87E825B995E70073F5E1 /* Ex+UITabbar.swift */,
 				047C87E925B995E70073F5E1 /* Ex+NSLayoutConstraint.swift */,
@@ -319,6 +317,8 @@
 				047C87F625B995E70073F5E1 /* Ex+Data.swift */,
 				047C87DF25B995E70073F5E1 /* Ex+Number.swift */,
 				047C87E025B995E70073F5E1 /* Ex+CGPoint.swift */,
+				047C87E325B995E70073F5E1 /* Ex+NSAttributedString.swift */,
+				047C87E625B995E70073F5E1 /* Ex+URL.swift */,
 			);
 			path = shared;
 			sourceTree = "<group>";
@@ -379,7 +379,7 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				047C878925B994890073F5E1 /* SightKit.podspec */,
@@ -391,7 +391,6 @@
 				OBJ_14 /* Products */,
 				047C87C525B995400073F5E1 /* Frameworks */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
@@ -540,7 +539,7 @@
 				en,
 				Base,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_14 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
