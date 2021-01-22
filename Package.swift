@@ -24,5 +24,9 @@ let package = Package(
         .testTarget(
             name: "SightKitTests",
             dependencies: ["SightKit"]),
-    ]
+    ],
+    platforms: [
+        .iOS(.v10),
+        .macOS(.v10_10)
+    ],
 )
