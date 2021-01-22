@@ -289,6 +289,8 @@
 		047C884025B99D020073F5E1 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				047C87FD25B995E70073F5E1 /* Toast+Loading.swift */,
+				047C880225B995E70073F5E1 /* SKDefines.swift */,
 				047C87D425B995E70073F5E1 /* SKViews */,
 				047C87DE25B995E70073F5E1 /* Extensions */,
 			);
@@ -418,9 +420,7 @@
 				047C884025B99D020073F5E1 /* iOS */,
 				047C880125B995E70073F5E1 /* Request.swift */,
 				047C87FE25B995E70073F5E1 /* SKBase64Image.swift */,
-				047C880225B995E70073F5E1 /* SKDefines.swift */,
 				047C87FF25B995E70073F5E1 /* SKJSON.swift */,
-				047C87FD25B995E70073F5E1 /* Toast+Loading.swift */,
 			);
 			name = SightKit;
 			path = Sources/SightKit;
