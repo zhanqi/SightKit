@@ -28,5 +28,5 @@ let package = Package(
     platforms: [
         .iOS(.v10),
         .macOS(.v10_10)
-    ],
+    ]
 )
