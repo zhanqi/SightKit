@@ -79,6 +79,7 @@
 		047C88B925B9B5B10073F5E1 /* SightKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "SightKit::SightKit::Product" /* SightKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04E5821E25BAE8B7002E738E /* Ex+NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E5821D25BAE8B7002E738E /* Ex+NSImage.swift */; };
 		04E5823525BAFEB8002E738E /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E5823425BAFEB8002E738E /* back@2x.png */; };
+		04E5824325BB0B00002E738E /* Note.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 04E5824225BB0B00002E738E /* Note.rtf */; };
 		OBJ_29 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_40 /* SightKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* SightKitTests.swift */; };
 		OBJ_41 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* XCTestManifests.swift */; };
@@ -202,6 +203,7 @@
 		047C88A925B9B5A20073F5E1 /* Example_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Example_macOS.entitlements; sourceTree = "<group>"; };
 		04E5821D25BAE8B7002E738E /* Ex+NSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+NSImage.swift"; sourceTree = "<group>"; };
 		04E5823425BAFEB8002E738E /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
+		04E5824225BB0B00002E738E /* Note.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Note.rtf; sourceTree = "<group>"; };
 		OBJ_12 /* SightKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightKitTests.swift; sourceTree = "<group>"; };
 		OBJ_13 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 				047C888B25B9B58D0073F5E1 /* Assets.xcassets */,
 				047C888D25B9B58D0073F5E1 /* LaunchScreen.storyboard */,
 				047C889025B9B58D0073F5E1 /* Info.plist */,
+				04E5824225BB0B00002E738E /* Note.rtf */,
 			);
 			path = Example_iOS;
 			sourceTree = "<group>";
@@ -568,6 +571,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04E5824325BB0B00002E738E /* Note.rtf in Resources */,
 				047C888F25B9B58D0073F5E1 /* LaunchScreen.storyboard in Resources */,
 				047C888C25B9B58D0073F5E1 /* Assets.xcassets in Resources */,
 				04E5823525BAFEB8002E738E /* back@2x.png in Resources */,
