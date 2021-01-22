@@ -78,6 +78,7 @@
 		047C88B825B9B5B10073F5E1 /* SightKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "SightKit::SightKit::Product" /* SightKit.framework */; };
 		047C88B925B9B5B10073F5E1 /* SightKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = "SightKit::SightKit::Product" /* SightKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04E5821E25BAE8B7002E738E /* Ex+NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E5821D25BAE8B7002E738E /* Ex+NSImage.swift */; };
+		04E5823525BAFEB8002E738E /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E5823425BAFEB8002E738E /* back@2x.png */; };
 		OBJ_29 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_40 /* SightKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* SightKitTests.swift */; };
 		OBJ_41 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* XCTestManifests.swift */; };
@@ -200,6 +201,7 @@
 		047C88A825B9B5A20073F5E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		047C88A925B9B5A20073F5E1 /* Example_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Example_macOS.entitlements; sourceTree = "<group>"; };
 		04E5821D25BAE8B7002E738E /* Ex+NSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+NSImage.swift"; sourceTree = "<group>"; };
+		04E5823425BAFEB8002E738E /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
 		OBJ_12 /* SightKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SightKitTests.swift; sourceTree = "<group>"; };
 		OBJ_13 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 		047C888125B9B58B0073F5E1 /* Example_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				04E5823425BAFEB8002E738E /* back@2x.png */,
 				047C888225B9B58B0073F5E1 /* AppDelegate.swift */,
 				047C888425B9B58B0073F5E1 /* SceneDelegate.swift */,
 				047C888625B9B58B0073F5E1 /* ViewController.swift */,
@@ -567,6 +570,7 @@
 			files = (
 				047C888F25B9B58D0073F5E1 /* LaunchScreen.storyboard in Resources */,
 				047C888C25B9B58D0073F5E1 /* Assets.xcassets in Resources */,
+				04E5823525BAFEB8002E738E /* back@2x.png in Resources */,
 				047C888A25B9B58B0073F5E1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
