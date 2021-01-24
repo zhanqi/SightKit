@@ -411,7 +411,7 @@ public extension NSView {
     }
 }
 
-extension NSView {
+public extension NSView {
     var backgroundColor: NSColor? {
         get {
             if let colorRef = self.layer?.backgroundColor {
