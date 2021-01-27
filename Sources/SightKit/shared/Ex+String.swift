@@ -18,6 +18,7 @@ import AppKit
 #endif
 
 
+/// 在macOS下，xcode工程开启沙盒设置时为APP下沙盒路径（project.entitlements，App Sandbox 项），关闭沙盒时为 用户下的文稿路径（/Users/mac/Documents）
 public let documentPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first ?? ""
 
 /// 不会暴露给用户看到
