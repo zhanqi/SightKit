@@ -19,6 +19,7 @@ import AppKit
 
 
 /// 在macOS下，xcode工程开启沙盒设置时为APP下沙盒路径（project.entitlements，App Sandbox 项），关闭沙盒时为 用户下的文稿路径（/Users/mac/Documents）
+/// 开启沙盒的情况下代码直接访问外部文件路径会读取文件失败，提示没有权限，需要关闭沙盒才行
 public let documentPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first ?? ""
 
 /// 不会暴露给用户看到
@@ -326,109 +327,13 @@ public extension String {
     }
 }
 
-#if os(iOS)
-
-// MARK: - string to image、imageview、button
-public extension String{
-    ///转为UIImage
-    func toImg(edge: UIEdgeInsets? = nil) -> UIImage? {
-        //优先寻找2倍资源 然后1倍资源 然后3倍资源 优先jpg 然后png
-        var path = Bundle.main.path(forResource: self+"@2x", ofType: "jpg", inDirectory: nil)
-        if path == nil{ path = Bundle.main.path(forResource: self+"@2x", ofType: "png", inDirectory: nil) }
-        if path == nil{ path = Bundle.main.path(forResource: self+"", ofType: "jpg", inDirectory: nil) }
-        if path == nil{ path = Bundle.main.path(forResource: self+"", ofType: "png", inDirectory: nil) }
-        if path == nil{ path = Bundle.main.path(forResource: self+"@3x", ofType: "jpg", inDirectory: nil) }
-        if path == nil{ path = Bundle.main.path(forResource: self+"@3x", ofType: "png", inDirectory: nil) }
-        
-        if let path = path{
-            var img = UIImage(contentsOfFile: path)//优先资源文件 然后 asset
-            if let edge = edge {
-                //指定一个距离上左下右的区域 用来在两个方向上拉伸复制
-                img = img?.resizableImage(withCapInsets: edge, resizingMode: .stretch)
-            }
-            return img
-        }
-        
-        //实在找不到 尝试在asset里找
-        return UIImage(named: self)
-    }
-    ///转为UIImageView
-    func toImgView() -> UIImageView {
-        let imgView = UIImageView()
-        let img = self.toImg()
-        imgView.image = img
-        return imgView
-    }
-    ///转为UIButton
-    func toBtn() -> UIButton {
-        let btn = UIButton(type: .custom)
-        btn.setImage(self.toImg(), for: .normal)
-        return btn
-    }
-}
-
-// MARK: - 二维码
 public extension String {
-//    func toQRcodeImg() -> UIImage? {
-//        let data = self.data(using: String.Encoding.ascii)
-//
-//        if let filter = CIFilter(name: "CIQRCodeGenerator") {
-//            filter.setValue(data, forKey: "inputMessage")
-//            let transform = CGAffineTransform(scaleX: 3, y: 3)
-//
-//            if let output = filter.outputImage?.transformed(by: transform) {
-//                return UIImage(ciImage: output)
-//            }
-//        }
-//
-//        return nil
-//    }
-    
-    func toQRcodeImg(imageWidth: CGFloat? = 300, logo: UIImage? = nil) -> UIImage {
-        //创建一个二维码的滤镜
-        let qrFilter = CIFilter(name: "CIQRCodeGenerator")
-        
-        // 恢复滤镜的默认属性
-        qrFilter?.setDefaults()
-        
-        // 将字符串转换成
-        let infoData =  self.data(using: .utf8)
-        
-        // 通过KVC设置滤镜inputMessage数据
-        qrFilter?.setValue(infoData, forKey: "inputMessage")
-        
-        // 获得滤镜输出的图像
-        let  outputImage = qrFilter?.outputImage
-        
-        // 设置缩放比例
-        let scale = imageWidth! / outputImage!.extent.size.width;
-        let transform = CGAffineTransform(scaleX: scale, y: scale)
-        let transformImage = qrFilter!.outputImage!.transformed(by: transform)
-        
-        // 获取Image
-        let image = UIImage(ciImage: transformImage)
-        
-        // 无logo时  返回普通二维码image
-        guard let QRCodeLogo = logo else { return image }
-        
-        // logo尺寸与frame
-        let logoWidth = image.size.width/4
-        let logoFrame = CGRect(x: (image.size.width - logoWidth) /  2, y: (image.size.width - logoWidth) / 2, width: logoWidth, height: logoWidth)
-        
-        // 绘制二维码
-        UIGraphicsBeginImageContextWithOptions(image.size, false, UIScreen.main.scale)
-        image.draw(in: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height))
-        
-        // 绘制中间logo
-        QRCodeLogo.draw(in: logoFrame)
-        
-        //返回带有logo的二维码
-        let QRCodeImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return QRCodeImage!
+    func subString(from: Int, length:Int) -> String {
+        let startIndex = self.index(self.startIndex, offsetBy: from)
+        let endIndex = self.index(self.startIndex, offsetBy: from + length)
+        return String(self[startIndex...endIndex])
     }
 }
-
 
 public extension String {
     /// Check if string contains one or more emojis.
@@ -553,6 +458,110 @@ extension Int {
  "11111111".binaryToHexa     // "ff"
  255.binaryString            // "11111111"
  255.hexaString              // "ff"
- 255.doubleValue             // 255.0 
+ 255.doubleValue             // 255.0
  */
+
+#if os(iOS)
+
+// MARK: - string to image、imageview、button
+public extension String{
+    ///转为UIImage
+    func toImg(edge: UIEdgeInsets? = nil) -> UIImage? {
+        //优先寻找2倍资源 然后1倍资源 然后3倍资源 优先jpg 然后png
+        var path = Bundle.main.path(forResource: self+"@2x", ofType: "jpg", inDirectory: nil)
+        if path == nil{ path = Bundle.main.path(forResource: self+"@2x", ofType: "png", inDirectory: nil) }
+        if path == nil{ path = Bundle.main.path(forResource: self+"", ofType: "jpg", inDirectory: nil) }
+        if path == nil{ path = Bundle.main.path(forResource: self+"", ofType: "png", inDirectory: nil) }
+        if path == nil{ path = Bundle.main.path(forResource: self+"@3x", ofType: "jpg", inDirectory: nil) }
+        if path == nil{ path = Bundle.main.path(forResource: self+"@3x", ofType: "png", inDirectory: nil) }
+        
+        if let path = path{
+            var img = UIImage(contentsOfFile: path)//优先资源文件 然后 asset
+            if let edge = edge {
+                //指定一个距离上左下右的区域 用来在两个方向上拉伸复制
+                img = img?.resizableImage(withCapInsets: edge, resizingMode: .stretch)
+            }
+            return img
+        }
+        
+        //实在找不到 尝试在asset里找
+        return UIImage(named: self)
+    }
+    ///转为UIImageView
+    func toImgView() -> UIImageView {
+        let imgView = UIImageView()
+        let img = self.toImg()
+        imgView.image = img
+        return imgView
+    }
+    ///转为UIButton
+    func toBtn() -> UIButton {
+        let btn = UIButton(type: .custom)
+        btn.setImage(self.toImg(), for: .normal)
+        return btn
+    }
+}
+
+// MARK: - 二维码
+public extension String {
+//    func toQRcodeImg() -> UIImage? {
+//        let data = self.data(using: String.Encoding.ascii)
+//
+//        if let filter = CIFilter(name: "CIQRCodeGenerator") {
+//            filter.setValue(data, forKey: "inputMessage")
+//            let transform = CGAffineTransform(scaleX: 3, y: 3)
+//
+//            if let output = filter.outputImage?.transformed(by: transform) {
+//                return UIImage(ciImage: output)
+//            }
+//        }
+//
+//        return nil
+//    }
+    
+    func toQRcodeImg(imageWidth: CGFloat? = 300, logo: UIImage? = nil) -> UIImage {
+        //创建一个二维码的滤镜
+        let qrFilter = CIFilter(name: "CIQRCodeGenerator")
+        
+        // 恢复滤镜的默认属性
+        qrFilter?.setDefaults()
+        
+        // 将字符串转换成
+        let infoData =  self.data(using: .utf8)
+        
+        // 通过KVC设置滤镜inputMessage数据
+        qrFilter?.setValue(infoData, forKey: "inputMessage")
+        
+        // 获得滤镜输出的图像
+        let  outputImage = qrFilter?.outputImage
+        
+        // 设置缩放比例
+        let scale = imageWidth! / outputImage!.extent.size.width;
+        let transform = CGAffineTransform(scaleX: scale, y: scale)
+        let transformImage = qrFilter!.outputImage!.transformed(by: transform)
+        
+        // 获取Image
+        let image = UIImage(ciImage: transformImage)
+        
+        // 无logo时  返回普通二维码image
+        guard let QRCodeLogo = logo else { return image }
+        
+        // logo尺寸与frame
+        let logoWidth = image.size.width/4
+        let logoFrame = CGRect(x: (image.size.width - logoWidth) /  2, y: (image.size.width - logoWidth) / 2, width: logoWidth, height: logoWidth)
+        
+        // 绘制二维码
+        UIGraphicsBeginImageContextWithOptions(image.size, false, UIScreen.main.scale)
+        image.draw(in: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height))
+        
+        // 绘制中间logo
+        QRCodeLogo.draw(in: logoFrame)
+        
+        //返回带有logo的二维码
+        let QRCodeImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return QRCodeImage!
+    }
+}
+
 #endif
