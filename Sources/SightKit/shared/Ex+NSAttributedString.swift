@@ -65,6 +65,17 @@ public extension NSAttributedString {
         attributedString.addAttribute(NSAttributedString.Key.kern, value: space, range: NSRange(location: 0, length: self.string.count))
         return attributedString
     }
+    /// 字体大小不一的时候默认底部对齐，用此方法来调整部分字体的上下位置
+    /// - Parameters:
+    ///   - offset: 正值的时候往上偏移
+    ///   - subStr: subStr
+    /// - Returns: self
+    @discardableResult func wYOffset(offset:CGFloat, subStr:String) -> NSAttributedString{
+        let attributedString = NSMutableAttributedString.init(attributedString: self)
+        let fullStr = self.string as NSString
+        attributedString.addAttribute(NSAttributedString.Key.baselineOffset, value: offset, range: fullStr.range(of: subStr))
+        return attributedString
+    }
     
     static func + (left: NSAttributedString, right: NSAttributedString) -> NSAttributedString {
         let final = NSMutableAttributedString(attributedString: left)
