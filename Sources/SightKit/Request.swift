@@ -8,6 +8,12 @@
 import Foundation
 
 /*
+ path parameters, such as /users/{id}
+ query parameters, such as /users?role=admin
+ header parameters, such as X-MyHeader: Value
+ cookie parameters, which are passed in the Cookie header, such as Cookie: debug=0; csrftoken=BUSe35dohU3O1MZvDCU
+ */
+/*
  swagger中 post请求
  password *string
  (query) //表示该参数是放在url后面 处理
