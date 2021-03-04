@@ -8,6 +8,10 @@
 import Foundation
 
 /*
+ swagger 参数说明文档
+ https://wdpm.gitbook.io/swagger-documentation/swagger-specification/describing-parameters
+ */
+/*
  path parameters, such as /users/{id}
  query parameters, such as /users?role=admin
  header parameters, such as X-MyHeader: Value
@@ -220,141 +224,116 @@ public func errorTipFrom(head:RPHead?, response: URLResponse?,error:Error?)->Str
     return nil
 }
 
+/** 参数处理方式（where to put the parameter
+ ## 使用示例
+ ```
+ path, e.g. /users/{id};
+ query, e.g. /users?role=admin;
+ header, e.g. X-MyHeader: Value;
+ cookie, e.g. Cookie: debug=0;
+*/
+public enum SKParamPosition : Int {
+    case inBody = 0,inQuery,inPath,inHeader
+}
 
+/// default method is "get"
 public class SKRq : NSObject{
     public var request:URLRequest?
     public var url:String = ""
-    public var param:[String:Any] = [:]
+    public var params:[(key:String,value:Any,position:SKParamPosition)] = [] //only for params in body
     public var method:String = "GET"
     public var header:[String:String] = [:]
-    public var paramInUrl:Bool = true //POST的时候 会存在 param放在url里和放在body里两种情况
     public static var globalHeader:[String:String] = [:]
 
     @discardableResult public func wUrl(_ u:String) -> SKRq {
         url = u
         return self
     }
-    @discardableResult public func wParam(_ p:[String:Any]) -> SKRq {
-        param = p
+    @discardableResult public func wParamDic(dic:[String:Any],position:SKParamPosition) -> SKRq{
+        for (key,value) in dic {
+            params.append((key,value,position))
+        }
+        return self
+    }
+    @discardableResult public func wParam(key:String,value:Any,position:SKParamPosition) -> SKRq {
+        params.append((key,value,position))
         return self
     }
     @discardableResult public func wHeader(_ h:[String:String]) -> SKRq {
-        header = h
+        for (key,value) in h{
+            header[key] = value
+        }
         return self
     }
     
-    @discardableResult public func wGet() -> SKRq {
-        method = "GET"
-        paramInUrl = true
+    @discardableResult public func wMethod(_ method:String) -> SKRq {
+        self.method = method
         return self
     }
     @discardableResult public func wPost() -> SKRq {
         method = "POST"
-        paramInUrl = false
         return self
     }
-    @discardableResult public func wParamInUrl() -> SKRq {
-        paramInUrl = true
-        return self
-    }
-    
     
     @discardableResult public func resume(_ result:@escaping ((SKResult)->Void)) -> SKRq {
+
+        var finalStr = self.url
+        var urlParamStr = ""
+        for element in self.params {
+            if (element.position == .inPath) {
+                finalStr = finalStr.replacingOccurrences(of: "{\(element.key)}", with: "\(element.value)")
+            }
+            else if (element.position == .inQuery) {
+                urlParamStr += "&\(element.key)=\(element.value)"
+            }
+            else if (element.position == .inHeader) {
+                header[element.key] = "\(element.value)"
+            }
+        }
+        if urlParamStr.count > 1{
+            urlParamStr = String(urlParamStr.suffix(urlParamStr.count-1))
+            finalStr.append("?")
+            finalStr.append(urlParamStr)
+        }
+        
+        guard let url = URL(string: finalStr) else {
+            print("Error: cannot create url with urlString:\(finalStr)")
+            
+            DispatchQueue.main.async { result(SKResult(d: nil, r: nil, e: Local_Error.invalid_url)) }
+            return self
+        }
+
         var request:URLRequest!
-        var finalParaDic = [String:Any]()
-
-        if (method.lowercased() == "get"){
-            var fixString = ""
-            if param.count > 0 {
-                fixString.append("?")
-                param.forEach { (key: String, value: Any) in
-                    if (fixString.count>1){
-                        fixString.append("&")
-                    }
-                    fixString.append(key)
-                    fixString.append("=")
-                    fixString.append("\(value)")
-                }
+        request = URLRequest(url: url)
+        request.timeoutInterval = api_timeout
+        request.httpMethod = method
+        
+        SKRq.globalHeader.forEach { (key,value) in
+            request.setValue(value, forHTTPHeaderField: key)
+        }
+        header.forEach { (key,value) in
+            request.setValue(value, forHTTPHeaderField: key)
+        }
+        
+        var bodyDic:[String:Any] = [:]
+        for element in self.params {
+            if (element.position == .inBody) {
+                bodyDic[element.key] = element.value
             }
-            
-            let finalStr = url+fixString
-            guard let url = URL(string: finalStr) else {
-                print("Error: cannot create url with urlString:\(finalStr)")
-                
-                DispatchQueue.main.async { result(SKResult(d: nil, r: nil, e: Local_Error.invalid_url)) }
-                return self
-            }
-            
-            request = URLRequest(url: url)
-            request.timeoutInterval = api_timeout
-            request.httpMethod = method
-            SKRq.globalHeader.forEach { (key,value) in
-                request.setValue(value, forHTTPHeaderField: key)
-            }
-            header.forEach { (key,value) in
-                request.setValue(value, forHTTPHeaderField: key)
-            }
-
-        }else{
-            if (paramInUrl){
-                var fixString = ""
-                if param.count > 0 {
-                    fixString.append("?")
-                    param.forEach { (key: String, value: Any) in
-                        if (fixString.count>1){
-                            fixString.append("&")
-                        }
-                        fixString.append(key)
-                        fixString.append("=")
-                        fixString.append("\(value)")
-                    }
-                }
-                
-                let finalStr = url+fixString
-                guard let url = URL(string: finalStr) else {
-                    print("Error: cannot create url with urlString:\(finalStr)")
-                    
-                    DispatchQueue.main.async { result(SKResult(d: nil, r: nil, e: Local_Error.invalid_url)) }
-                    return self
-                }
-                
-                request = URLRequest(url: url)
-            }else{
-                guard let url = URL(string: url) else {
-                    print("Error: cannot create url with urlString:\(self.url)")
-                    
-                    DispatchQueue.main.async { result(SKResult(d: nil, r: nil, e: Local_Error.invalid_url)) }
-                    return self
-                }
-                
-                //先添加需要的数据到finalParaDic
-                //然后添加传进来的数据到fainalParaDic
-                param.forEach { (key: String, value: Any) in
-                    finalParaDic[key] = value
-                }
-                
-                request = URLRequest(url: url)
-            }
-            request.timeoutInterval = api_timeout
-            request.httpMethod = method
+        }
+        
+        if (bodyDic.count > 0){
             var jsonData:Data
             do {
-                jsonData = try JSONSerialization.data(withJSONObject: finalParaDic, options: [])
+                jsonData = try JSONSerialization.data(withJSONObject: bodyDic, options: [])
                 request.httpBody = jsonData
             } catch {
-                print("Error: cannot creat Json from paraDic \(String(describing: finalParaDic))")
+                print("Error: cannot creat Json from paraDic \(String(describing: bodyDic))")
                 
                 DispatchQueue.main.async { result(SKResult(d: nil, r: nil, e: Local_Error.invalid_paramDic_to_data)) }
                 return self
             }
-            
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            SKRq.globalHeader.forEach { (key,value) in
-                request.setValue(value, forHTTPHeaderField: key)
-            }
-            header.forEach { (key,value) in
-                request.setValue(value, forHTTPHeaderField: key)
-            }
         }
         
         let session = URLSession(configuration: skSessionConfiguration)
@@ -364,7 +343,7 @@ public class SKRq : NSObject{
                 print("url:",request.url?.absoluteString ?? "")
                 print("headFields:",request.allHTTPHeaderFields ?? "")
                 print("method:",self.method)
-                print("param:",finalParaDic)
+                print("param:",bodyDic)
                 if let data = data {
                     let json = try? (JSONSerialization.jsonObject(with: data,options:.allowFragments) as! [String: Any])
                     print("json:",json ?? "")
@@ -411,3 +390,21 @@ public class SKResult {
         json = try? SKJSON(data: data.orEmpty)
     }
 }
+/*
+ //use extension for your situation in your project , for example:
+ extension SKResult {
+     var success:Bool {
+         if let code = self.json?["code"].intValue , code == 200 {
+             return true
+         }
+         return false
+     }
+     
+     var errorMsg:String {
+         if let error = self.error {
+             return error.localizedDescription
+         }
+         return self.json?["message"].stringValue ?? "未知的错误"
+     }
+ }
+ */

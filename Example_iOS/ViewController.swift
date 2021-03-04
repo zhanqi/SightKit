@@ -20,9 +20,39 @@ class ViewController: UIViewController {
             "powerful".toAttrStr.wFont(pfb20).wTextColor(.red) +
             "and".toAttrStr.wFont(pfb10).wTextColor(.gray) +
             "perfecting".toAttrStr.wFont(pfm16).wTextColor(.blue)
-
+        
+        SGUrl.sso_login_post.rq(password: "123123", telephone: nil, username: "Jim123") { (res) in
+            if res.success {
+                let header = res.json?["data"]["tokenHead"].stringValue ?? ""
+                let token = res.json?["data"]["token"].stringValue ?? ""
+                let appToken = header + token
+                SKRq.globalHeader = ["Authorization":appToken]
+                SGUrl.sso_info_get.rq(name: "Jim123") { (r) in
+                    
+                }
+                
+                SGUrl.cart_list_get.rq { (_) in
+                    
+                }
+            }
+        }
     }
 
 
+}
+extension SKResult {
+    var success:Bool {
+        if let code = self.json?["code"].intValue , code == 200 {
+            return true
+        }
+        return false
+    }
+    
+    var errorMsg:String {
+        if let error = self.error {
+            return error.localizedDescription
+        }
+        return self.json?["message"].stringValue ?? "未知的错误"
+    }
 }
 
