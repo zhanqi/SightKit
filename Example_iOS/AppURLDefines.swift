@@ -2,7 +2,7 @@
 //  AppURLDefines.swift
 //
 //
-//  Created by SwaggerGenerator on 2021-03-05 13:58:58.136
+//  Created by SwaggerGenerator on 2021-03-05 14:16:33.277
 //
 
 
@@ -51,9 +51,9 @@ public struct SGUrl {
     /** 按状态分页获取用户佣金列表  (代理板块)
     ## 参数说明
     ```
-     pageNum:Int  default:1
-     pageSize:Int  default:5
-     status:Int
+     pageNum : Int  default:1
+     pageSize : Int  default:5
+     status : Int
     */
     public class agent_commission_list_get:SGCommonUrlProtocol {
         public var url = "/agent/commission/list"
@@ -75,7 +75,7 @@ public struct SGUrl {
     /** 购买礼包，成功后返回订单ID  (代理板块)
     ## 参数说明
     ```
-     giftOrderParam:  required
+     giftOrderParam :   required
     */
     public class agent_gift_buy_post:SGCommonUrlProtocol {
         public var url = "/agent/gift/buy"
@@ -88,8 +88,8 @@ public struct SGUrl {
     /** 获取礼包列表  (代理板块)
     ## 参数说明
     ```
-     pageNum:Int  default:1
-     pageSize:Int  default:5
+     pageNum : Int  default:1
+     pageSize : Int  default:5
     */
     public class agent_gift_list_get:SGCommonUrlProtocol {
         public var url = "/agent/gift/list"
@@ -103,8 +103,8 @@ public struct SGUrl {
     /** 帮扶列表  (代理板块)
     ## 参数说明
     ```
-     pageNum:Int  default:1
-     pageSize:Int  default:5
+    pageNum : Int  default:1
+    pageSize : Int  default:5
     */
     public class agent_helping_list_get:SGCommonUrlProtocol {
         public var url = "/agent/helping/list"
@@ -125,8 +125,8 @@ public struct SGUrl {
     /** 获取下线会员列表  (代理板块)
     ## 参数说明
     ```
-     pageNum:Int  default:1
-     pageSize:Int  default:5
+     pageNum : Int  default:1
+     pageSize : Int  default:5
     */
     public class agent_subline_member_list_get:SGCommonUrlProtocol {
         public var url = "/agent/subline/member/list"
@@ -147,7 +147,7 @@ public struct SGUrl {
     /** 提现申请  (代理板块)
     ## 参数说明
     ```
-     withdrawalApplyParam:  required
+     withdrawalApplyParam :   required
     */
     public class agent_withdrawal_apply_post:SGCommonUrlProtocol {
         public var url = "/agent/withdrawal/apply"
@@ -160,9 +160,9 @@ public struct SGUrl {
     /** 获取提现记录  (代理板块)
     ## 参数说明
     ```
-     pageNum:Int  default:1
-     pageSize:Int  default:5
-     status:Int
+     pageNum : Int  default:1
+     pageSize : Int  default:5
+     status : Int
     */
     public class agent_withdrawal_list_get:SGCommonUrlProtocol {
         public var url = "/agent/withdrawal/list"
@@ -177,7 +177,7 @@ public struct SGUrl {
     /** 获取品牌详情  (前台品牌管理)
     ## 参数说明
     ```
-     brandId:Int  required
+     brandId : Int  required
     */
     public class brand_detail_get:SGCommonUrlProtocol {
         public var url = "/brand/detail/{brandId}"
@@ -190,9 +190,9 @@ public struct SGUrl {
     /** 分页获取品牌相关商品  (前台品牌管理)
     ## 参数说明
     ```
-     brandId:Int  required
-     pageNum:Int  default:1
-     pageSize:Int  default:6
+     brandId : Int  required
+     pageNum : Int  default:1
+     pageSize : Int  default:6
     */
     public class brand_productList_get:SGCommonUrlProtocol {
         public var url = "/brand/productList"
@@ -207,8 +207,8 @@ public struct SGUrl {
     /** 分页获取推荐品牌  (前台品牌管理)
     ## 参数说明
     ```
-     pageNum:Int  default:1
-     pageSize:Int  default:6
+     pageNum : Int  default:1
+     pageSize : Int  default:6
     */
     public class brand_recommendList_get:SGCommonUrlProtocol {
         public var url = "/brand/recommendList"
@@ -271,8 +271,8 @@ public struct SGUrl {
     /** alipayCallback  (回调模块)
     ## 参数说明
     ```
-     key:String
-     tradeNo:String
+     key : String
+     tradeNo : String
     */
     public class callback_test_paySuccess_delete:SGCommonUrlProtocol {
         public var url = "/callback/test/paySuccess"
@@ -286,8 +286,8 @@ public struct SGUrl {
     /** alipayCallback  (回调模块)
     ## 参数说明
     ```
-     key:String
-     tradeNo:String
+     key : String
+     tradeNo : String
     */
     public class callback_test_paySuccess_get:SGCommonUrlProtocol {
         public var url = "/callback/test/paySuccess"
@@ -301,8 +301,8 @@ public struct SGUrl {
     /** alipayCallback  (回调模块)
     ## 参数说明
     ```
-     key:String
-     tradeNo:String
+     key : String
+     tradeNo : String
     */
     public class callback_test_paySuccess_head:SGCommonUrlProtocol {
         public var url = "/callback/test/paySuccess"
@@ -316,8 +316,8 @@ public struct SGUrl {
     /** alipayCallback  (回调模块)
     ## 参数说明
     ```
-     key:String
-     tradeNo:String
+     key : String
+     tradeNo : String
     */
     public class callback_test_paySuccess_options:SGCommonUrlProtocol {
         public var url = "/callback/test/paySuccess"
@@ -331,8 +331,8 @@ public struct SGUrl {
     /** alipayCallback  (回调模块)
     ## 参数说明
     ```
-     key:String
-     tradeNo:String
+     key : String
+     tradeNo : String
     */
     public class callback_test_paySuccess_patch:SGCommonUrlProtocol {
         public var url = "/callback/test/paySuccess"
@@ -346,8 +346,8 @@ public struct SGUrl {
     /** alipayCallback  (回调模块)
     ## 参数说明
     ```
-     key:String
-     tradeNo:String
+     key : String
+     tradeNo : String
     */
     public class callback_test_paySuccess_post:SGCommonUrlProtocol {
         public var url = "/callback/test/paySuccess"
@@ -361,8 +361,8 @@ public struct SGUrl {
     /** alipayCallback  (回调模块)
     ## 参数说明
     ```
-     key:String
-     tradeNo:String
+     key : String
+     tradeNo : String
     */
     public class callback_test_paySuccess_put:SGCommonUrlProtocol {
         public var url = "/callback/test/paySuccess"
@@ -376,7 +376,7 @@ public struct SGUrl {
     /** 添加商品到购物车  (购物车管理)
     ## 参数说明
     ```
-     cartItem:  required
+     cartItem :   required
     */
     public class cart_add_post:SGCommonUrlProtocol {
         public var url = "/cart/add"
@@ -396,7 +396,7 @@ public struct SGUrl {
     /** 删除购物车中的某个商品  (购物车管理)
     ## 参数说明
     ```
-     ids:Array  required
+     ids : Array  required
     */
     public class cart_delete_post:SGCommonUrlProtocol {
         public var url = "/cart/delete"
@@ -409,7 +409,7 @@ public struct SGUrl {
     /** 获取购物车中某个商品的规格,用于重选规格  (购物车管理)
     ## 参数说明
     ```
-     productId:Int  required
+     productId : Int  required
     */
     public class cart_getProduct_get:SGCommonUrlProtocol {
         public var url = "/cart/getProduct/{productId}"
@@ -429,7 +429,7 @@ public struct SGUrl {
     /** 获取某个会员的购物车列表,包括促销信息  (购物车管理)
     ## 参数说明
     ```
-     cartIds:Array
+     cartIds : Array
     */
     public class cart_list_promotion_get:SGCommonUrlProtocol {
         public var url = "/cart/list/promotion"
@@ -442,7 +442,7 @@ public struct SGUrl {
     /** 修改购物车中商品的规格  (购物车管理)
     ## 参数说明
     ```
-     cartItem:  required
+     cartItem :   required
     */
     public class cart_update_attr_post:SGCommonUrlProtocol {
         public var url = "/cart/update/attr"
@@ -455,8 +455,8 @@ public struct SGUrl {
     /** 修改购物车中某个商品的数量  (购物车管理)
     ## 参数说明
     ```
-     id:Int  required
-     quantity:Int  required
+     id : Int  required
+     quantity : Int  required
     */
     public class cart_update_quantity_get:SGCommonUrlProtocol {
         public var url = "/cart/update/quantity"
@@ -477,8 +477,8 @@ public struct SGUrl {
     /** 分页获取人气推荐商品  (首页内容管理)
     ## 参数说明
     ```
-     pageNum:Int  default:1
-     pageSize:Int  default:6
+     pageNum : Int  default:1
+     pageSize : Int  default:6
     */
     public class home_hotProductList_get:SGCommonUrlProtocol {
         public var url = "/home/hotProductList"
@@ -492,8 +492,8 @@ public struct SGUrl {
     /** 分页获取新品推荐商品  (首页内容管理)
     ## 参数说明
     ```
-     pageNum:Int  default:1
-     pageSize:Int  default:6
+     pageNum : Int  default:1
+     pageSize : Int  default:6
     */
     public class home_newProductList_get:SGCommonUrlProtocol {
         public var url = "/home/newProductList"
@@ -507,7 +507,7 @@ public struct SGUrl {
     /** 获取首页商品分类  (首页内容管理)
     ## 参数说明
     ```
-     parentId:Int  required
+     parentId : Int  required
     */
     public class home_productCateList_get:SGCommonUrlProtocol {
         public var url = "/home/productCateList/{parentId}"
@@ -520,8 +520,8 @@ public struct SGUrl {
     /** 分页获取推荐商品  (首页内容管理)
     ## 参数说明
     ```
-     pageNum:Int  default:1
-     pageSize:Int  default:4
+     pageNum : Int  default:1
+     pageSize : Int  default:4
     */
     public class home_recommendProductList_get:SGCommonUrlProtocol {
         public var url = "/home/recommendProductList"
@@ -535,7 +535,7 @@ public struct SGUrl {
     /** index  (首页内容管理)
     ## 参数说明
     ```
-     code:String
+     code : String
     */
     public class home_share_get:SGCommonUrlProtocol {
         public var url = "/home/share"
@@ -548,9 +548,9 @@ public struct SGUrl {
     /** 根据分类获取专题  (首页内容管理)
     ## 参数说明
     ```
-     cateId:Int
-     pageNum:Int  default:1
-     pageSize:Int  default:4
+     cateId : Int
+     pageNum : Int  default:1
+     pageSize : Int  default:4
     */
     public class home_subjectList_get:SGCommonUrlProtocol {
         public var url = "/home/subjectList"
@@ -565,8 +565,8 @@ public struct SGUrl {
     /** 版本检测  (首页内容管理)
     ## 参数说明
     ```
-     platform:Int  default:1
-     version:Int  default:1
+     platform : Int  default:1
+     version : Int  default:1
     */
     public class home_version_check_get:SGCommonUrlProtocol {
         public var url = "/home/version/check"
@@ -580,7 +580,7 @@ public struct SGUrl {
     /** 添加收货地址  (会员收货地址管理)
     ## 参数说明
     ```
-     address:  required
+     address :   required
     */
     public class member_address_add_post:SGCommonUrlProtocol {
         public var url = "/member/address/add"
@@ -593,7 +593,7 @@ public struct SGUrl {
     /** 删除收货地址  (会员收货地址管理)
     ## 参数说明
     ```
-     id:Int  required
+     id : Int  required
     */
     public class member_address_delete_post:SGCommonUrlProtocol {
         public var url = "/member/address/delete/{id}"
@@ -613,8 +613,8 @@ public struct SGUrl {
     /** 修改收货地址  (会员收货地址管理)
     ## 参数说明
     ```
-     address:  required
-     id:Int  required
+     address :   required
+     id : Int  required
     */
     public class member_address_update_post:SGCommonUrlProtocol {
         public var url = "/member/address/update/{id}"
@@ -628,7 +628,7 @@ public struct SGUrl {
     /** 获取收货地址详情  (会员收货地址管理)
     ## 参数说明
     ```
-     id:Int  required
+     id : Int  required
     */
     public class member_address_get:SGCommonUrlProtocol {
         public var url = "/member/address/{id}"
@@ -641,7 +641,7 @@ public struct SGUrl {
     /** 添加品牌关注  (会员关注品牌管理)
     ## 参数说明
     ```
-     memberBrandAttention:  required
+     memberBrandAttention :   required
     */
     public class member_attention_add_post:SGCommonUrlProtocol {
         public var url = "/member/attention/add"
@@ -661,7 +661,7 @@ public struct SGUrl {
     /** 取消关注  (会员关注品牌管理)
     ## 参数说明
     ```
-     brandId:Int
+     brandId : Int
     */
     public class member_attention_delete_post:SGCommonUrlProtocol {
         public var url = "/member/attention/delete"
@@ -674,7 +674,7 @@ public struct SGUrl {
     /** 显示关注品牌详情  (会员关注品牌管理)
     ## 参数说明
     ```
-     brandId:Int  required
+     brandId : Int  required
     */
     public class member_attention_detail_get:SGCommonUrlProtocol {
         public var url = "/member/attention/detail"
@@ -687,8 +687,8 @@ public struct SGUrl {
     /** 显示关注列表  (会员关注品牌管理)
     ## 参数说明
     ```
-     pageNum:Int  default:1
-     pageSize:Int  default:5
+     pageNum : Int  default:1
+     pageSize : Int  default:5
     */
     public class member_attention_list_get:SGCommonUrlProtocol {
         public var url = "/member/attention/list"
@@ -702,7 +702,7 @@ public struct SGUrl {
     /** 领取指定优惠券  (用户优惠券管理)
     ## 参数说明
     ```
-     couponId:Int  required
+     couponId : Int  required
     */
     public class member_coupon_add_post:SGCommonUrlProtocol {
         public var url = "/member/coupon/add/{couponId}"
@@ -715,7 +715,7 @@ public struct SGUrl {
     /** 获取用户优惠券列表  (用户优惠券管理)
     ## 参数说明
     ```
-     useStatus:ref
+     useStatus : ref
     */
     public class member_coupon_list_get:SGCommonUrlProtocol {
         public var url = "/member/coupon/list"
@@ -728,7 +728,7 @@ public struct SGUrl {
     /** 获取登录会员购物车的相关优惠券  (用户优惠券管理)
     ## 参数说明
     ```
-     type:ref  default:1
+     type : ref  default:1
     */
     public class member_coupon_list_cart_get:SGCommonUrlProtocol {
         public var url = "/member/coupon/list/cart/{type}"
@@ -741,7 +741,7 @@ public struct SGUrl {
     /** 获取当前商品相关优惠券  (用户优惠券管理)
     ## 参数说明
     ```
-     productId:Int  required
+     productId : Int  required
     */
     public class member_coupon_listByProduct_get:SGCommonUrlProtocol {
         public var url = "/member/coupon/listByProduct/{productId}"
@@ -754,7 +754,7 @@ public struct SGUrl {
     /** 获取用户优惠券历史列表  (用户优惠券管理)
     ## 参数说明
     ```
-     useStatus:ref
+     useStatus : ref
     */
     public class member_coupon_listHistory_get:SGCommonUrlProtocol {
         public var url = "/member/coupon/listHistory"
@@ -767,7 +767,7 @@ public struct SGUrl {
     /** 添加商品收藏  (会员收藏管理)
     ## 参数说明
     ```
-     productCollection:  required
+     productCollection :   required
     */
     public class member_productCollection_add_post:SGCommonUrlProtocol {
         public var url = "/member/productCollection/add"
@@ -787,7 +787,7 @@ public struct SGUrl {
     /** 删除收藏商品  (会员收藏管理)
     ## 参数说明
     ```
-     productId:Int
+     productId : Int
     */
     public class member_productCollection_delete_post:SGCommonUrlProtocol {
         public var url = "/member/productCollection/delete"
@@ -800,7 +800,7 @@ public struct SGUrl {
     /** 显示收藏商品详情  (会员收藏管理)
     ## 参数说明
     ```
-     productId:Int  required
+     productId : Int  required
     */
     public class member_productCollection_detail_get:SGCommonUrlProtocol {
         public var url = "/member/productCollection/detail"
@@ -813,8 +813,8 @@ public struct SGUrl {
     /** 显示收藏列表  (会员收藏管理)
     ## 参数说明
     ```
-     pageNum:Int  default:1
-     pageSize:Int  default:5
+     pageNum : Int  default:1
+     pageSize : Int  default:5
     */
     public class member_productCollection_list_get:SGCommonUrlProtocol {
         public var url = "/member/productCollection/list"
@@ -835,7 +835,7 @@ public struct SGUrl {
     /** 创建浏览记录  (会员商品浏览记录管理)
     ## 参数说明
     ```
-     memberReadHistory:  required
+     memberReadHistory :   required
     */
     public class member_readHistory_create_post:SGCommonUrlProtocol {
         public var url = "/member/readHistory/create"
@@ -848,7 +848,7 @@ public struct SGUrl {
     /** 删除浏览记录  (会员商品浏览记录管理)
     ## 参数说明
     ```
-     ids:Array  required
+     ids : Array  required
     */
     public class member_readHistory_delete_post:SGCommonUrlProtocol {
         public var url = "/member/readHistory/delete"
@@ -861,8 +861,8 @@ public struct SGUrl {
     /** 分页获取用户浏览记录  (会员商品浏览记录管理)
     ## 参数说明
     ```
-     pageNum:Int  default:1
-     pageSize:Int  default:5
+     pageNum : Int  default:1
+     pageSize : Int  default:5
     */
     public class member_readHistory_list_get:SGCommonUrlProtocol {
         public var url = "/member/readHistory/list"
@@ -876,7 +876,7 @@ public struct SGUrl {
     /** 取消单个超时订单  (订单管理)
     ## 参数说明
     ```
-     orderId:Int
+     orderId : Int
     */
     public class order_cancelOrder_post:SGCommonUrlProtocol {
         public var url = "/order/cancelOrder"
@@ -896,7 +896,7 @@ public struct SGUrl {
     /** 用户取消订单  (订单管理)
     ## 参数说明
     ```
-     orderId:Int
+     orderId : Int
     */
     public class order_cancelUserOrder_post:SGCommonUrlProtocol {
         public var url = "/order/cancelUserOrder"
@@ -909,7 +909,7 @@ public struct SGUrl {
     /** 用户确认收货  (订单管理)
     ## 参数说明
     ```
-     orderId:Int
+     orderId : Int
     */
     public class order_confirmReceiveOrder_post:SGCommonUrlProtocol {
         public var url = "/order/confirmReceiveOrder"
@@ -922,7 +922,7 @@ public struct SGUrl {
     /** 用户删除订单  (订单管理)
     ## 参数说明
     ```
-     orderId:Int
+     orderId : Int
     */
     public class order_deleteOrder_post:SGCommonUrlProtocol {
         public var url = "/order/deleteOrder"
@@ -935,7 +935,7 @@ public struct SGUrl {
     /** 根据ID获取订单详情  (订单管理)
     ## 参数说明
     ```
-     orderId:Int  required
+     orderId : Int  required
     */
     public class order_detail_get:SGCommonUrlProtocol {
         public var url = "/order/detail/{orderId}"
@@ -948,7 +948,7 @@ public struct SGUrl {
     /** 根据购物车信息生成确认单信息  (订单管理)
     ## 参数说明
     ```
-     confirmOrderParam:  required
+     confirmOrderParam :   required
     */
     public class order_generateConfirmOrder_post:SGCommonUrlProtocol {
         public var url = "/order/generateConfirmOrder"
@@ -961,7 +961,7 @@ public struct SGUrl {
     /** 根据购物车信息生成订单  (订单管理)
     ## 参数说明
     ```
-     orderParam:  required
+     orderParam :   required
     */
     public class order_generateOrder_post:SGCommonUrlProtocol {
         public var url = "/order/generateOrder"
@@ -974,9 +974,9 @@ public struct SGUrl {
     /** 按状态分页获取用户订单列表  (订单管理)
     ## 参数说明
     ```
-     pageNum:Int  default:1
-     pageSize:Int  default:5
-     status:Int  default:-1
+     pageNum : Int  default:1
+     pageSize : Int  default:5
+     status : Int  default:-1
     */
     public class order_list_get:SGCommonUrlProtocol {
         public var url = "/order/list"
@@ -991,7 +991,7 @@ public struct SGUrl {
     /** 获取支付信息  (支付模块)
     ## 参数说明
     ```
-     paymentParam:  required
+     paymentParam :   required
     */
     public class payment_generatePaymentInfo_post:SGCommonUrlProtocol {
         public var url = "/payment/generatePaymentInfo"
@@ -1011,7 +1011,7 @@ public struct SGUrl {
     /** 获取前台商品详情  (前台商品管理)
     ## 参数说明
     ```
-     id:Int  required
+     id : Int  required
     */
     public class product_detail_get:SGCommonUrlProtocol {
         public var url = "/product/detail/{id}"
@@ -1024,12 +1024,12 @@ public struct SGUrl {
     /** 综合搜索、筛选、排序  (前台商品管理)
     ## 参数说明
     ```
-     brandId:Int
-     keyword:String
-     pageNum:Int  default:0
-     pageSize:Int  default:5
-     productCategoryId:Int
-     sort:ref  default:0
+     brandId : Int
+     keyword : String
+     pageNum : Int  default:0
+     pageSize : Int  default:5
+     productCategoryId : Int
+     sort : ref  default:0
     */
     public class product_search_get:SGCommonUrlProtocol {
         public var url = "/product/search"
@@ -1047,7 +1047,7 @@ public struct SGUrl {
     /** 申请退货  (申请退货管理)
     ## 参数说明
     ```
-     returnApply:  required
+     returnApply :   required
     */
     public class returnApply_create_post:SGCommonUrlProtocol {
         public var url = "/returnApply/create"
@@ -1060,7 +1060,7 @@ public struct SGUrl {
     /** 获取验证码  (会员登录注册管理)
     ## 参数说明
     ```
-     telephone:String  required
+     telephone : String  required
     */
     public class sso_getAuthCode_get:SGCommonUrlProtocol {
         public var url = "/sso/getAuthCode"
@@ -1073,7 +1073,7 @@ public struct SGUrl {
     /** 获取会员信息  (会员登录注册管理)
     ## 参数说明
     ```
-     name:String
+     name : String
     */
     public class sso_info_get:SGCommonUrlProtocol {
         public var url = "/sso/info"
@@ -1086,9 +1086,9 @@ public struct SGUrl {
     /** 会员登录  (会员登录注册管理)
     ## 参数说明
     ```
-     password:String  required
-     telephone:String
-     username:String
+     password : String  required
+     telephone : String
+     username : String
     */
     public class sso_login_post:SGCommonUrlProtocol {
         public var url = "/sso/login"
@@ -1110,11 +1110,11 @@ public struct SGUrl {
     /** 会员注册  (会员登录注册管理)
     ## 参数说明
     ```
-     authCode:String  required
-     password:String  required
-     shareCode:String
-     telephone:String  required
-     username:String  required
+     authCode : String  required
+     password : String  required
+     shareCode : String
+     telephone : String  required
+     username : String  required
     */
     public class sso_register_post:SGCommonUrlProtocol {
         public var url = "/sso/register"
@@ -1131,9 +1131,9 @@ public struct SGUrl {
     /** 修改密码  (会员登录注册管理)
     ## 参数说明
     ```
-     authCode:String  required
-     password:String  required
-     telephone:String  required
+     authCode : String  required
+     password : String  required
+     telephone : String  required
     */
     public class sso_updatePassword_post:SGCommonUrlProtocol {
         public var url = "/sso/updatePassword"
@@ -1148,8 +1148,8 @@ public struct SGUrl {
     /** 修改手机  (会员登录注册管理)
     ## 参数说明
     ```
-     authCode:String  required
-     telephone:String  required
+     authCode : String  required
+     telephone : String  required
     */
     public class sso_updatePhone_post:SGCommonUrlProtocol {
         public var url = "/sso/updatePhone"
