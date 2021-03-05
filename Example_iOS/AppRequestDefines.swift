@@ -2,7 +2,7 @@
 //  AppRequestDefines.swift
 //
 //
-//  Created by SwaggerGenerator on 2021-03-04 14:41:55.430
+//  Created by SwaggerGenerator on 2021-03-05 12:11:06.379
 //
 
 

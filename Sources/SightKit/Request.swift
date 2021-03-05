@@ -276,7 +276,6 @@ public class SKRq : NSObject{
     }
     
     @discardableResult public func resume(_ result:@escaping ((SKResult)->Void)) -> SKRq {
-
         var finalStr = self.url
         var urlParamStr = ""
         for element in self.params {
@@ -372,11 +371,31 @@ public class SKRq : NSObject{
         }
         task.resume()
         
-        
+        return self
+    }
+    
+    /** 顺带解析为model
+     ## 使用示例
+     ```
+     SKRq()....resumeWithModel { (result, item:YouhuiItem?) in
+         
+     }
+     */
+    @discardableResult public func resumeWithModel<T:SKJsonInitProtocol>(_ resultAndModel:@escaping ((SKResult,T?)->Void)) -> SKRq {
+        resume { (result) in
+            var model:T? = nil
+            if let json = result.json {
+                model = T(json: json)
+            }
+            resultAndModel(result,model)
+        }
+
         return self
     }
 }
-
+public protocol SKJsonInitProtocol {
+    init(json:SKJSON)
+}
 public class SKResult {
     public var data:Data?
     public var response:URLResponse?
@@ -408,3 +427,17 @@ public class SKResult {
      }
  }
  */
+class YouhuiItem: NSObject,Codable{
+    var activeCode:String = ""
+    var Main_Title:String = ""
+    var GameType:Int = 0
+    var Id:Int = 0
+    
+    convenience init(json:SKJSON) {
+        self.init()
+        self.activeCode = json["activeCode"].stringValue
+        self.Main_Title = json["Main_Title"].stringValue
+        self.GameType = json["GameType"].intValue
+        self.Id = json["Id"].intValue
+    }
+}

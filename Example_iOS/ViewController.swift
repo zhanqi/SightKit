@@ -36,9 +36,28 @@ class ViewController: UIViewController {
                 }
             }
         }
+        
+        SKRq().resumeWithModel { (result, item:YouhuiItem?) in
+            
+        }
     }
 
 
+}
+
+class YouhuiItem: SKJsonInitProtocol{
+    var activeCode:String = ""
+    var Main_Title:String = ""
+    var GameType:Int = 0
+    var Id:Int = 0
+    
+    required convenience init(json:SKJSON) {
+        self.init()
+        self.activeCode = json["activeCode"].stringValue
+        self.Main_Title = json["Main_Title"].stringValue
+        self.GameType = json["GameType"].intValue
+        self.Id = json["Id"].intValue
+    }
 }
 extension SKResult {
     var success:Bool {
@@ -56,3 +75,12 @@ extension SKResult {
     }
 }
 
+//func sgRequest<T>(item:SGCommonUrlProtocol,resultAndModel:@escaping ((SKResult,T)->Void)){
+//    let rq = SKRq().wUrl(hostUrl + item.url).wMethod(item.method)
+//    for element in item.paramMap.values {
+//        if let value = element.value , let  position = SKParamPosition.init(rawValue:element.paramPosition.rawValue) {
+//            rq.wParam(key: element.name, value: value, position: position)
+//        }
+//    }
+//    rq.resumeWithModel<String>(resultAndModel)
+//}

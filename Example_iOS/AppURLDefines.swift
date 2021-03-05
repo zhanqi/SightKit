@@ -2,11 +2,12 @@
 //  AppURLDefines.swift
 //
 //
-//  Created by SwaggerGenerator on 2021-03-04 14:41:54.930
+//  Created by SwaggerGenerator on 2021-03-05 13:58:58.136
 //
 
 
 import Foundation
+import SightKit
 
 
 /** 参数处理方式（where to put the parameter
@@ -1189,6 +1190,23 @@ public class AgCommission: SGResponseItem {
     public var status:Int?
     /// 0: 直推 1:团队
     public var type:Int?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        commission = json["commission"].floatValue
+        commissionRate = json["commissionRate"].floatValue
+        createTime = json["createTime"].stringValue
+        depth = json["depth"].intValue
+        id = json["id"].intValue
+        memberId = json["memberId"].intValue
+        name = json["name"].stringValue
+        orderAmount = json["orderAmount"].floatValue
+        orderMemberId = json["orderMemberId"].intValue
+        sourceId = json["sourceId"].stringValue
+        sourceType = json["sourceType"].intValue
+        status = json["status"].intValue
+        type = json["type"].intValue
+    }
 }
 public class AgGift: SGResponseItem {
     /// 画册图片，连产品图片限制为5张，以逗号分割
@@ -1219,10 +1237,33 @@ public class AgGift: SGResponseItem {
     public var sort:Int?
     /// 副标题
     public var subTitle:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        albumPics = json["albumPics"].stringValue
+        deleteStatus = json["deleteStatus"].intValue
+        description_str = json["description_str"].stringValue
+        detailMobileHtml = json["detailMobileHtml"].stringValue
+        giftDiscountAmount = json["giftDiscountAmount"].floatValue
+        id = json["id"].intValue
+        name = json["name"].stringValue
+        pic = json["pic"].stringValue
+        price = json["price"].floatValue
+        profit = json["profit"].floatValue
+        publishStatus = json["publishStatus"].intValue
+        sale = json["sale"].intValue
+        sort = json["sort"].intValue
+        subTitle = json["subTitle"].stringValue
+    }
 }
 public class AgGiftOrderParam: SGResponseItem {
     /// 礼包ID
     public var giftId:Int?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        giftId = json["giftId"].intValue
+    }
 }
 public class AgHelping: SGResponseItem {
     /// 年龄
@@ -1269,6 +1310,33 @@ public class AgHelping: SGResponseItem {
     public var xl:String?
     /// 政治面貌
     public var zzmm:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        age = json["age"].intValue
+        dbby = json["dbby"].stringValue
+        homeAddress = json["homeAddress"].stringValue
+        homeInfo = json["homeInfo"].stringValue
+        id = json["id"].intValue
+        idCard = json["idCard"].stringValue
+        jage = json["jage"].intValue
+        jd = json["jd"].stringValue
+        knReason = json["knReason"].stringValue
+        mz = json["mz"].stringValue
+        name = json["name"].stringValue
+        scdj = json["scdj"].stringValue
+        sczh = json["sczh"].stringValue
+        sex = json["sex"].intValue
+        ssbd = json["ssbd"].stringValue
+        tel = json["tel"].stringValue
+        tjdw = json["tjdw"].stringValue
+        type = json["type"].stringValue
+        tysj = json["tysj"].stringValue
+        viewState = json["viewState"].intValue
+        workState = json["workState"].stringValue
+        xl = json["xl"].stringValue
+        zzmm = json["zzmm"].stringValue
+    }
 }
 public class AgWithdrawal: SGResponseItem {
     /// 账号
@@ -1295,6 +1363,22 @@ public class AgWithdrawal: SGResponseItem {
     public var type:Int?
     /// 修改时间
     public var updateTime:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        account = json["account"].stringValue
+        amount = json["amount"].floatValue
+        bankBranch = json["bankBranch"].stringValue
+        bankName = json["bankName"].stringValue
+        bankNo = json["bankNo"].stringValue
+        createTime = json["createTime"].stringValue
+        id = json["id"].intValue
+        memberId = json["memberId"].intValue
+        realName = json["realName"].stringValue
+        status = json["status"].intValue
+        type = json["type"].intValue
+        updateTime = json["updateTime"].stringValue
+    }
 }
 public class AgWithdrawalApply: SGResponseItem {
     /// 账号
@@ -1311,6 +1395,17 @@ public class AgWithdrawalApply: SGResponseItem {
     public var realName:String?
     /// 类型 1:银行卡 2:支付宝
     public var type:Int?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        account = json["account"].stringValue
+        amount = json["amount"].floatValue
+        bankBranch = json["bankBranch"].stringValue
+        bankName = json["bankName"].stringValue
+        bankNo = json["bankNo"].stringValue
+        realName = json["realName"].stringValue
+        type = json["type"].intValue
+    }
 }
 public class CalcAmount: SGResponseItem {
     public var discountAmount:Float?
@@ -1318,6 +1413,15 @@ public class CalcAmount: SGResponseItem {
     public var payAmount:Float?
     public var promotionAmount:Float?
     public var totalAmount:Float?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        discountAmount = json["discountAmount"].floatValue
+        freightAmount = json["freightAmount"].floatValue
+        payAmount = json["payAmount"].floatValue
+        promotionAmount = json["promotionAmount"].floatValue
+        totalAmount = json["totalAmount"].floatValue
+    }
 }
 public class CartProduct: SGResponseItem {
     /// 画册图片，连产品图片限制为5张，以逗号分割
@@ -1396,6 +1500,59 @@ public class CartProduct: SGResponseItem {
     public var verifyStatus:Int?
     /// 商品重量，默认为克
     public var weight:Float?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        albumPics = json["albumPics"].stringValue
+        brandId = json["brandId"].intValue
+        brandName = json["brandName"].stringValue
+        deleteStatus = json["deleteStatus"].intValue
+        description_str = json["description_str"].stringValue
+        detailDesc = json["detailDesc"].stringValue
+        detailHtml = json["detailHtml"].stringValue
+        detailMobileHtml = json["detailMobileHtml"].stringValue
+        detailTitle = json["detailTitle"].stringValue
+        discountAmount = json["discountAmount"].floatValue
+        feightTemplateId = json["feightTemplateId"].intValue
+        giftGrowth = json["giftGrowth"].intValue
+        giftPoint = json["giftPoint"].intValue
+        id = json["id"].intValue
+        keywords = json["keywords"].stringValue
+        lowStock = json["lowStock"].intValue
+        name = json["name"].stringValue
+        newStatus = json["newStatus"].intValue
+        note = json["note"].stringValue
+        originalPrice = json["originalPrice"].floatValue
+        pic = json["pic"].stringValue
+        previewStatus = json["previewStatus"].intValue
+        price = json["price"].floatValue
+        productAttributeCategoryId = json["productAttributeCategoryId"].intValue
+        for value in json["productAttributeList"].arrayValue{
+            productAttributeList.append(PmsProductAttribute(json: value))
+        }
+        productCategoryId = json["productCategoryId"].intValue
+        productCategoryName = json["productCategoryName"].stringValue
+        productSn = json["productSn"].stringValue
+        promotionEndTime = json["promotionEndTime"].stringValue
+        promotionPerLimit = json["promotionPerLimit"].intValue
+        promotionPrice = json["promotionPrice"].floatValue
+        promotionStartTime = json["promotionStartTime"].stringValue
+        promotionType = json["promotionType"].intValue
+        publishStatus = json["publishStatus"].intValue
+        recommandStatus = json["recommandStatus"].intValue
+        sale = json["sale"].intValue
+        serviceIds = json["serviceIds"].stringValue
+        for value in json["skuStockList"].arrayValue{
+            skuStockList.append(PmsSkuStock(json: value))
+        }
+        sort = json["sort"].intValue
+        stock = json["stock"].intValue
+        subTitle = json["subTitle"].stringValue
+        unit = json["unit"].stringValue
+        usePointLimit = json["usePointLimit"].intValue
+        verifyStatus = json["verifyStatus"].intValue
+        weight = json["weight"].floatValue
+    }
 }
 public class CartPromotionItem: SGResponseItem {
     /// 创建时间
@@ -1434,6 +1591,34 @@ public class CartPromotionItem: SGResponseItem {
     public var quantity:Int?
     public var realStock:Int?
     public var reduceAmount:Float?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        createDate = json["createDate"].stringValue
+        deleteStatus = json["deleteStatus"].intValue
+        discountAmount = json["discountAmount"].floatValue
+        growth = json["growth"].intValue
+        id = json["id"].intValue
+        integration = json["integration"].intValue
+        memberId = json["memberId"].intValue
+        memberNickname = json["memberNickname"].stringValue
+        modifyDate = json["modifyDate"].stringValue
+        price = json["price"].floatValue
+        productAttr = json["productAttr"].stringValue
+        productBrand = json["productBrand"].stringValue
+        productCategoryId = json["productCategoryId"].intValue
+        productId = json["productId"].intValue
+        productName = json["productName"].stringValue
+        productPic = json["productPic"].stringValue
+        productSkuCode = json["productSkuCode"].stringValue
+        productSkuId = json["productSkuId"].intValue
+        productSn = json["productSn"].stringValue
+        productSubTitle = json["productSubTitle"].stringValue
+        promotionMessage = json["promotionMessage"].stringValue
+        quantity = json["quantity"].intValue
+        realStock = json["realStock"].intValue
+        reduceAmount = json["reduceAmount"].floatValue
+    }
 }
 public class CmsSubject: SGResponseItem {
     /// 画册图片用逗号分割
@@ -1458,6 +1643,26 @@ public class CmsSubject: SGResponseItem {
     /// 显示状态：0->不显示；1->显示
     public var showStatus:Int?
     public var title:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        albumPics = json["albumPics"].stringValue
+        categoryId = json["categoryId"].intValue
+        categoryName = json["categoryName"].stringValue
+        collectCount = json["collectCount"].intValue
+        commentCount = json["commentCount"].intValue
+        content = json["content"].stringValue
+        createTime = json["createTime"].stringValue
+        description_str = json["description_str"].stringValue
+        forwardCount = json["forwardCount"].intValue
+        id = json["id"].intValue
+        pic = json["pic"].stringValue
+        productCount = json["productCount"].intValue
+        readCount = json["readCount"].intValue
+        recommendStatus = json["recommendStatus"].intValue
+        showStatus = json["showStatus"].intValue
+        title = json["title"].stringValue
+    }
 }
 public class CommonPage_AgCommission: SGResponseItem {
     /// 分页数据
@@ -1470,6 +1675,17 @@ public class CommonPage_AgCommission: SGResponseItem {
     public var total:Int?
     /// 总页数
     public var totalPage:Int?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        for value in json["list"].arrayValue{
+            list.append(AgCommission(json: value))
+        }
+        pageNum = json["pageNum"].intValue
+        pageSize = json["pageSize"].intValue
+        total = json["total"].intValue
+        totalPage = json["totalPage"].intValue
+    }
 }
 public class CommonPage_AgGift: SGResponseItem {
     /// 分页数据
@@ -1482,6 +1698,17 @@ public class CommonPage_AgGift: SGResponseItem {
     public var total:Int?
     /// 总页数
     public var totalPage:Int?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        for value in json["list"].arrayValue{
+            list.append(AgGift(json: value))
+        }
+        pageNum = json["pageNum"].intValue
+        pageSize = json["pageSize"].intValue
+        total = json["total"].intValue
+        totalPage = json["totalPage"].intValue
+    }
 }
 public class CommonPage_AgHelping: SGResponseItem {
     /// 分页数据
@@ -1494,6 +1721,17 @@ public class CommonPage_AgHelping: SGResponseItem {
     public var total:Int?
     /// 总页数
     public var totalPage:Int?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        for value in json["list"].arrayValue{
+            list.append(AgHelping(json: value))
+        }
+        pageNum = json["pageNum"].intValue
+        pageSize = json["pageSize"].intValue
+        total = json["total"].intValue
+        totalPage = json["totalPage"].intValue
+    }
 }
 public class CommonPage_AgWithdrawal: SGResponseItem {
     /// 分页数据
@@ -1506,6 +1744,17 @@ public class CommonPage_AgWithdrawal: SGResponseItem {
     public var total:Int?
     /// 总页数
     public var totalPage:Int?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        for value in json["list"].arrayValue{
+            list.append(AgWithdrawal(json: value))
+        }
+        pageNum = json["pageNum"].intValue
+        pageSize = json["pageSize"].intValue
+        total = json["total"].intValue
+        totalPage = json["totalPage"].intValue
+    }
 }
 public class CommonPage_MemberBrandAttention: SGResponseItem {
     /// 分页数据
@@ -1518,6 +1767,17 @@ public class CommonPage_MemberBrandAttention: SGResponseItem {
     public var total:Int?
     /// 总页数
     public var totalPage:Int?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        for value in json["list"].arrayValue{
+            list.append(MemberBrandAttention(json: value))
+        }
+        pageNum = json["pageNum"].intValue
+        pageSize = json["pageSize"].intValue
+        total = json["total"].intValue
+        totalPage = json["totalPage"].intValue
+    }
 }
 public class CommonPage_MemberProductCollection: SGResponseItem {
     /// 分页数据
@@ -1530,6 +1790,17 @@ public class CommonPage_MemberProductCollection: SGResponseItem {
     public var total:Int?
     /// 总页数
     public var totalPage:Int?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        for value in json["list"].arrayValue{
+            list.append(MemberProductCollection(json: value))
+        }
+        pageNum = json["pageNum"].intValue
+        pageSize = json["pageSize"].intValue
+        total = json["total"].intValue
+        totalPage = json["totalPage"].intValue
+    }
 }
 public class CommonPage_MemberReadHistory: SGResponseItem {
     /// 分页数据
@@ -1542,6 +1813,17 @@ public class CommonPage_MemberReadHistory: SGResponseItem {
     public var total:Int?
     /// 总页数
     public var totalPage:Int?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        for value in json["list"].arrayValue{
+            list.append(MemberReadHistory(json: value))
+        }
+        pageNum = json["pageNum"].intValue
+        pageSize = json["pageSize"].intValue
+        total = json["total"].intValue
+        totalPage = json["totalPage"].intValue
+    }
 }
 public class CommonPage_OmsOrderDetail: SGResponseItem {
     /// 分页数据
@@ -1554,6 +1836,17 @@ public class CommonPage_OmsOrderDetail: SGResponseItem {
     public var total:Int?
     /// 总页数
     public var totalPage:Int?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        for value in json["list"].arrayValue{
+            list.append(OmsOrderDetail(json: value))
+        }
+        pageNum = json["pageNum"].intValue
+        pageSize = json["pageSize"].intValue
+        total = json["total"].intValue
+        totalPage = json["totalPage"].intValue
+    }
 }
 public class CommonPage_PmsProduct: SGResponseItem {
     /// 分页数据
@@ -1566,6 +1859,17 @@ public class CommonPage_PmsProduct: SGResponseItem {
     public var total:Int?
     /// 总页数
     public var totalPage:Int?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        for value in json["list"].arrayValue{
+            list.append(PmsProduct(json: value))
+        }
+        pageNum = json["pageNum"].intValue
+        pageSize = json["pageSize"].intValue
+        total = json["total"].intValue
+        totalPage = json["totalPage"].intValue
+    }
 }
 public class CommonPage_object: SGResponseItem {
     /// 分页数据
@@ -1578,6 +1882,17 @@ public class CommonPage_object: SGResponseItem {
     public var total:Int?
     /// 总页数
     public var totalPage:Int?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        for value in json["list"].arrayValue{
+            list.append(value.object)
+        }
+        pageNum = json["pageNum"].intValue
+        pageSize = json["pageSize"].intValue
+        total = json["total"].intValue
+        totalPage = json["totalPage"].intValue
+    }
 }
 public class CommonResult: SGResponseItem {
     /// 状态码
@@ -1585,6 +1900,13 @@ public class CommonResult: SGResponseItem {
     public var data:Any?
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        data = json["data"].object
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_CartProduct: SGResponseItem {
     /// 状态码
@@ -1592,6 +1914,13 @@ public class CommonResult_CartProduct: SGResponseItem {
     public var data:CartProduct?
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        data = CartProduct(json:json["data"])
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_CommonPage_AgCommission: SGResponseItem {
     /// 状态码
@@ -1599,6 +1928,13 @@ public class CommonResult_CommonPage_AgCommission: SGResponseItem {
     public var data:CommonPage_AgCommission?
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        data = CommonPage_AgCommission(json:json["data"])
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_CommonPage_AgGift: SGResponseItem {
     /// 状态码
@@ -1606,6 +1942,13 @@ public class CommonResult_CommonPage_AgGift: SGResponseItem {
     public var data:CommonPage_AgGift?
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        data = CommonPage_AgGift(json:json["data"])
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_CommonPage_AgHelping: SGResponseItem {
     /// 状态码
@@ -1613,6 +1956,13 @@ public class CommonResult_CommonPage_AgHelping: SGResponseItem {
     public var data:CommonPage_AgHelping?
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        data = CommonPage_AgHelping(json:json["data"])
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_CommonPage_AgWithdrawal: SGResponseItem {
     /// 状态码
@@ -1620,6 +1970,13 @@ public class CommonResult_CommonPage_AgWithdrawal: SGResponseItem {
     public var data:CommonPage_AgWithdrawal?
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        data = CommonPage_AgWithdrawal(json:json["data"])
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_CommonPage_MemberBrandAttention: SGResponseItem {
     /// 状态码
@@ -1627,6 +1984,13 @@ public class CommonResult_CommonPage_MemberBrandAttention: SGResponseItem {
     public var data:CommonPage_MemberBrandAttention?
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        data = CommonPage_MemberBrandAttention(json:json["data"])
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_CommonPage_MemberProductCollection: SGResponseItem {
     /// 状态码
@@ -1634,6 +1998,13 @@ public class CommonResult_CommonPage_MemberProductCollection: SGResponseItem {
     public var data:CommonPage_MemberProductCollection?
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        data = CommonPage_MemberProductCollection(json:json["data"])
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_CommonPage_MemberReadHistory: SGResponseItem {
     /// 状态码
@@ -1641,6 +2012,13 @@ public class CommonResult_CommonPage_MemberReadHistory: SGResponseItem {
     public var data:CommonPage_MemberReadHistory?
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        data = CommonPage_MemberReadHistory(json:json["data"])
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_CommonPage_OmsOrderDetail: SGResponseItem {
     /// 状态码
@@ -1648,6 +2026,13 @@ public class CommonResult_CommonPage_OmsOrderDetail: SGResponseItem {
     public var data:CommonPage_OmsOrderDetail?
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        data = CommonPage_OmsOrderDetail(json:json["data"])
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_CommonPage_PmsProduct: SGResponseItem {
     /// 状态码
@@ -1655,6 +2040,13 @@ public class CommonResult_CommonPage_PmsProduct: SGResponseItem {
     public var data:CommonPage_PmsProduct?
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        data = CommonPage_PmsProduct(json:json["data"])
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_CommonPage_object: SGResponseItem {
     /// 状态码
@@ -1662,6 +2054,13 @@ public class CommonResult_CommonPage_object: SGResponseItem {
     public var data:CommonPage_object?
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        data = CommonPage_object(json:json["data"])
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_ConfirmOrderResult: SGResponseItem {
     /// 状态码
@@ -1669,6 +2068,13 @@ public class CommonResult_ConfirmOrderResult: SGResponseItem {
     public var data:ConfirmOrderResult?
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        data = ConfirmOrderResult(json:json["data"])
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_HomeContentResult: SGResponseItem {
     /// 状态码
@@ -1676,6 +2082,13 @@ public class CommonResult_HomeContentResult: SGResponseItem {
     public var data:HomeContentResult?
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        data = HomeContentResult(json:json["data"])
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_List_CartPromotionItem: SGResponseItem {
     /// 状态码
@@ -1683,6 +2096,15 @@ public class CommonResult_List_CartPromotionItem: SGResponseItem {
     public var data:[CartPromotionItem] = []
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        for value in json["data"].arrayValue{
+            data.append(CartPromotionItem(json: value))
+        }
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_List_CmsSubject: SGResponseItem {
     /// 状态码
@@ -1690,6 +2112,15 @@ public class CommonResult_List_CmsSubject: SGResponseItem {
     public var data:[CmsSubject] = []
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        for value in json["data"].arrayValue{
+            data.append(CmsSubject(json: value))
+        }
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_List_OmsCartItem: SGResponseItem {
     /// 状态码
@@ -1697,6 +2128,15 @@ public class CommonResult_List_OmsCartItem: SGResponseItem {
     public var data:[OmsCartItem] = []
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        for value in json["data"].arrayValue{
+            data.append(OmsCartItem(json: value))
+        }
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_List_PmsBrand: SGResponseItem {
     /// 状态码
@@ -1704,6 +2144,15 @@ public class CommonResult_List_PmsBrand: SGResponseItem {
     public var data:[PmsBrand] = []
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        for value in json["data"].arrayValue{
+            data.append(PmsBrand(json: value))
+        }
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_List_PmsProductCategoryNode: SGResponseItem {
     /// 状态码
@@ -1711,6 +2160,15 @@ public class CommonResult_List_PmsProductCategoryNode: SGResponseItem {
     public var data:[PmsProductCategoryNode] = []
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        for value in json["data"].arrayValue{
+            data.append(PmsProductCategoryNode(json: value))
+        }
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_List_PmsProductCategory: SGResponseItem {
     /// 状态码
@@ -1718,6 +2176,15 @@ public class CommonResult_List_PmsProductCategory: SGResponseItem {
     public var data:[PmsProductCategory] = []
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        for value in json["data"].arrayValue{
+            data.append(PmsProductCategory(json: value))
+        }
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_List_PmsProduct: SGResponseItem {
     /// 状态码
@@ -1725,6 +2192,15 @@ public class CommonResult_List_PmsProduct: SGResponseItem {
     public var data:[PmsProduct] = []
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        for value in json["data"].arrayValue{
+            data.append(PmsProduct(json: value))
+        }
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_List_SmsCouponHistoryDetail: SGResponseItem {
     /// 状态码
@@ -1732,6 +2208,15 @@ public class CommonResult_List_SmsCouponHistoryDetail: SGResponseItem {
     public var data:[SmsCouponHistoryDetail] = []
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        for value in json["data"].arrayValue{
+            data.append(SmsCouponHistoryDetail(json: value))
+        }
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_List_SmsCouponHistory: SGResponseItem {
     /// 状态码
@@ -1739,6 +2224,15 @@ public class CommonResult_List_SmsCouponHistory: SGResponseItem {
     public var data:[SmsCouponHistory] = []
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        for value in json["data"].arrayValue{
+            data.append(SmsCouponHistory(json: value))
+        }
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_List_SmsCoupon: SGResponseItem {
     /// 状态码
@@ -1746,6 +2240,15 @@ public class CommonResult_List_SmsCoupon: SGResponseItem {
     public var data:[SmsCoupon] = []
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        for value in json["data"].arrayValue{
+            data.append(SmsCoupon(json: value))
+        }
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_List_UmsMemberLevel: SGResponseItem {
     /// 状态码
@@ -1753,6 +2256,15 @@ public class CommonResult_List_UmsMemberLevel: SGResponseItem {
     public var data:[UmsMemberLevel] = []
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        for value in json["data"].arrayValue{
+            data.append(UmsMemberLevel(json: value))
+        }
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_List_UmsMemberReceiveAddress: SGResponseItem {
     /// 状态码
@@ -1760,6 +2272,15 @@ public class CommonResult_List_UmsMemberReceiveAddress: SGResponseItem {
     public var data:[UmsMemberReceiveAddress] = []
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        for value in json["data"].arrayValue{
+            data.append(UmsMemberReceiveAddress(json: value))
+        }
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_Map_string_object: SGResponseItem {
     /// 状态码
@@ -1767,6 +2288,13 @@ public class CommonResult_Map_string_object: SGResponseItem {
     public var data:Any?
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        data = json["data"].object
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_MemberBrandAttention: SGResponseItem {
     /// 状态码
@@ -1774,6 +2302,13 @@ public class CommonResult_MemberBrandAttention: SGResponseItem {
     public var data:MemberBrandAttention?
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        data = MemberBrandAttention(json:json["data"])
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_MemberProductCollection: SGResponseItem {
     /// 状态码
@@ -1781,6 +2316,13 @@ public class CommonResult_MemberProductCollection: SGResponseItem {
     public var data:MemberProductCollection?
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        data = MemberProductCollection(json:json["data"])
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_OmsOrderDetail: SGResponseItem {
     /// 状态码
@@ -1788,6 +2330,13 @@ public class CommonResult_OmsOrderDetail: SGResponseItem {
     public var data:OmsOrderDetail?
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        data = OmsOrderDetail(json:json["data"])
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_PmsBrand: SGResponseItem {
     /// 状态码
@@ -1795,6 +2344,13 @@ public class CommonResult_PmsBrand: SGResponseItem {
     public var data:PmsBrand?
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        data = PmsBrand(json:json["data"])
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_PmsPortalProductDetail: SGResponseItem {
     /// 状态码
@@ -1802,6 +2358,13 @@ public class CommonResult_PmsPortalProductDetail: SGResponseItem {
     public var data:PmsPortalProductDetail?
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        data = PmsPortalProductDetail(json:json["data"])
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_UmsMemberInfo: SGResponseItem {
     /// 状态码
@@ -1809,6 +2372,13 @@ public class CommonResult_UmsMemberInfo: SGResponseItem {
     public var data:UmsMemberInfo?
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        data = UmsMemberInfo(json:json["data"])
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_UmsMemberReceiveAddress: SGResponseItem {
     /// 状态码
@@ -1816,6 +2386,13 @@ public class CommonResult_UmsMemberReceiveAddress: SGResponseItem {
     public var data:UmsMemberReceiveAddress?
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        data = UmsMemberReceiveAddress(json:json["data"])
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_long: SGResponseItem {
     /// 状态码
@@ -1823,6 +2400,13 @@ public class CommonResult_long: SGResponseItem {
     public var data:Int?
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        data = json["data"].intValue
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_object: SGResponseItem {
     /// 状态码
@@ -1830,6 +2414,13 @@ public class CommonResult_object: SGResponseItem {
     public var data:Any?
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        data = json["data"].object
+        message = json["message"].stringValue
+    }
 }
 public class CommonResult_string: SGResponseItem {
     /// 状态码
@@ -1837,10 +2428,24 @@ public class CommonResult_string: SGResponseItem {
     public var data:String?
     /// 提示信息
     public var message:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        code = json["code"].intValue
+        data = json["data"].stringValue
+        message = json["message"].stringValue
+    }
 }
 public class ConfirmOrderParam: SGResponseItem {
     /// 购物车id
-    public var cartIds:[Any] = []
+    public var cartIds:[Int] = []
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        for value in json["cartIds"].arrayValue{
+            cartIds.append(value.intValue)
+        }
+    }
 }
 public class ConfirmOrderResult: SGResponseItem {
     public var calcAmount:CalcAmount?
@@ -1850,6 +2455,23 @@ public class ConfirmOrderResult: SGResponseItem {
     public var integrationConsumeSetting:UmsIntegrationConsumeSetting?
     public var memberIntegration:Int?
     public var memberReceiveAddressList:[UmsMemberReceiveAddress] = []
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        calcAmount = CalcAmount(json:json["calcAmount"])
+        for value in json["cartPromotionItemList"].arrayValue{
+            cartPromotionItemList.append(CartPromotionItem(json: value))
+        }
+        for value in json["couponHistoryDetailList"].arrayValue{
+            couponHistoryDetailList.append(SmsCouponHistoryDetail(json: value))
+        }
+        discountBalance = json["discountBalance"].floatValue
+        integrationConsumeSetting = UmsIntegrationConsumeSetting(json:json["integrationConsumeSetting"])
+        memberIntegration = json["memberIntegration"].intValue
+        for value in json["memberReceiveAddressList"].arrayValue{
+            memberReceiveAddressList.append(UmsMemberReceiveAddress(json: value))
+        }
+    }
 }
 public class FlashPromotionProduct: SGResponseItem {
     /// 画册图片，连产品图片限制为5张，以逗号分割
@@ -1929,6 +2551,56 @@ public class FlashPromotionProduct: SGResponseItem {
     public var verifyStatus:Int?
     /// 商品重量，默认为克
     public var weight:Float?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        albumPics = json["albumPics"].stringValue
+        brandId = json["brandId"].intValue
+        brandName = json["brandName"].stringValue
+        deleteStatus = json["deleteStatus"].intValue
+        description_str = json["description_str"].stringValue
+        detailDesc = json["detailDesc"].stringValue
+        detailHtml = json["detailHtml"].stringValue
+        detailMobileHtml = json["detailMobileHtml"].stringValue
+        detailTitle = json["detailTitle"].stringValue
+        discountAmount = json["discountAmount"].floatValue
+        feightTemplateId = json["feightTemplateId"].intValue
+        flashPromotionCount = json["flashPromotionCount"].intValue
+        flashPromotionLimit = json["flashPromotionLimit"].intValue
+        flashPromotionPrice = json["flashPromotionPrice"].floatValue
+        giftGrowth = json["giftGrowth"].intValue
+        giftPoint = json["giftPoint"].intValue
+        id = json["id"].intValue
+        keywords = json["keywords"].stringValue
+        lowStock = json["lowStock"].intValue
+        name = json["name"].stringValue
+        newStatus = json["newStatus"].intValue
+        note = json["note"].stringValue
+        originalPrice = json["originalPrice"].floatValue
+        pic = json["pic"].stringValue
+        previewStatus = json["previewStatus"].intValue
+        price = json["price"].floatValue
+        productAttributeCategoryId = json["productAttributeCategoryId"].intValue
+        productCategoryId = json["productCategoryId"].intValue
+        productCategoryName = json["productCategoryName"].stringValue
+        productSn = json["productSn"].stringValue
+        promotionEndTime = json["promotionEndTime"].stringValue
+        promotionPerLimit = json["promotionPerLimit"].intValue
+        promotionPrice = json["promotionPrice"].floatValue
+        promotionStartTime = json["promotionStartTime"].stringValue
+        promotionType = json["promotionType"].intValue
+        publishStatus = json["publishStatus"].intValue
+        recommandStatus = json["recommandStatus"].intValue
+        sale = json["sale"].intValue
+        serviceIds = json["serviceIds"].stringValue
+        sort = json["sort"].intValue
+        stock = json["stock"].intValue
+        subTitle = json["subTitle"].stringValue
+        unit = json["unit"].stringValue
+        usePointLimit = json["usePointLimit"].intValue
+        verifyStatus = json["verifyStatus"].intValue
+        weight = json["weight"].floatValue
+    }
 }
 public class HomeContentResult: SGResponseItem {
     public var advertiseList:[SmsHomeAdvertise] = []
@@ -1937,6 +2609,26 @@ public class HomeContentResult: SGResponseItem {
     public var hotProductList:[PmsProduct] = []
     public var newProductList:[PmsProduct] = []
     public var subjectList:[CmsSubject] = []
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        for value in json["advertiseList"].arrayValue{
+            advertiseList.append(SmsHomeAdvertise(json: value))
+        }
+        for value in json["brandList"].arrayValue{
+            brandList.append(PmsBrand(json: value))
+        }
+        homeFlashPromotion = HomeFlashPromotion(json:json["homeFlashPromotion"])
+        for value in json["hotProductList"].arrayValue{
+            hotProductList.append(PmsProduct(json: value))
+        }
+        for value in json["newProductList"].arrayValue{
+            newProductList.append(PmsProduct(json: value))
+        }
+        for value in json["subjectList"].arrayValue{
+            subjectList.append(CmsSubject(json: value))
+        }
+    }
 }
 public class HomeFlashPromotion: SGResponseItem {
     public var endTime:String?
@@ -1944,6 +2636,17 @@ public class HomeFlashPromotion: SGResponseItem {
     public var nextStartTime:String?
     public var productList:[FlashPromotionProduct] = []
     public var startTime:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        endTime = json["endTime"].stringValue
+        nextEndTime = json["nextEndTime"].stringValue
+        nextStartTime = json["nextStartTime"].stringValue
+        for value in json["productList"].arrayValue{
+            productList.append(FlashPromotionProduct(json: value))
+        }
+        startTime = json["startTime"].stringValue
+    }
 }
 public class MemberBrandAttention: SGResponseItem {
     public var brandCity:String?
@@ -1955,6 +2658,19 @@ public class MemberBrandAttention: SGResponseItem {
     public var memberIcon:String?
     public var memberId:Int?
     public var memberNickname:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        brandCity = json["brandCity"].stringValue
+        brandId = json["brandId"].intValue
+        brandLogo = json["brandLogo"].stringValue
+        brandName = json["brandName"].stringValue
+        createTime = json["createTime"].stringValue
+        id = json["id"].stringValue
+        memberIcon = json["memberIcon"].stringValue
+        memberId = json["memberId"].intValue
+        memberNickname = json["memberNickname"].stringValue
+    }
 }
 public class MemberProductCollection: SGResponseItem {
     public var createTime:String?
@@ -1967,6 +2683,20 @@ public class MemberProductCollection: SGResponseItem {
     public var productPic:String?
     public var productPrice:String?
     public var productSubTitle:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        createTime = json["createTime"].stringValue
+        id = json["id"].stringValue
+        memberIcon = json["memberIcon"].stringValue
+        memberId = json["memberId"].intValue
+        memberNickname = json["memberNickname"].stringValue
+        productId = json["productId"].intValue
+        productName = json["productName"].stringValue
+        productPic = json["productPic"].stringValue
+        productPrice = json["productPrice"].stringValue
+        productSubTitle = json["productSubTitle"].stringValue
+    }
 }
 public class MemberReadHistory: SGResponseItem {
     public var createTime:String?
@@ -1979,6 +2709,20 @@ public class MemberReadHistory: SGResponseItem {
     public var productPic:String?
     public var productPrice:String?
     public var productSubTitle:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        createTime = json["createTime"].stringValue
+        id = json["id"].stringValue
+        memberIcon = json["memberIcon"].stringValue
+        memberId = json["memberId"].intValue
+        memberNickname = json["memberNickname"].stringValue
+        productId = json["productId"].intValue
+        productName = json["productName"].stringValue
+        productPic = json["productPic"].stringValue
+        productPrice = json["productPrice"].stringValue
+        productSubTitle = json["productSubTitle"].stringValue
+    }
 }
 public class OmsCartItem: SGResponseItem {
     /// 创建时间
@@ -2011,6 +2755,28 @@ public class OmsCartItem: SGResponseItem {
     public var productSubTitle:String?
     /// 购买数量
     public var quantity:Int?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        createDate = json["createDate"].stringValue
+        deleteStatus = json["deleteStatus"].intValue
+        id = json["id"].intValue
+        memberId = json["memberId"].intValue
+        memberNickname = json["memberNickname"].stringValue
+        modifyDate = json["modifyDate"].stringValue
+        price = json["price"].floatValue
+        productAttr = json["productAttr"].stringValue
+        productBrand = json["productBrand"].stringValue
+        productCategoryId = json["productCategoryId"].intValue
+        productId = json["productId"].intValue
+        productName = json["productName"].stringValue
+        productPic = json["productPic"].stringValue
+        productSkuCode = json["productSkuCode"].stringValue
+        productSkuId = json["productSkuId"].intValue
+        productSn = json["productSn"].stringValue
+        productSubTitle = json["productSubTitle"].stringValue
+        quantity = json["quantity"].intValue
+    }
 }
 public class OmsOrderDetail: SGResponseItem {
     /// 自动确认时间（天）
@@ -2100,6 +2866,57 @@ public class OmsOrderDetail: SGResponseItem {
     public var totalAmount:Float?
     /// 下单时使用的积分
     public var useIntegration:Int?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        autoConfirmDay = json["autoConfirmDay"].intValue
+        billContent = json["billContent"].stringValue
+        billHeader = json["billHeader"].stringValue
+        billReceiverEmail = json["billReceiverEmail"].stringValue
+        billReceiverPhone = json["billReceiverPhone"].stringValue
+        billType = json["billType"].intValue
+        commentTime = json["commentTime"].stringValue
+        confirmStatus = json["confirmStatus"].intValue
+        couponAmount = json["couponAmount"].floatValue
+        couponId = json["couponId"].intValue
+        createTime = json["createTime"].stringValue
+        deleteStatus = json["deleteStatus"].intValue
+        deliveryCompany = json["deliveryCompany"].stringValue
+        deliverySn = json["deliverySn"].stringValue
+        deliveryTime = json["deliveryTime"].stringValue
+        discountAmount = json["discountAmount"].floatValue
+        freightAmount = json["freightAmount"].floatValue
+        growth = json["growth"].intValue
+        id = json["id"].intValue
+        integration = json["integration"].intValue
+        integrationAmount = json["integrationAmount"].floatValue
+        memberId = json["memberId"].intValue
+        memberUsername = json["memberUsername"].stringValue
+        modifyTime = json["modifyTime"].stringValue
+        note = json["note"].stringValue
+        for value in json["orderItemList"].arrayValue{
+            orderItemList.append(OmsOrderItem(json: value))
+        }
+        orderSn = json["orderSn"].stringValue
+        orderType = json["orderType"].intValue
+        payAmount = json["payAmount"].floatValue
+        payType = json["payType"].intValue
+        paymentTime = json["paymentTime"].stringValue
+        promotionAmount = json["promotionAmount"].floatValue
+        promotionInfo = json["promotionInfo"].stringValue
+        receiveTime = json["receiveTime"].stringValue
+        receiverCity = json["receiverCity"].stringValue
+        receiverDetailAddress = json["receiverDetailAddress"].stringValue
+        receiverName = json["receiverName"].stringValue
+        receiverPhone = json["receiverPhone"].stringValue
+        receiverPostCode = json["receiverPostCode"].stringValue
+        receiverProvince = json["receiverProvince"].stringValue
+        receiverRegion = json["receiverRegion"].stringValue
+        sourceType = json["sourceType"].intValue
+        status = json["status"].intValue
+        totalAmount = json["totalAmount"].floatValue
+        useIntegration = json["useIntegration"].intValue
+    }
 }
 public class OmsOrderItem: SGResponseItem {
     /// 优惠券优惠分解金额
@@ -2138,6 +2955,32 @@ public class OmsOrderItem: SGResponseItem {
     public var promotionName:String?
     /// 该商品经过优惠后的分解金额
     public var realAmount:Float?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        couponAmount = json["couponAmount"].floatValue
+        discountAmount = json["discountAmount"].floatValue
+        giftGrowth = json["giftGrowth"].intValue
+        giftIntegration = json["giftIntegration"].intValue
+        id = json["id"].intValue
+        integrationAmount = json["integrationAmount"].floatValue
+        orderId = json["orderId"].intValue
+        orderSn = json["orderSn"].stringValue
+        productAttr = json["productAttr"].stringValue
+        productBrand = json["productBrand"].stringValue
+        productCategoryId = json["productCategoryId"].intValue
+        productId = json["productId"].intValue
+        productName = json["productName"].stringValue
+        productPic = json["productPic"].stringValue
+        productPrice = json["productPrice"].floatValue
+        productQuantity = json["productQuantity"].intValue
+        productSkuCode = json["productSkuCode"].stringValue
+        productSkuId = json["productSkuId"].intValue
+        productSn = json["productSn"].stringValue
+        promotionAmount = json["promotionAmount"].floatValue
+        promotionName = json["promotionName"].stringValue
+        realAmount = json["realAmount"].floatValue
+    }
 }
 public class OmsOrderReturnApplyParam: SGResponseItem {
     /// 描述
@@ -2172,10 +3015,30 @@ public class OmsOrderReturnApplyParam: SGResponseItem {
     public var returnName:String?
     /// 退货人电话
     public var returnPhone:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        description_str = json["description_str"].stringValue
+        memberUsername = json["memberUsername"].stringValue
+        orderId = json["orderId"].intValue
+        orderSn = json["orderSn"].stringValue
+        productAttr = json["productAttr"].stringValue
+        productBrand = json["productBrand"].stringValue
+        productCount = json["productCount"].intValue
+        productId = json["productId"].intValue
+        productName = json["productName"].stringValue
+        productPic = json["productPic"].stringValue
+        productPrice = json["productPrice"].floatValue
+        productRealPrice = json["productRealPrice"].floatValue
+        proofPics = json["proofPics"].stringValue
+        reason = json["reason"].stringValue
+        returnName = json["returnName"].stringValue
+        returnPhone = json["returnPhone"].stringValue
+    }
 }
 public class OrderParam: SGResponseItem {
     /// 被选中的购物车商品ID
-    public var cartIds:[Any] = []
+    public var cartIds:[Int] = []
     /// 优惠券ID
     public var couponId:Int?
     /// 收货地址ID
@@ -2184,6 +3047,17 @@ public class OrderParam: SGResponseItem {
     public var payType:Int?
     /// 使用的积分数
     public var useIntegration:Int?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        for value in json["cartIds"].arrayValue{
+            cartIds.append(value.intValue)
+        }
+        couponId = json["couponId"].intValue
+        memberReceiveAddressId = json["memberReceiveAddressId"].intValue
+        payType = json["payType"].intValue
+        useIntegration = json["useIntegration"].intValue
+    }
 }
 public class PaymentParam: SGResponseItem {
     /// 支付类型 1:支付宝 2:微信
@@ -2192,6 +3066,13 @@ public class PaymentParam: SGResponseItem {
     public var sourceId:String?
     /// 来源类型 1:订单 2:礼包
     public var sourceType:Int?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        payType = json["payType"].intValue
+        sourceId = json["sourceId"].stringValue
+        sourceType = json["sourceType"].intValue
+    }
 }
 public class PmsBrand: SGResponseItem {
     /// 专区大图
@@ -2212,6 +3093,21 @@ public class PmsBrand: SGResponseItem {
     public var productCount:Int?
     public var showStatus:Int?
     public var sort:Int?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        bigPic = json["bigPic"].stringValue
+        brandStory = json["brandStory"].stringValue
+        factoryStatus = json["factoryStatus"].intValue
+        firstLetter = json["firstLetter"].stringValue
+        id = json["id"].intValue
+        logo = json["logo"].stringValue
+        name = json["name"].stringValue
+        productCommentCount = json["productCommentCount"].intValue
+        productCount = json["productCount"].intValue
+        showStatus = json["showStatus"].intValue
+        sort = json["sort"].intValue
+    }
 }
 public class PmsPortalProductDetail: SGResponseItem {
     /// 商品品牌
@@ -2230,6 +3126,30 @@ public class PmsPortalProductDetail: SGResponseItem {
     public var productLadderList:[PmsProductLadder] = []
     /// 商品的sku库存信息
     public var skuStockList:[PmsSkuStock] = []
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        brand = PmsBrand(json:json["brand"])
+        for value in json["couponList"].arrayValue{
+            couponList.append(SmsCoupon(json: value))
+        }
+        product = PmsProduct(json:json["product"])
+        for value in json["productAttributeList"].arrayValue{
+            productAttributeList.append(PmsProductAttribute(json: value))
+        }
+        for value in json["productAttributeValueList"].arrayValue{
+            productAttributeValueList.append(PmsProductAttributeValue(json: value))
+        }
+        for value in json["productFullReductionList"].arrayValue{
+            productFullReductionList.append(PmsProductFullReduction(json: value))
+        }
+        for value in json["productLadderList"].arrayValue{
+            productLadderList.append(PmsProductLadder(json: value))
+        }
+        for value in json["skuStockList"].arrayValue{
+            skuStockList.append(PmsSkuStock(json: value))
+        }
+    }
 }
 public class PmsProduct: SGResponseItem {
     /// 画册图片，连产品图片限制为5张，以逗号分割
@@ -2306,6 +3226,53 @@ public class PmsProduct: SGResponseItem {
     public var verifyStatus:Int?
     /// 商品重量，默认为克
     public var weight:Float?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        albumPics = json["albumPics"].stringValue
+        brandId = json["brandId"].intValue
+        brandName = json["brandName"].stringValue
+        deleteStatus = json["deleteStatus"].intValue
+        description_str = json["description_str"].stringValue
+        detailDesc = json["detailDesc"].stringValue
+        detailHtml = json["detailHtml"].stringValue
+        detailMobileHtml = json["detailMobileHtml"].stringValue
+        detailTitle = json["detailTitle"].stringValue
+        discountAmount = json["discountAmount"].floatValue
+        feightTemplateId = json["feightTemplateId"].intValue
+        giftGrowth = json["giftGrowth"].intValue
+        giftPoint = json["giftPoint"].intValue
+        id = json["id"].intValue
+        keywords = json["keywords"].stringValue
+        lowStock = json["lowStock"].intValue
+        name = json["name"].stringValue
+        newStatus = json["newStatus"].intValue
+        note = json["note"].stringValue
+        originalPrice = json["originalPrice"].floatValue
+        pic = json["pic"].stringValue
+        previewStatus = json["previewStatus"].intValue
+        price = json["price"].floatValue
+        productAttributeCategoryId = json["productAttributeCategoryId"].intValue
+        productCategoryId = json["productCategoryId"].intValue
+        productCategoryName = json["productCategoryName"].stringValue
+        productSn = json["productSn"].stringValue
+        promotionEndTime = json["promotionEndTime"].stringValue
+        promotionPerLimit = json["promotionPerLimit"].intValue
+        promotionPrice = json["promotionPrice"].floatValue
+        promotionStartTime = json["promotionStartTime"].stringValue
+        promotionType = json["promotionType"].intValue
+        publishStatus = json["publishStatus"].intValue
+        recommandStatus = json["recommandStatus"].intValue
+        sale = json["sale"].intValue
+        serviceIds = json["serviceIds"].stringValue
+        sort = json["sort"].intValue
+        stock = json["stock"].intValue
+        subTitle = json["subTitle"].stringValue
+        unit = json["unit"].stringValue
+        usePointLimit = json["usePointLimit"].intValue
+        verifyStatus = json["verifyStatus"].intValue
+        weight = json["weight"].floatValue
+    }
 }
 public class PmsProductAttribute: SGResponseItem {
     /// 分类筛选样式：1->普通；1->颜色
@@ -2329,6 +3296,22 @@ public class PmsProductAttribute: SGResponseItem {
     public var sort:Int?
     /// 属性的类型；0->规格；1->参数
     public var type:Int?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        filterType = json["filterType"].intValue
+        handAddStatus = json["handAddStatus"].intValue
+        id = json["id"].intValue
+        inputList = json["inputList"].stringValue
+        inputType = json["inputType"].intValue
+        name = json["name"].stringValue
+        productAttributeCategoryId = json["productAttributeCategoryId"].intValue
+        relatedStatus = json["relatedStatus"].intValue
+        searchType = json["searchType"].intValue
+        selectType = json["selectType"].intValue
+        sort = json["sort"].intValue
+        type = json["type"].intValue
+    }
 }
 public class PmsProductAttributeValue: SGResponseItem {
     public var id:Int?
@@ -2336,6 +3319,14 @@ public class PmsProductAttributeValue: SGResponseItem {
     public var productId:Int?
     /// 手动添加规格或参数的值，参数单值，规格有多个时以逗号隔开
     public var value:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        id = json["id"].intValue
+        productAttributeId = json["productAttributeId"].intValue
+        productId = json["productId"].intValue
+        value = json["value"].stringValue
+    }
 }
 public class PmsProductCategory: SGResponseItem {
     /// 描述
@@ -2356,6 +3347,22 @@ public class PmsProductCategory: SGResponseItem {
     /// 显示状态：0->不显示；1->显示
     public var showStatus:Int?
     public var sort:Int?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        description_str = json["description_str"].stringValue
+        icon = json["icon"].stringValue
+        id = json["id"].intValue
+        keywords = json["keywords"].stringValue
+        level = json["level"].intValue
+        name = json["name"].stringValue
+        navStatus = json["navStatus"].intValue
+        parentId = json["parentId"].intValue
+        productCount = json["productCount"].intValue
+        productUnit = json["productUnit"].stringValue
+        showStatus = json["showStatus"].intValue
+        sort = json["sort"].intValue
+    }
 }
 public class PmsProductCategoryNode: SGResponseItem {
     public var children:[PmsProductCategoryNode] = []
@@ -2377,12 +3384,39 @@ public class PmsProductCategoryNode: SGResponseItem {
     /// 显示状态：0->不显示；1->显示
     public var showStatus:Int?
     public var sort:Int?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        for value in json["children"].arrayValue{
+            children.append(PmsProductCategoryNode(json: value))
+        }
+        description_str = json["description_str"].stringValue
+        icon = json["icon"].stringValue
+        id = json["id"].intValue
+        keywords = json["keywords"].stringValue
+        level = json["level"].intValue
+        name = json["name"].stringValue
+        navStatus = json["navStatus"].intValue
+        parentId = json["parentId"].intValue
+        productCount = json["productCount"].intValue
+        productUnit = json["productUnit"].stringValue
+        showStatus = json["showStatus"].intValue
+        sort = json["sort"].intValue
+    }
 }
 public class PmsProductFullReduction: SGResponseItem {
     public var fullPrice:Float?
     public var id:Int?
     public var productId:Int?
     public var reducePrice:Float?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        fullPrice = json["fullPrice"].floatValue
+        id = json["id"].intValue
+        productId = json["productId"].intValue
+        reducePrice = json["reducePrice"].floatValue
+    }
 }
 public class PmsProductLadder: SGResponseItem {
     /// 满足的商品数量
@@ -2393,6 +3427,15 @@ public class PmsProductLadder: SGResponseItem {
     /// 折后价格
     public var price:Float?
     public var productId:Int?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        count = json["count"].intValue
+        discount = json["discount"].floatValue
+        id = json["id"].intValue
+        price = json["price"].floatValue
+        productId = json["productId"].intValue
+    }
 }
 public class PmsSkuStock: SGResponseItem {
     /// 成本价
@@ -2418,6 +3461,23 @@ public class PmsSkuStock: SGResponseItem {
     public var spData:String?
     /// 库存
     public var stock:Int?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        costPrice = json["costPrice"].floatValue
+        discountAmount = json["discountAmount"].floatValue
+        id = json["id"].intValue
+        lockStock = json["lockStock"].intValue
+        lowStock = json["lowStock"].intValue
+        pic = json["pic"].stringValue
+        price = json["price"].floatValue
+        productId = json["productId"].intValue
+        promotionPrice = json["promotionPrice"].floatValue
+        sale = json["sale"].intValue
+        skuCode = json["skuCode"].stringValue
+        spData = json["spData"].stringValue
+        stock = json["stock"].intValue
+    }
 }
 public class SmsCoupon: SGResponseItem {
     /// 金额
@@ -2452,6 +3512,28 @@ public class SmsCoupon: SGResponseItem {
     public var useCount:Int?
     /// 使用类型：0->全场通用；1->指定分类；2->指定商品
     public var useType:Int?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        amount = json["amount"].floatValue
+        code = json["code"].stringValue
+        count = json["count"].intValue
+        enableTime = json["enableTime"].stringValue
+        endTime = json["endTime"].stringValue
+        id = json["id"].intValue
+        memberLevel = json["memberLevel"].intValue
+        minPoint = json["minPoint"].floatValue
+        name = json["name"].stringValue
+        note = json["note"].stringValue
+        perLimit = json["perLimit"].intValue
+        platform = json["platform"].intValue
+        publishCount = json["publishCount"].intValue
+        receiveCount = json["receiveCount"].intValue
+        startTime = json["startTime"].stringValue
+        type = json["type"].intValue
+        useCount = json["useCount"].intValue
+        useType = json["useType"].intValue
+    }
 }
 public class SmsCouponHistory: SGResponseItem {
     public var couponCode:String?
@@ -2471,6 +3553,21 @@ public class SmsCouponHistory: SGResponseItem {
     public var useStatus:Int?
     /// 使用时间
     public var useTime:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        couponCode = json["couponCode"].stringValue
+        couponId = json["couponId"].intValue
+        createTime = json["createTime"].stringValue
+        getType = json["getType"].intValue
+        id = json["id"].intValue
+        memberId = json["memberId"].intValue
+        memberNickname = json["memberNickname"].stringValue
+        orderId = json["orderId"].intValue
+        orderSn = json["orderSn"].stringValue
+        useStatus = json["useStatus"].intValue
+        useTime = json["useTime"].stringValue
+    }
 }
 public class SmsCouponHistoryDetail: SGResponseItem {
     public var categoryRelationList:[SmsCouponProductCategoryRelation] = []
@@ -2493,6 +3590,28 @@ public class SmsCouponHistoryDetail: SGResponseItem {
     public var useStatus:Int?
     /// 使用时间
     public var useTime:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        for value in json["categoryRelationList"].arrayValue{
+            categoryRelationList.append(SmsCouponProductCategoryRelation(json: value))
+        }
+        coupon = SmsCoupon(json:json["coupon"])
+        couponCode = json["couponCode"].stringValue
+        couponId = json["couponId"].intValue
+        createTime = json["createTime"].stringValue
+        getType = json["getType"].intValue
+        id = json["id"].intValue
+        memberId = json["memberId"].intValue
+        memberNickname = json["memberNickname"].stringValue
+        orderId = json["orderId"].intValue
+        orderSn = json["orderSn"].stringValue
+        for value in json["productRelationList"].arrayValue{
+            productRelationList.append(SmsCouponProductRelation(json: value))
+        }
+        useStatus = json["useStatus"].intValue
+        useTime = json["useTime"].stringValue
+    }
 }
 public class SmsCouponProductCategoryRelation: SGResponseItem {
     public var couponId:Int?
@@ -2502,6 +3621,15 @@ public class SmsCouponProductCategoryRelation: SGResponseItem {
     public var productCategoryId:Int?
     /// 产品分类名称
     public var productCategoryName:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        couponId = json["couponId"].intValue
+        id = json["id"].intValue
+        parentCategoryName = json["parentCategoryName"].stringValue
+        productCategoryId = json["productCategoryId"].intValue
+        productCategoryName = json["productCategoryName"].stringValue
+    }
 }
 public class SmsCouponProductRelation: SGResponseItem {
     public var couponId:Int?
@@ -2511,6 +3639,15 @@ public class SmsCouponProductRelation: SGResponseItem {
     public var productName:String?
     /// 商品编码
     public var productSn:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        couponId = json["couponId"].intValue
+        id = json["id"].intValue
+        productId = json["productId"].intValue
+        productName = json["productName"].stringValue
+        productSn = json["productSn"].stringValue
+    }
 }
 public class SmsHomeAdvertise: SGResponseItem {
     /// 点击数
@@ -2532,6 +3669,22 @@ public class SmsHomeAdvertise: SGResponseItem {
     public var type:Int?
     /// 链接地址
     public var url:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        clickCount = json["clickCount"].intValue
+        endTime = json["endTime"].stringValue
+        id = json["id"].intValue
+        name = json["name"].stringValue
+        note = json["note"].stringValue
+        orderCount = json["orderCount"].intValue
+        pic = json["pic"].stringValue
+        sort = json["sort"].intValue
+        startTime = json["startTime"].stringValue
+        status = json["status"].intValue
+        type = json["type"].intValue
+        url = json["url"].stringValue
+    }
 }
 public class UmsIntegrationConsumeSetting: SGResponseItem {
     /// 是否可以和优惠券同用；0->不可以；1->可以
@@ -2543,6 +3696,15 @@ public class UmsIntegrationConsumeSetting: SGResponseItem {
     public var maxPercentPerOrder:Int?
     /// 每次使用积分最小单位100
     public var useUnit:Int?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        couponStatus = json["couponStatus"].intValue
+        deductionPerAmount = json["deductionPerAmount"].intValue
+        id = json["id"].intValue
+        maxPercentPerOrder = json["maxPercentPerOrder"].intValue
+        useUnit = json["useUnit"].intValue
+    }
 }
 public class UmsMemberInfo: SGResponseItem {
     /// 帮扶对象ID
@@ -2597,6 +3759,37 @@ public class UmsMemberInfo: SGResponseItem {
     public var uplineMemberId:Int?
     /// 用户名
     public var username:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        agHelpingId = json["agHelpingId"].intValue
+        agHelpingName = json["agHelpingName"].stringValue
+        birthday = json["birthday"].stringValue
+        city = json["city"].stringValue
+        commissionBalance = json["commissionBalance"].floatValue
+        createTime = json["createTime"].stringValue
+        discountBalance = json["discountBalance"].floatValue
+        gender = json["gender"].intValue
+        growth = json["growth"].intValue
+        historyIntegration = json["historyIntegration"].intValue
+        icon = json["icon"].stringValue
+        id = json["id"].intValue
+        integration = json["integration"].intValue
+        job = json["job"].stringValue
+        luckeyCount = json["luckeyCount"].intValue
+        memberLevelId = json["memberLevelId"].intValue
+        nickname = json["nickname"].stringValue
+        password = json["password"].stringValue
+        personalizedSignature = json["personalizedSignature"].stringValue
+        phone = json["phone"].stringValue
+        shareCode = json["shareCode"].stringValue
+        shareUrl = json["shareUrl"].stringValue
+        sourceType = json["sourceType"].intValue
+        status = json["status"].intValue
+        uplineMemberFullPath = json["uplineMemberFullPath"].stringValue
+        uplineMemberId = json["uplineMemberId"].intValue
+        username = json["username"].stringValue
+    }
 }
 public class UmsMemberLevel: SGResponseItem {
     /// 每次评价获取的成长值
@@ -2627,6 +3820,26 @@ public class UmsMemberLevel: SGResponseItem {
     public var priviledgeSignIn:Int?
     /// 产品佣金配置
     public var productCommissionConfig:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        commentGrowthPoint = json["commentGrowthPoint"].intValue
+        defaultStatus = json["defaultStatus"].intValue
+        discountAmount = json["discountAmount"].floatValue
+        discountCommissionConfig = json["discountCommissionConfig"].stringValue
+        freeFreightPoint = json["freeFreightPoint"].floatValue
+        growthPoint = json["growthPoint"].intValue
+        id = json["id"].intValue
+        name = json["name"].stringValue
+        note = json["note"].stringValue
+        priviledgeBirthday = json["priviledgeBirthday"].intValue
+        priviledgeComment = json["priviledgeComment"].intValue
+        priviledgeFreeFreight = json["priviledgeFreeFreight"].intValue
+        priviledgeMemberPrice = json["priviledgeMemberPrice"].intValue
+        priviledgePromotion = json["priviledgePromotion"].intValue
+        priviledgeSignIn = json["priviledgeSignIn"].intValue
+        productCommissionConfig = json["productCommissionConfig"].stringValue
+    }
 }
 public class UmsMemberReceiveAddress: SGResponseItem {
     /// 城市
@@ -2646,4 +3859,18 @@ public class UmsMemberReceiveAddress: SGResponseItem {
     public var province:String?
     /// 区
     public var region:String?
+
+    required convenience init(json:SKJSON) {
+        self.init()
+        city = json["city"].stringValue
+        defaultStatus = json["defaultStatus"].intValue
+        detailAddress = json["detailAddress"].stringValue
+        id = json["id"].intValue
+        memberId = json["memberId"].intValue
+        name = json["name"].stringValue
+        phoneNumber = json["phoneNumber"].stringValue
+        postCode = json["postCode"].stringValue
+        province = json["province"].stringValue
+        region = json["region"].stringValue
+    }
 }
