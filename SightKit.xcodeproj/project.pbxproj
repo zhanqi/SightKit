@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		0472B37525F48069009D8022 /* SKMarqueeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0472B37425F48069009D8022 /* SKMarqueeView.swift */; };
 		047C880325B995E70073F5E1 /* SKVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047C87D525B995E70073F5E1 /* SKVisualEffectView.swift */; };
 		047C880425B995E70073F5E1 /* SKTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047C87D625B995E70073F5E1 /* SKTitleView.swift */; };
 		047C880525B995E70073F5E1 /* SKScrollBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047C87D725B995E70073F5E1 /* SKScrollBannerView.swift */; };
@@ -146,6 +147,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0472B37425F48069009D8022 /* SKMarqueeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKMarqueeView.swift; sourceTree = "<group>"; };
 		047C878925B994890073F5E1 /* SightKit.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = SightKit.podspec; sourceTree = "<group>"; };
 		047C87D525B995E70073F5E1 /* SKVisualEffectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKVisualEffectView.swift; sourceTree = "<group>"; };
 		047C87D625B995E70073F5E1 /* SKTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKTitleView.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				047C87DA25B995E70073F5E1 /* SKGetVerifyCodeView.swift */,
 				047C87DB25B995E70073F5E1 /* SKSegmentView.swift */,
 				047C87DC25B995E70073F5E1 /* SKFillableView.swift */,
+				0472B37425F48069009D8022 /* SKMarqueeView.swift */,
 			);
 			path = SKViews;
 			sourceTree = "<group>";
@@ -661,6 +664,7 @@
 				047C881925B995E70073F5E1 /* Ex+UITextField.swift in Sources */,
 				047C881125B995E70073F5E1 /* Ex+UIViewController.swift in Sources */,
 				047C880425B995E70073F5E1 /* SKTitleView.swift in Sources */,
+				0472B37525F48069009D8022 /* SKMarqueeView.swift in Sources */,
 				047C881525B995E70073F5E1 /* Ex+UITabbar.swift in Sources */,
 				047C882725B995E70073F5E1 /* Ex+UITextView.swift in Sources */,
 				047C880725B995E70073F5E1 /* SKNoticeBar.swift in Sources */,
